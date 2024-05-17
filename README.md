@@ -1,112 +1,304 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# 
+## Introduction
 
-Welcome Alice Dean,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Link to deployed site can be found [Here]()
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 26, 2024**
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+# UX
+## User stories
+## As Admin:
+* I can manage users' accounts so that I can make any required changes to them if needed
+* I can make new galleries and upload new images to the galleries
+* I can manage products in the shop (add , update or delete products)
+* I can view created orders to fulfil or edit them
+* I can view messages sent via contact form and can act upon them
 
-Another blue button should appear to click: _Open Browser_.
+## As a site user:
+* Before logging in:
+	* I can browse photo galleries
+	* I can search for products so that I can find specific products
+	* I can sort products on criteria such as price and category so that I can I have a method of ordering the products products as I prefer
+	* I can browse through products so that I can decide what I may be interested in buying
+	* I can look at product details to find out more about the product
+	* I can easily add products I want to purchase to a basket
+	* I can view the contents of my shopping basket so that I can be able to make any adjustments
+	* I can update my bag by adding more or remove products so that I can decide on the number of products I intend to buy
+	* I can view my order summary so that I can verify it before confirming
+	* I can checkout securely so that I can I maintain the level of trust on the site
+	* I can use the contact form so that I can contact the site owners
+* After logging in:
+	* I can add gallery images to my favouries
+	* I can save my personal details after making a purchase
+	* I can create or edit my account to update my details
+	* I can login in my account so that I can view my order history
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
 
-A blue button should appear to click: _Make Public_,
+## Architecture
 
-Another blue button should appear to click: _Open Browser_.
+## Database
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### __Database Plan__
 
-To log into the Heroku toolbelt CLI:
+| Key | Name | Type |
+| --- | --- | --- |
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+|  | `Bag` |
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+| | `Checkout` |
 
-------
+| `Signed In User` |
+|  | Username(unique) | TextInput |
+|  | Name | TextInput | 
+|  | Password | TextInput |
+|  | Phone | TextInput |
+|  | Address1 | TextInput |
+|  | Address2 | TextInput |
+|  | Town | TextInput |
+|  | County | TextInput |
+|  | Postcode | TextInput |
+|  | Country | TextInput |
 
-## Release History
+|  | `Superuser` |
+|  | Username | TextInput |
+|  | Email address | TextInput |
+|  | Password | TextInput |
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+| `Project` |
+|  | Name(unique) | TextInput|
+|  | Description | TextInput |
+|  | Where | TextInput |
+|  | When | DateTime |
 
-**April 26 2024:** Update node version to 16
+| `Images` |
+|  | Name(unique) | TextInput |
+|  | Image |  |
+| ForeignKey | Project Name | Project Model |
 
-**September 20 2023:** Update Python version to 3.9.17.
+| `Shop` |
+|  | Product Name(unique) | TextInput |
+|  | Sizes |  |
+|  | Price | Integer |
+| ForeignKey | Image Name | Images Model |
+| ForeignKey | Image | Images Model |
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Design
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Wireframes
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Navigation
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+  ![]()
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+# Features
+## Homepage
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Header
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![header]()
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### The home page
 
-------
+![home]()
 
-## FAQ about the uptime script
+### Register/Sign up
 
-**Why have you added this script?**
+![register]()
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Sign in
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![login]()
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Logout
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
+![logout]()
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Gallery
 
-**Can I opt out?**
+### Gallery Menu
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### View Project
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+###
 
-**Anything more?**
+## All products
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
----
+![products]()
 
-Happy coding!
+ ### Sort by price
+
+ ![logout]()
+
+ ### Sort by project category
+ 
+ ![category]()
+
+ ### Product detail/ add to bag
+
+
+ ![detail]()
+
+ ![add to bag]()
+
+ ### The shopping bag
+
+![bag]()
+
+### Checkout
+
+![checkout](static/images/checkout.jpg)
+
+![checkout bottom](static/images/checkout2.jpg)
+
+### Checkout success
+
+![order confirm]()
+
+### Order confirmation email
+
+![confirmation email]()
+
+### Product detail- super user
+
+
+![detail]()
+
+### Product management- add product
+
+![add product]()
+
+### Product management- edit product
+
+![edit]()
+
+### Product management- delete product
+
+![delete]()
+
+### New Arrivals
+
+![arrivals]()
+
+# Footer
+
+![footer]()
+
+## About
+
+![about]()
+
+# My Profile
+
+![profile]()
+
+# 404 page
+
+![error handling]()
+
+### Future features
+
+
+### Future Implementations
+
+- Link the Country option to an RestCountries API to ensure correct use of country option.
+- Use the api to provide useful information about different travel destinations
+- Allow users to follow friends.
+
+### Accessibility
+
+I used accessability features to make the website accessible for a variety of users. Features include:
+- Use of semantic HTML
+- Aria-labels on all buttons and links
+- All pages of a suitable contrast as advised by WebAIM
+- Descriptive alt attributes
+- providing aria labels for icons without text
+
+- - -
+
+## Technologies Used
+
+### Languages Used
+
+HTML, CSS, JavaScript, Python
+
+- - -
+
+### Databases Used
+
+[PostgreSQL](https://www.postgresql.org/) 
+
+[ElephantSQL](https://www.elephantsql.com/) - Database hosting for deployed site
+
+- - -
+
+### Frameworks Used
+
+[Django](https://www.djangoproject.com/) - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+
+[Bootstrap4](https://getbootstrap.com/) - A css framework
+
+- - -
+
+### Libraries & Packages Used
+
+[SQLAlchemy](https://pypi.org/project/SQLAlchemy/) - Database abstraction library, used to interact with PostgreSQL.
+
+[Font Awesome](https://fontawesome.com/) - Was used to add icons for my social media links.
+
+- - -
+
+### Programs Used
+
+[Heroku](https://www.heroku.com/) - is a cloud platform service  I used to deploy and host the project
+
+[Pip](https://pypi.org/project/pip/) - Tool for installing python packages.
+
+[Stripe](https://stripe.com/en-ie) - was used for checkout functionality and facilitate online payments
+
+[AWS](https://aws.amazon.com/s3/) - for  object storage through a web service interface.
+
+[Balsamiq](https://balsamiq.com/) - Used to create wireframes.
+
+[Figma](https://www.figma.com/) - To make flow charts.
+
+[Git](https://git-scm.com/) - For version control.
+
+[Github](https://github.com/) - To save and store the files for the website.
+
+[Google Fonts](https://fonts.google.com/) - To import the fonts used on the website.
+
+[Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - To troubleshoot and test features, solve issues with responsiveness and styling.
+
+[Tiny PNG](https://tinypng.com/) To compress images for use in the readme.
+
+[Any webP](https://www.anywebp.com/) To resize images and convert to webP format for the site.
+
+[Favicon.io](https://favicon.io/) To create the favicon.
+
+[Am I Responsive?](http://ami.responsivedesign.is/) To show the website image on a range of devices.
+
+### Error Handling
+
+### Defensive Programming
+
+# Deployment
+
+### Forking 
+
+### Cloning
+
+## Credits
+
+### Acknowledgement and support
