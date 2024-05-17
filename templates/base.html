@@ -42,8 +42,8 @@
     <title>Gwilym Llywelyn {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-        <h1 class="logo-font">GL</h1>
+    <header class="container-fluid fixed-top g-0">
+      {% include 'includes/main-nav.html' %}
     </header>
 
     {% if messages %}
