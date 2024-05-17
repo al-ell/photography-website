@@ -1,0 +1,21 @@
+/* Fonts - from Google Fonts */
+
+.logo-font {
+    font-family: "Playfair Display SC", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.heading-font {
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.paragraph-font {
+    font-family: "Crimson Pro", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
