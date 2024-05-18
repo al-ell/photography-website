@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container project-header-container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-font">Project Name</h2>
+                <p class="paragraph-font">description</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row project-row">
+        <div class="col project-column">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+        </div>
+        <div class="col project-column">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+        </div>
+        <div class="col project-column">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+            <img src="/media/wales/02.webp">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
