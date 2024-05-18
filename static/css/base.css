@@ -1,3 +1,13 @@
+/* Margins and Paddings */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: calc(100vh - 6rem);
+}
+
 /* Fonts - from Google Fonts */
 
 .playfair-display-sc-black {
@@ -29,15 +39,13 @@
     height: 6rem;
 }
 
-
 .navbar-nav li {
-    padding: 0 1rem;
     letter-spacing: 0.1rem;
 }
 
 .logo {
     text-decoration: none;
-    color: #006600;
+    color: #264d00;
     font-size: 2rem;
     letter-spacing: 0.2rem;
 }
@@ -45,4 +53,17 @@
 
 .homepage-carousel {
     padding-top: 6rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .nav-item {
+        text-align: center;
+    }
+    .navbar-nav {
+        /* Bootstrap color for light nav */
+        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+        width: 40%;
+        float: right;
+    }
 }
