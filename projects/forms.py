@@ -32,13 +32,24 @@ class ProjectForm(forms.ModelForm):
 
 class PhotoForm(forms.ModelForm):
 
+    class Meta:
+        model = Photo
+        fields = ['project', 'name', 'friendly_name', 'image_url', 'description',]
+
+    image = forms.ImageField(label='Image', required=False)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
+        projects = Project.objects.all()
 
-    class Meta:
-        model = Photo
-        fields = '__all__'
+
+    placeholders = {
+        'project': 'Project',
+        'name': 'Name',
+        'friendly_name': 'Public Name',
+        'description': 'Description',
+    }
 
     
 

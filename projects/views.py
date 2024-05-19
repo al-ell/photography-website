@@ -33,7 +33,17 @@ def add_project(request):
 
 
 def add_photo(request):
-    form = PhotoForm()
+    
+    projects = Project.objects.all()
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            # add success message
+            
+    else:
+        form = PhotoForm()
+
     template = 'projects/add_photo.html'
     context = {
         'form': form,
