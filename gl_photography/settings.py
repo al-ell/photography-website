@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-7e*2zisid$%i^y9-$7l^7evu%2+0a)d!k=n7_!6bgyjnlsi)v+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-alell-photographywebsi-a9asyzj7t8k.ws-eu111.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-alell-photographywebsi-a9asyzj7t8k.ws-eu111.gitpod.io',
+    '8000-alell-photographywebsi-a9asyzj7t8k.ws-eu114.gitpod.io',
+]
 
 
 # Application definition
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
     'home',
     'projects',
 ]

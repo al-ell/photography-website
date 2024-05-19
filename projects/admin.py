@@ -3,17 +3,33 @@ from .models import Project, Photo
 
 
 class ProjectAdmin(admin.ModelAdmin):
+    fields = (
+        'name',
+        'description',
+        'date',
+    )
+
     list_display = (
         'name',
         'description',
         'date',
     )
 
+    ordering = ('-date',)
+
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = (
+    fields = (
         'project',
         'name',
+        'friendly_name',
+        'description',
+        'image',
+        'image_url',
+    )
+
+    list_display = (
+        'project',
         'friendly_name',
         'description',
         'image',
