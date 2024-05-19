@@ -3,14 +3,16 @@ from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
 def all_projects(request):
-    """ Wales Project view """
+    """ Edit Project view """
     photos = Photo.objects.all()
-
+    projects = Project.objects.all()
+    template = 'projects/all_projects.html'
     context = {
+        'projects': projects,
         'photos': photos,
     }
 
-    return render(request, context, 'projects/all_projects.html')
+    return render(request, template, context)
 
 
 def add_project(request):
