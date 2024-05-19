@@ -11,11 +11,17 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Projects
+                        Portfolio
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Wales</a></li>
                         <li><a class="dropdown-item" href="#">Discovery</a></li>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                                <li><a class="dropdown-item" href="{% url 'all_projects' %}">Project Admin</a></li>
+                                <li><a class="dropdown-item" href="#">Photo Admin</a></li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -24,16 +30,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Shop</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Prints</a></li>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <li><a class="dropdown-item" href="#">Manage Shop</a></li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
                 </li>
-                {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Manage Shop</a>
-                        </li>
-                    {% endif %}
-                {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user"></i>

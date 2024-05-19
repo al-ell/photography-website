@@ -18,7 +18,7 @@ def wales(request):
 #     return render(request, 'projects/discovery.html')
 
 
-# Project admin views
+# Project and photo admin views
 
 def all_projects(request):
     """ Project management view """
@@ -28,6 +28,19 @@ def all_projects(request):
     context = {
         'projects': projects,
         'photos': photos,
+    }
+
+    return render(request, template, context)
+
+
+def all_photos(request):
+    """ Photo management view """
+    photos = Photo.objects.all()
+    projects = Project.objects.all()
+    template = 'projects/all_photos.html'
+    context = {
+        'photos': photos,
+        'projects': projects,
     }
 
     return render(request, template, context)
@@ -53,8 +66,6 @@ def add_project(request):
     return render(request, template, context)
 
 
-
-
 def edit_project(request, project_id):
     """ Edit project view """
     project = get_object_or_404(Project, pk=project_id)
@@ -63,7 +74,7 @@ def edit_project(request, project_id):
         if form.is_valid():
             form.save()
             # succes msg
-            return redirect(reverse('all_projects'))
+            return redirect('all_projects')
         # error msg
     form = ProjectForm(instance=project)
     # info msg?
@@ -85,7 +96,7 @@ def delete_project(request, project_id):
 
 
 def add_photo(request):
-    
+    """ Add photo view """
     projects = Project.objects.all()
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
@@ -97,7 +108,7 @@ def add_photo(request):
     else:
         form = PhotoForm()
 
-    template = 'projects/add_photo.html'
+    template = 'projects/all_photos.html'
     context = {
         'form': form,
     }
@@ -106,7 +117,7 @@ def add_photo(request):
 
 
 def edit_photo(request, photo_id):
-
+    """ Edit photo view """
     projects = Project.objects.all()
     photo = get_object_or_404(Project, pk=photo_id)
     if request.method == 'POST':
@@ -114,7 +125,7 @@ def edit_photo(request, photo_id):
         if form.is_valid():
             form.save()
             # succes msg
-            return redirect(reverse('all_projects'))
+            return redirect(reverse('all_photos'))
         # error msg
     form = ProjectForm(instance=photo)
     # info msg?
@@ -129,7 +140,8 @@ def edit_photo(request, photo_id):
 
 
 def delete_photo(request, photo_id):
+    """ Delete photo view """
     photo = get_object_or_404(Photo, pk=photo_id)
     photo.delete()
     # success msg
-    return redirect(reverse('all_projects'))
+    return redirect(reverse('all_photos'))
