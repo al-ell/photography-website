@@ -16,13 +16,9 @@ class ProjectForm(forms.ModelForm):
     placeholders = {
         'name': 'Project Name',
         'description': 'Description',
-        'date': 'Date',
     }
 
-    class DateInput(forms.DateInput):
-        input_type = 'date'
     
-    date_input = forms.DateField(widget=DateInput)
 
 class PhotoForm(forms.ModelForm):
 

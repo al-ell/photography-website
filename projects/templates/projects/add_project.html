@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% }
 
 {% block page_header %}
     <div class="container page-header-container mb-5">
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 page-heading p3">
+            <div class="col-12 col-md-6 offset-md-3 page-heading p-3">
                 <h2 class="heading-font">Project Maintenence</h2>
                 <h3 class="heading-font">Add Project</h3>
             </div>
@@ -15,21 +16,11 @@
 {% block content %}
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            <form medthod="POST" action="{% url 'add_project' %}" class="form">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingname" placeholder="{{ form.name }}">
-                    <label for="floatingNae">{{ form.name }}</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="floatingDate" placeholder="{{ form.date }}">
-                    <label for="floatingDate">{{ form.date }}</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="{{ form.description }}" id="floatingDescription" style="height: 100px"></textarea>
-                    <label for="floatingDescription">{{ form.description }}</label>
-                  </div>                
-                <button class="btn btn-danger mt-2 me-2 mx-auto">Clear</button>
-                <button class="btn btn-success mt-2 ms-2 mx-auto">Add</button>
+            <form medthod="POST" action="{% url 'add_project' %}" class="form project-form">
+                {% csrf_token %}                
+                {{ form|crispy }}
+                <button class="btn btn-danger mt-2 mr-2 float-center">Clear</button>
+                <button class="btn btn-success mt-2 ml-2 float-center">Add</button>
             </form>
         </div>
     </div>
