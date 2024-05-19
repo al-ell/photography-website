@@ -92,3 +92,26 @@ def edit_project(request, project_id):
     }
 
     return render(request, template, context)
+
+
+def edit_photo(request, photo_id):
+
+    projects = Project.objects.all()
+    photo = get_object_or_404(Project, pk=photo_id)
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
+        if form.is_valid():
+            form.save()
+            # succes msg
+            return redirect(reverse('all_projects'))
+        # error msg
+    form = ProjectForm(instance=photo)
+    # info msg?
+
+    template = 'projects/edit_photo.html'
+    context = {
+        'form': form,
+        'photo': photo,
+    }
+
+    return render(request, template, context)
