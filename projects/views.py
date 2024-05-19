@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, Photo
-from .forms import ProjectForm, PhotoForm
+from .forms import ProjectForm, PhotoForm, DateInput
 
 def all_projects(request):
     """ Wales Project view """
@@ -14,7 +14,16 @@ def all_projects(request):
 
 
 def add_project(request):
-    form = ProjectForm()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save()
+            # add success message
+            
+    else:
+        form = ProjectForm()
+
     template = 'projects/add_project.html'
     context = {
         'form': form,
