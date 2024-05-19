@@ -2,8 +2,26 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
+def wales(request):
+    """ Wales Project view """
+    photos = Photo.objects.all()
+    project = Project.objects.all()
+
+    
+
+    return render(request, 'projects/wales.html')
+
+
+# def discovery(request):
+#     """ Wales Project view """
+    
+#     return render(request, 'projects/discovery.html')
+
+
+# Project admin views
+
 def all_projects(request):
-    """ Edit Project view """
+    """ Project management view """
     photos = Photo.objects.all()
     projects = Project.objects.all()
     template = 'projects/all_projects.html'
@@ -16,7 +34,7 @@ def all_projects(request):
 
 
 def add_project(request):
-
+    """ Add project view """
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
@@ -35,6 +53,37 @@ def add_project(request):
     return render(request, template, context)
 
 
+
+
+def edit_project(request, project_id):
+    """ Edit project view """
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            # succes msg
+            return redirect(reverse('all_projects'))
+        # error msg
+    form = ProjectForm(instance=project)
+    # info msg?
+
+    template = 'projects/edit_project.html'
+    context = {
+        'form': form,
+        'project': project,
+    }
+
+    return render(request, template, context)
+
+def delete_project(request, project_id):
+    """ Delete project view """
+    project = get_object_or_404(Project, pk=project_id)
+    project.delete()
+    # success msg
+    return redirect(reverse('all_projects'))
+
+
 def add_photo(request):
     
     projects = Project.objects.all()
@@ -51,44 +100,6 @@ def add_photo(request):
     template = 'projects/add_photo.html'
     context = {
         'form': form,
-    }
-
-    return render(request, template, context)
-
-
-def wales(request):
-    """ Wales Project view """
-    photos = Photo.objects.all()
-    project = Project.objects.all()
-
-    
-
-    return render(request, 'projects/wales.html')
-
-
-# def discovery(request):
-#     """ Wales Project view """
-    
-#     return render(request, 'projects/discovery.html')
-
-
-def edit_project(request, project_id):
-
-    project = get_object_or_404(Project, pk=project_id)
-    if request.method == 'POST':
-        form = ProjectForm(request.POST, request.FILES, instance=project)
-        if form.is_valid():
-            form.save()
-            # succes msg
-            return redirect(reverse('all_projects'))
-        # error msg
-    form = ProjectForm(instance=project)
-    # info msg?
-
-    template = 'projects/edit_project.html'
-    context = {
-        'form': form,
-        'project': project,
     }
 
     return render(request, template, context)
@@ -115,3 +126,10 @@ def edit_photo(request, photo_id):
     }
 
     return render(request, template, context)
+
+
+def delete_photo(request, photo_id):
+    photo = get_object_or_404(Photo, pk=photo_id)
+    photo.delete()
+    # success msg
+    return redirect(reverse('all_projects'))
