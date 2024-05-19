@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
@@ -22,7 +22,8 @@ def add_project(request):
         if form.is_valid():
             project = form.save()
             # add success message
-            
+            return redirect(reverse('add_project'))
+        #  add else + error msg
     else:
         form = ProjectForm()
 
@@ -42,7 +43,8 @@ def add_photo(request):
         if form.is_valid():
             photo = form.save()
             # add success message
-            
+            return redirect(reverse('add_photo'))
+        #  add else + error msg
     else:
         form = PhotoForm()
 
@@ -68,3 +70,25 @@ def wales(request):
 #     """ Wales Project view """
     
 #     return render(request, 'projects/discovery.html')
+
+
+def edit_project(request, project_id):
+
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            # succes msg
+            return redirect(reverse('all_projects'))
+        # error msg
+    form = ProjectForm(instance=project)
+    # info msg?
+
+    template = 'projects/edit_project.html'
+    context = {
+        'form': form,
+        'project': project,
+    }
+
+    return render(request, template, context)
