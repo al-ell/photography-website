@@ -108,7 +108,7 @@ def add_photo(request):
     else:
         form = PhotoForm()
 
-    template = 'projects/all_photos.html'
+    template = 'projects/add_photo.html'
     context = {
         'form': form,
     }
