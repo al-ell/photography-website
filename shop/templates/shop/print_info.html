@@ -30,6 +30,12 @@
             </div>
             <div class="col-12 col-md-7 p-2">
                 <div class="row">
+                    {% if request.user.is_superuser %}
+                        <div class="col-12">
+                            <a href="{% url 'edit_print' prints.id %}" class="btn btn-success mt-2 mr-2">Edit</a>
+                            <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    {% endif %}
                     <div class="col-12">
                         <h4 class="heading-font">{{ prints.category }}</h4>
                         <p class="paragraph-font">{{ prints.description }}</p>

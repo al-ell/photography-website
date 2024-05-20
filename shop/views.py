@@ -95,3 +95,9 @@ def edit_print(request, prints_id):
     return render (request, template, context)
 
 
+def delete_print(request, prints_id):
+    """ Delete print view """
+    prints = get_object_or_404(Prints, pk=prints_id)
+    prints.delete()
+    # success msg
+    return redirect(reverse('all_prints'))
