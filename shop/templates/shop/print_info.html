@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_header %}
+    <div class="container page-header-container mb-2">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-center text-uppercase p-3">
+                <h2 class="heading-font mb-3">Shop</h2>
+                <h3 class="heading-font">{{ prints.friendly_name }}</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center print-info-container">
+    <div class="col-12 col-md-10 offset-md-1">
+        <div class="row">
+            <div class="col-12 col-md-5 pl-2 pr-4">
+                {% if prints.image %}
+                    <a href="{% url print.image.url %}" target="_blank">
+                        <img src="{{ prints.image.url }}" class="card-img" alt="{{ prints.description }}">
+                    </a>
+                {% else %}
+                    <a href="{% url print.image.url %}" target="_blank">
+                        <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ prints.description }}">
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-7 p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="heading-font">{{ prints.category }}</h4>
+                        <p class="paragraph-font">{{ prints.description }}</p>
+                    </div>
+                    <div class="col-12">
+                        <h5 class="heading-font text-uppercase">Choose Size</h5>
+                        <p class="paragraph-font">
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <h5 class="heading-font text-uppercase">Delivery</h5>
+                        <p class="paragraph-font">
+                            Delivery is free for all orders over £100. <br>
+                            Orders under £100 will have a £4 delivery fee.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

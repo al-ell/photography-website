@@ -20,6 +20,23 @@ def all_prints(request):
 
     return render(request, template, context)
 
+
+def print_info(request, print_id):
+    """ Print information view """
+
+    prints = get_object_or_404(Print, pk=print_id)
+    category = Category.objects.all()
+
+
+    template = 'shop/print_info.html'
+    context = {
+        'prints': prints,
+        'category': category,
+    }
+
+    return render(request, template, context)
+
+
 # Shop admin views
 
 def shop_admin(request):
