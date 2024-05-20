@@ -13,7 +13,10 @@ class Category(models.Model):
         return self.project.name
 
 
-class Print(models.Model):
+class Prints(models.Model):
+    class Meta:
+        verbose_name_plural = 'Prints'
+
     class Size(models.TextChoices):
         A4 = 'A4'
         A5 = 'A5'

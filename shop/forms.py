@@ -1,12 +1,12 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from .models import Category, Print
+from .models import Category, Prints
    
 
-class PrintForm(forms.ModelForm):
+class PrintsForm(forms.ModelForm):
 
     class Meta:
-        model = Print
+        model = Prints
         fields = '__all__'
 
     image = forms.ImageField(label='Image', required=False)

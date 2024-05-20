@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Print
+from .models import Category, Prints
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,10 +10,10 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ('-project',)
 
 
-class PrintAdmin(admin.ModelAdmin):
+class PrintsAdmin(admin.ModelAdmin):
     fields = (
-        'photo', 
         'category',
+        'photo', 
         'sku',
         'name',
         'friendly_name',
@@ -25,8 +25,8 @@ class PrintAdmin(admin.ModelAdmin):
     )
 
     list_display = (
-        'photo', 
         'category',
+        'photo', 
         'sku',
         'name',
         'friendly_name',
@@ -41,4 +41,4 @@ class PrintAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Print, PrintAdmin)
+admin.site.register(Prints, PrintsAdmin)

@@ -119,7 +119,7 @@ def add_photo(request):
 def edit_photo(request, photo_id):
     """ Edit photo view """
     projects = Project.objects.all()
-    photo = get_object_or_404(Project, pk=photo_id)
+    photo = get_object_or_404(Photo, pk=photo_id)
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES, instance=photo)
         if form.is_valid():

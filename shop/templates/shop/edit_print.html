@@ -3,11 +3,11 @@
 {% load crispy_forms_tags %}
 
 {% block page_header %}
-    <div class="container page-header-container mb-2">
+    <div class="container page-header-container mb-5">
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-3">
                 <h2 class="heading-font mb-3">Shop Admin</h2>
-                <h3 class="heading-font">Add Print</h3>
+                <h3 class="heading-font">Edit Print</h3>
             </div>
         </div>
     </div>
@@ -16,12 +16,12 @@
 {% block content %}
     <div class="row">
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
-            <form method="POST" action="{% url 'add_print' %}" class="form project-form paragraph-font" id="add-project-form" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'edit_print' prints.id %}" class="form project-form paragraph-font" id="add-project-form" enctype="multipart/form-data">
                 {% csrf_token %}                
                 {{ form|crispy }}
                 <div class="justify-content-center form-buttons">
                     <a class="btn btn-danger mt-2 mr-2" href="{% url 'all_prints' %}">Cancel</a>
-                    <button class="btn btn-success mt-2 ml-2" type="submit">Add</button>
+                    <button class="btn btn-success mt-2 ml-2" type="submit">Update</button>
                 </div>
             </form>
         </div>
