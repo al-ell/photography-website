@@ -30,6 +30,9 @@ class Print(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     sizes = models.CharField(max_length=3, choices=Size.choices, default=Size.A4)
     
+    def __str__(self):
+        return self.name, self.photo.name, self.photo.image
+    
     def get_friendly_name(self):
         return self.friendly_name
 

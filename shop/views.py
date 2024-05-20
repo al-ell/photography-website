@@ -9,12 +9,13 @@ def all_prints(request):
     """ Shop view """
 
     prints = Print.objects.all()
-
+    category = Category.objects.all()
 
 
     template = 'shop/prints.html'
     context = {
         'prints': prints,
+        'category': category,
     }
 
     return render(request, template, context)
