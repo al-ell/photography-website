@@ -1,63 +1,61 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid ml-4 mr-2">
-        <a class="navbar-brand logo playfair-display-sc-black uppercase" href="{% url 'home' %}"><span><h1>Gwilym Llywelyn</h1></span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0 heading-font uppercase">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Portfolio
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Wales</a></li>
-                        <li><a class="dropdown-item" href="#">Discovery</a></li>
-                        {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="{% url 'all_projects' %}">Project Admin</a></li>
-                                <li><a class="dropdown-item" href="#">Photo Admin</a></li>
-                            {% endif %}
-                        {% endif %}
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Shop
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Prints</a></li>
-                        {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <li><a class="dropdown-item" href="#">Manage Shop</a></li>
-                            {% endif %}
-                        {% endif %}
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Sign Out</a></li>
-                        {% else %}
-                            <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light no-gutters">
+    <a class="navbar-brand logo playfair-display-sc-black uppercase" href="{% url 'home' %}"><span><h1>Gwilym Llywelyn</h1></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav heading-font uppercase">
+        <li class="nav-item active">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Portfolio
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Wales</a>
+                <a class="dropdown-item" href="#">Discovery</a>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'all_projects' %}">Project Admin</a>
+                        <a class="dropdown-item" href="#">Photo Admin</a>
+                    {% endif %}
+                {% endif %}
+          </div>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Shop
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Prints</a>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="#">Manage Shop</a>
+                    {% endif %}
+                {% endif %}
+          </div>
+        </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </a>
+          <div class="dropdown-menu">
+          {% if request.user.is_authenticated %}
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Sign Out</a>
+            {% else %}
+                <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>

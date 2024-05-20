@@ -42,7 +42,7 @@
     <title>Gwilym Llywelyn {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top g-0">
+    <header class="container-fluid fixed-top no-gutters header-container">
       {% include 'includes/main-nav.html' %}
     </header>
 
@@ -54,7 +54,7 @@
     {% endblock %}
 
     <!-- Page content -->
-    <div class="container-fluid main-container">
+    <div class="container-fluid main-container no-gutters">
       {% block content %}
       
       {% endblock %}

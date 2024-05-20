@@ -1,5 +1,10 @@
 /* Margins and Paddings */
 
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 html {
     height: 100%;
     box-sizing: border-box;
@@ -8,6 +13,11 @@ html {
 body {
     height: calc(100vh - 6rem);
     margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    padding: 0 !important;
 }
 
 .page-heading {
@@ -63,7 +73,7 @@ body {
 
 .logo {
     text-decoration: none;
-    color: #264d00;
+    color: #264d00 !important;
     font-size: 2rem;
     letter-spacing: 0.2rem;
 }
