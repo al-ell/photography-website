@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from .models import Category, Prints
 from .forms import PrintsForm
 
@@ -37,7 +37,7 @@ def print_info(request, prints_id):
 
 
 # Shop admin views
-
+@login_required
 def shop_admin(request):
     """ Shop view """
 
@@ -49,7 +49,7 @@ def shop_admin(request):
     return render(request, template, context)
 
 
-
+@login_required
 def add_print(request):
     """ Add print view """
     category = Category.objects.all()
@@ -71,6 +71,7 @@ def add_print(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_print(request, prints_id):
     category = Category.objects.all()
     prints = get_object_or_404(Prints, pk=prints_id)
@@ -95,6 +96,7 @@ def edit_print(request, prints_id):
     return render (request, template, context)
 
 
+@login_required
 def delete_print(request, prints_id):
     """ Delete print view """
     prints = get_object_or_404(Prints, pk=prints_id)

@@ -18,7 +18,13 @@
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
             <form method="POST" action="{% url 'edit_print' prints.id %}" class="form project-form paragraph-font" id="add-project-form" enctype="multipart/form-data">
                 {% csrf_token %}                
-                {{ form|crispy }}
+                {% for field in form %}
+                    {% if field.name != 'image' %}
+                        {{ field | as_crispy_field }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
                 <div class="justify-content-center form-buttons">
                     <a class="btn btn-danger mt-2 mr-2" href="{% url 'all_prints' %}">Cancel</a>
                     <button class="btn btn-success mt-2 ml-2" type="submit">Update</button>
@@ -26,4 +32,14 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block posloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function () {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to ${file.name}`);
+        })
+    </script>
 {% endblock %}

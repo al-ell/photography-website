@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
@@ -19,7 +20,7 @@ def wales(request):
 
 
 # Project and photo admin views
-
+@login_required
 def all_projects(request):
     """ Project management view """
     photos = Photo.objects.all()
@@ -33,6 +34,7 @@ def all_projects(request):
     return render(request, template, context)
 
 
+@login_required
 def all_photos(request):
     """ Photo management view """
     photos = Photo.objects.all()
@@ -46,6 +48,7 @@ def all_photos(request):
     return render(request, template, context)
 
 
+@login_required
 def add_project(request):
     """ Add project view """
     if request.method == 'POST':
@@ -66,6 +69,7 @@ def add_project(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_project(request, project_id):
     """ Edit project view """
     project = get_object_or_404(Project, pk=project_id)
@@ -87,6 +91,8 @@ def edit_project(request, project_id):
 
     return render(request, template, context)
 
+
+@login_required
 def delete_project(request, project_id):
     """ Delete project view """
     project = get_object_or_404(Project, pk=project_id)
@@ -95,6 +101,7 @@ def delete_project(request, project_id):
     return redirect(reverse('all_projects'))
 
 
+@login_required
 def add_photo(request):
     """ Add photo view """
     projects = Project.objects.all()
@@ -116,6 +123,7 @@ def add_photo(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_photo(request, photo_id):
     """ Edit photo view """
     projects = Project.objects.all()
@@ -139,6 +147,7 @@ def edit_photo(request, photo_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_photo(request, photo_id):
     """ Delete photo view """
     photo = get_object_or_404(Photo, pk=photo_id)
