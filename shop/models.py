@@ -9,6 +9,9 @@ class Category(models.Model):
     # Import model from the projects app
     project = models.ForeignKey('projects.Project', null=True, blank=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.project.name
+
 
 class Print(models.Model):
     class Size(models.TextChoices):
