@@ -13,9 +13,6 @@ class Project(models.Model):
     def __str__(self):
         return self.name
     
-    def get_friendly_name(self):
-        return self.friendly_name
-
 
 class Photo(models.Model):
     project = models.ForeignKey('Project', null=True, blank=True, on_delete=models.SET_NULL)
@@ -27,4 +24,7 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_friendly_name(self):
+        return self.friendly_name
 
