@@ -57,9 +57,10 @@ def add_project(request):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save()
-            messages.success(request, f'Added {project.name} to you Portfolio.')
+            messages.success(request, f'Added {project.name} to Portfolio.')
             return redirect(reverse('add_project'))
-        #  add else + error msg
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     else:
         form = ProjectForm()
 
@@ -79,11 +80,12 @@ def edit_project(request, project_id):
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            # succes msg
+            messages.success(request, f'Updated {project.name} to Portfolio.')
             return redirect('all_projects')
-        # error msg
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     form = ProjectForm(instance=project)
-    # info msg?
+    messages.info(request, f'Updating {project.name} in Portfolio.')
 
     template = 'projects/edit_project.html'
     context = {
@@ -99,7 +101,7 @@ def delete_project(request, project_id):
     """ Delete project view """
     project = get_object_or_404(Project, pk=project_id)
     project.delete()
-    # success msg
+    messages.success(request, f'Deleted {project.name} from Portfolio.')
     return redirect(reverse('all_projects'))
 
 
@@ -111,9 +113,10 @@ def add_photo(request):
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
             photo = form.save()
-            # add success message
+            messages.success(request, f'Added {photo.name} to {photo.project}.')
             return redirect(reverse('add_photo'))
-        #  add else + error msg
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     else:
         form = PhotoForm()
 
@@ -134,11 +137,12 @@ def edit_photo(request, photo_id):
         form = PhotoForm(request.POST, request.FILES, instance=photo)
         if form.is_valid():
             form.save()
-            # succes msg
+            messages.success(request, f'Edited {photo.name} in {photo.project}.')
             return redirect(reverse('all_photos'))
-        # error msg
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     form = ProjectForm(instance=photo)
-    # info msg?
+    messages.success(request, f'Updating {photo.name} in {photo.project}.')
 
     template = 'projects/edit_photo.html'
     context = {
@@ -154,5 +158,5 @@ def delete_photo(request, photo_id):
     """ Delete photo view """
     photo = get_object_or_404(Photo, pk=photo_id)
     photo.delete()
-    # success msg
+    messages.success(request, f'Deleted {photo.name} from {photo.project}.')
     return redirect(reverse('all_photos'))

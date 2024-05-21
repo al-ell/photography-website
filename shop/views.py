@@ -6,10 +6,8 @@ from .forms import PrintsForm
 
 def all_prints(request):
     """ Shop view """
-
     prints = Prints.objects.all()
     category = Category.objects.all()
-
 
     template = 'shop/prints.html'
     context = {
@@ -25,7 +23,6 @@ def print_info(request, prints_id):
 
     prints = get_object_or_404(Prints, pk=prints_id)
     category = Category.objects.all()
-
 
     template = 'shop/print_info.html'
     context = {
@@ -57,10 +54,11 @@ def add_print(request):
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
             Prints = form.save()
-            # add success msg
+            messages.success(request, f'Added {prints.name} to {prints.category}.')
             return redirect(reverse('add_print'))
     else:
         form = PrintsForm()
+        messages.error(request, f'Please make sure form is valid.')
 
     template = 'shop/add_print.html'
     context = {
@@ -79,12 +77,13 @@ def edit_print(request, prints_id):
         form = PrintsForm(request.POST, request.FILES, instance=prints)
         if form.is_valid():
             form.save()
-            # success msg
+            messages.success(request, f'Edited {prints.name} in {prints.category}.')
             return redirect(reverse('all_prints'))
-        #  else error msg
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     else:
         form = PrintsForm(instance=prints)
-    # info msg
+    messages.info(request, f'Editing {prints.name} in {prints.category}.')
 
     template = 'shop/edit_print.html'
     context = {
@@ -101,5 +100,5 @@ def delete_print(request, prints_id):
     """ Delete print view """
     prints = get_object_or_404(Prints, pk=prints_id)
     prints.delete()
-    # success msg
+    messages.success(request, f'Deleted {prints.name} from {prints.category}.')
     return redirect(reverse('all_prints'))
