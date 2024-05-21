@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
@@ -51,11 +52,12 @@ def all_photos(request):
 @login_required
 def add_project(request):
     """ Add project view """
+
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save()
-            # add success message
+            messages.success(request, f'Added {project.name} to you Portfolio.')
             return redirect(reverse('add_project'))
         #  add else + error msg
     else:

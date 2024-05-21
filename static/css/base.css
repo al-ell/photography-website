@@ -43,7 +43,6 @@ p {
     padding: 2rem 0;
 }
 
-
 .page-header-container,
 .homepage-carousel {
     padding-top: 6rem;
@@ -166,6 +165,23 @@ width: 100%;
     cursor: pointer;
 }
 
+
+/* Toasts */
+
+.message-container {
+    position: fixed;
+    top: 6.5rem;
+    right: 3rem;
+    z-index: 9999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 1rem;
+}
 
 
 /* Media Queries */
