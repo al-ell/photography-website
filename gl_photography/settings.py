@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'projects',
     'shop',
     'about',
+    'bag',
 ]
 
 MIDDLEWARE = [
