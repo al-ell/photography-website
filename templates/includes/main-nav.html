@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav heading-font uppercase">
+      <ul class="navbar-nav heading-font uppercase mt-4">
         <li class="nav-item active">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
@@ -13,7 +13,7 @@
             Portfolio
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Wales</a>
+            <a class="dropdown-item" href="{% url 'wales' %}">Wales</a>
                 <a class="dropdown-item" href="#">Discovery</a>
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
@@ -34,7 +34,7 @@
             Shop
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Prints</a>
+            <a class="dropdown-item" href="{% url 'all_prints' %}">Prints</a>
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                         <a class="dropdown-item" href="#">Manage Shop</a>
@@ -42,9 +42,18 @@
                 {% endif %}
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'bag' %}">
+            <i class="fas fa-bag-shopping fa-lg"></i>
+            {% if grand_total %}
+              <p class="bag-total">£{{ grand_total|floatformat:2 }}</p>
+            {% else %}
+            {% endif %}
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-user fa-lg"></i>
           </a>
           <div class="dropdown-menu">
           {% if request.user.is_authenticated %}
@@ -56,9 +65,6 @@
             {% endif %}
           </div>
         </li>
-        <li class="nav-item" style="width: fit-content;">
-          <a class="nav-link" href="{% url 'bag' %}"><i class="fas fa-bag-shopping fa-lg"></i></a>
-        </li>
       </ul>
     </div>
-  </nav>
+</nav>
