@@ -12,7 +12,7 @@ def bag(request):
 def add_to_bag(request, prints_id):
 
     quantity = int(request.POST.get('quantity'))
-
+    redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
     if prints_id in list(bag.keys()):
@@ -22,4 +22,4 @@ def add_to_bag(request, prints_id):
     
     request.session['bag'] = bag
     print(request.session['bag'])
-    return redirect('all_prints')
+    return redirect(redirect_url)

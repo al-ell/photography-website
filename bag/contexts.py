@@ -1,11 +1,25 @@
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from shop.models import Prints
 
 def bag_contents(request):
 
     bag_items = []
     total = 0
     product_count = 0
+    bag = request.session.get('bag', {})
+
+    for prints_id, quantity in bag.items():
+        selected_print = get_object_or_404(Prints, pk=prints_id)
+        total += quantity * selected_print.price
+        product_count += quantity
+        bag_items.append({
+            'prints_id': prints_id,
+            'quantity': quantity,
+            'selected_print': selected_print,
+        })
+
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = Decimal(settings.DELIVERY_FEE)
@@ -17,7 +31,7 @@ def bag_contents(request):
     grand_total = delivery + total
 
     context = {
-        'bagitems': bag_items,
+        'bag_items': bag_items,
         'total': total,
         'grand_total': grand_total,
         'free_delivery_delta': free_delivery_delta, 

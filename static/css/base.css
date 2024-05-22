@@ -203,6 +203,11 @@ width: 100%;
         flex: 100%;
         max-width: 100%;
     }
+
+    .print-detail-image {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */

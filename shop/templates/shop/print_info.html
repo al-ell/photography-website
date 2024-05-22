@@ -10,14 +10,22 @@
                 <h3 class="heading-font">{{ prints.friendly_name }}</h3>
             </div>
         </div>
+        <div class="row justify-content-center">
+            {% if request.user.is_superuser %}
+            <div class="col-12 text-center">
+                <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2">Edit</a>
+                <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2">Delete</a>
+            </div>
+        {% endif %}
+        </div>
     </div>
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center print-info-container">
+<div class="row print-info-container">
     <div class="col-12 col-md-10 offset-md-1">
         <div class="row">
-            <div class="col-12 col-md-5 pl-2 pr-4">
+            <div class="col-10 col-sm-10 col-md-5 offset-1 offset-sm-1 offset-md-0 print-detail-image">
                 {% if prints.image %}
                     <a href="{{ prints.image.url }}" target="_blank">
                         <img src="{{ prints.image.url }}" class="card-img" alt="{{ prints.description }}">
@@ -28,41 +36,36 @@
                     </a>
                 {% endif %}
             </div>
-            <div class="col-12 col-md-7 p-2">
+            <div class="col-12 col-md-7 pl-2">
                 <div class="row">
-                    {% if request.user.is_superuser %}
-                        <div class="col-12">
-                            <a href="{% url 'edit_print' prints.id %}" class="btn btn-success mt-2 mr-2">Edit</a>
-                            <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger">Delete</a>
-                        </div>
-                    {% endif %}
-                    <div class="col-12">
+                    <div class="col-10 offset-1 mb-3">
                         <h4 class="heading-font">{{ prints.category }}</h4>
                         <p class="paragraph-font">{{ prints.description }}</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-10 offset-1 mb-3">
                         <h5 class="heading-font text-uppercase">Choose Size</h5>
                         <p class="paragraph-font"></p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-10 offset-1 mb-3">
                         <h5 class="heading-font text-uppercase">Choose Quantity</h5>
-                        <form class="form" action="" method="POST">
+                        <form class="form" action="{% url 'add_to_bag' prints.id %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
-                                <div class="col">
+                                <div class="col-12 mb-3">
                                     <div class="form-group">
                                         <input type="number" name="quantity" value="1" min="1" max="20" data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <a href="{% url 'all_prints' %}" class="btn btn-secondary m-2">Back to Prints</a>
+                                <input type="submit" class="btn btn-success m-2" value="Add to Bag">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
                     </div>
-                    <div class="col-12">
-                        <a href="{% url 'all_prints' %}" class="btn btn-secondary">Back to Prints</a>
-                        <input type="submit" class="btn btn-success mt-2" value="Add to Bag">
-                    </div>
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    <div class="col-12">
+                    
+                    <div class="col-10 offset-1">
                         <h5 class="heading-font text-uppercase">Delivery</h5>
                         <p class="paragraph-font">
                             Delivery is free for all orders over £100. <br>
