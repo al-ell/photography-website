@@ -1,21 +1,12 @@
 from django.contrib import admin
-from .models import Category, Prints
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    fields = (
-        'project',
-    )
-
-    ordering = ('-project',)
+from .models import Prints
 
 
 class PrintsAdmin(admin.ModelAdmin):
     fields = (
         'category',
-        'photo', 
-        'sku',
         'name',
+        'sku',
         'friendly_name',
         'description',
         'image',
@@ -26,9 +17,8 @@ class PrintsAdmin(admin.ModelAdmin):
 
     list_display = (
         'category',
-        'photo', 
-        'sku',
         'name',
+        'sku',
         'friendly_name',
         'description',
         'image',
@@ -37,8 +27,7 @@ class PrintsAdmin(admin.ModelAdmin):
         'sizes',
     )
 
-    ordering = ('-name',)
+    ordering = ('-category',)
 
 
-admin.site.register(Category, CategoryAdmin)
 admin.site.register(Prints, PrintsAdmin)

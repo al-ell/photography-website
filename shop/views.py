@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Category, Prints
+from django.contrib import messages
+from .models import Prints
 from .forms import PrintsForm
 
 
 def all_prints(request):
     """ Shop view """
     prints = Prints.objects.all()
-    category = Category.objects.all()
+    
+    
 
     template = 'shop/prints.html'
     context = {
         'prints': prints,
-        'category': category,
     }
 
     return render(request, template, context)
@@ -22,12 +23,9 @@ def print_info(request, prints_id):
     """ Print information view """
 
     prints = get_object_or_404(Prints, pk=prints_id)
-    category = Category.objects.all()
-
     template = 'shop/print_info.html'
     context = {
         'prints': prints,
-        'category': category,
     }
 
     return render(request, template, context)
@@ -49,21 +47,21 @@ def shop_admin(request):
 @login_required
 def add_print(request):
     """ Add print view """
-    category = Category.objects.all()
+    
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
-            Prints = form.save()
+            prints = form.save()
             messages.success(request, f'Added {prints.name} to {prints.category}.')
-            return redirect(reverse('add_print'))
+            return redirect(reverse('all_prints'))
+        else:
+            messages.error(request, f'Please make sure form is valid.')
     else:
         form = PrintsForm()
-        messages.error(request, f'Please make sure form is valid.')
 
     template = 'shop/add_print.html'
     context = {
         'form': form,
-        'category': category,
     }
 
     return render(request, template, context)
@@ -71,7 +69,6 @@ def add_print(request):
 
 @login_required
 def edit_print(request, prints_id):
-    category = Category.objects.all()
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES, instance=prints)
@@ -89,7 +86,6 @@ def edit_print(request, prints_id):
     context = {
         'form': form,
         'prints': prints,
-        'category': category,
     }
 
     return render (request, template, context)

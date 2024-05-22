@@ -1,7 +1,7 @@
 from django import forms
 from .widgets import CustomClearableFileInput
 from crispy_forms.helper import FormHelper
-from .models import Category, Prints
+from .models import Prints
    
 
 class PrintsForm(forms.ModelForm):
@@ -16,7 +16,6 @@ class PrintsForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
 
-        categories = Category.objects.all()
         
 
 

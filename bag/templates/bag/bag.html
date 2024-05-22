@@ -14,12 +14,12 @@
 
 {% block content %}
     <div class="row">
-        {% %}
+        
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 bag-table-container table-responsive table-container justify-content-center">
                 <table class="bag-table">
                     <thead class="bag-thead heading-font">
                         <tr>
-                            <th>Print</th>
+                            <th>Prints</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -28,13 +28,12 @@
                     </tbody>
                 </table>
             </div>
-        {% else %}
-        <div class="row">
+        
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 empty-bag-container table-responsive table-container justify-content-center">
                 <h4 class="header-container">Your Bag is empty.</h4>
                 <p class="paragraph-font">Keep shopping <span><a href="{% url 'all_prints' %}">HERE</a></span>.</p>
             </div>
-        {% endif %}
+        
     </div>
 
 {% endblock %}

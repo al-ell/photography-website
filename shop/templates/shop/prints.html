@@ -16,9 +16,9 @@
 {% block content %}
     <div class="row justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1">
-            {% for c in category %}
-                <a href="#" class="heading-font text-uppercase"><h4>{{ c.project }}</h4></a>
-            {% endfor %}
+           
+                <a href="#" class="heading-font text-uppercase"><h4></h4></a>
+            
             {% for print in prints %}
                 <div class="col-12 col-md-4 col-lg-3 justify-content-center">
                     <div class="card m-2 p-1 shop-thumbnail">
@@ -31,11 +31,11 @@
                                 <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
                             </a>
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
-                            <p class="card-text paragraph-font">£{{ print.price }}</p>
-                            <p class="card-text paragraph-font"><small class="text-muted">{% for size in sizes %}{{ size }}{% endfor %}</small></p>
-                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
+                                <p class="card-text paragraph-font">£{{ print.price }}</p>
+                                <p class="card-text paragraph-font"><small class="text-muted">{% for size in sizes %}{{ size }}{% endfor %}</small></p>
+                            </div>
                     </div>
                 </div>
             {% endfor %}

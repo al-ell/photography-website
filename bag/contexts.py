@@ -16,7 +16,14 @@ def bag_contents(request):
     
     grand_total = delivery + total
 
-    context = {bag_items, total, grand_total, free_delivery_delta, 
-                free_delivery_threshold, delivery, product_count}
+    context = {
+        'bagitems': bag_items,
+        'total': total,
+        'grand_total': grand_total,
+        'free_delivery_delta': free_delivery_delta, 
+        'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
+        'delivery': delivery,
+        'product_count': product_count,
+        }
 
     return context

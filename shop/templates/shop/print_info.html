@@ -42,9 +42,26 @@
                     </div>
                     <div class="col-12">
                         <h5 class="heading-font text-uppercase">Choose Size</h5>
-                        <p class="paragraph-font">
-                        </p>
+                        <p class="paragraph-font"></p>
                     </div>
+                    <div class="col-12">
+                        <h5 class="heading-font text-uppercase">Choose Quantity</h5>
+                        <form class="form" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="number" name="quantity" value="1" min="1" max="20" data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url 'all_prints' %}" class="btn btn-secondary">Back to Prints</a>
+                        <input type="submit" class="btn btn-success mt-2" value="Add to Bag">
+                    </div>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     <div class="col-12">
                         <h5 class="heading-font text-uppercase">Delivery</h5>
                         <p class="paragraph-font">
