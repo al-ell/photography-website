@@ -47,6 +47,29 @@ def shop_admin(request):
 
 
 @login_required
+def add_size(request):
+    """ Add size and price view """
+    
+    if request.method == 'POST':
+        form = PriceAndSizeForm(request.POST, request.FILES)
+        if form.is_valid():
+            sizes = form.save()
+            messages.success(request, f'Added {sizes.name}.')
+            return redirect(reverse('all_prints'))
+        else:
+            messages.error(request, f'Please make sure form is valid.')
+    else:
+        form = PriceAndSizeForm()
+
+    template = 'shop/add_size.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
 def add_print(request):
     """ Add print view """
     

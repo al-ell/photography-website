@@ -85,3 +85,12 @@
     </div>
 </div>
 {% endblock %}
+
+{% block posloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#id_price_radio').change(function () {
+            
+        })
+    </script>
+{% endblock %}

@@ -8,6 +8,11 @@ class PriceAndSizeAdmin(admin.ModelAdmin):
         'size',
     )
 
+    list_display = (
+        'price',
+        'size',
+    )
+
 
 class PrintsAdmin(admin.ModelAdmin):
     fields = (
