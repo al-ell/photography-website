@@ -10,10 +10,6 @@ class DateInput(forms.DateInput):
 
 class ProjectForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-
     class Meta:
         model = Project
         fields = ['name', 'description', 'date',]
@@ -28,6 +24,9 @@ class ProjectForm(forms.ModelForm):
         'date': DateInput(),
     }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
     
 
 class PhotoForm(forms.ModelForm):

@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Prints
+from .models import Prints, PriceAndSize
+
+
+class PriceAndSizeAdmin(admin.ModelAdmin):
+    fields = (
+        'price',
+        'size',
+    )
 
 
 class PrintsAdmin(admin.ModelAdmin):
@@ -11,8 +18,6 @@ class PrintsAdmin(admin.ModelAdmin):
         'description',
         'image',
         'image_url',
-        'price',
-        'sizes',
     )
 
     list_display = (
@@ -23,11 +28,10 @@ class PrintsAdmin(admin.ModelAdmin):
         'description',
         'image',
         'image_url',
-        'price',
-        'sizes',
     )
 
     ordering = ('-category',)
 
 
 admin.site.register(Prints, PrintsAdmin)
+admin.site.register(PriceAndSize, PriceAndSizeAdmin)

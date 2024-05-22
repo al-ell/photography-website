@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block page_header %}
@@ -14,26 +14,49 @@
 
 {% block content %}
     <div class="row">
-        
-            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 bag-table-container table-responsive table-container justify-content-center">
+        {% if bag_items %}
+            <div class="col-12 col-md-8 offset-md-2 bag-table-container table-responsive justify-content-center">
                 <table class="bag-table">
                     <thead class="bag-thead heading-font">
                         <tr>
-                            <th>Prints</th>
-                            <th></th>
+                            <th scope="col">Prints</th>
+                            <th scope="col"></th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
                     <tbody class="bag-tbody paragraph-font">
-                        
+                        {% for item in bag_items %}
+                            <tr>
+                                <td class="p-2 w-25">
+                                    <img class="img-fluid" src="{{ item.prints.image.url }}">
+                                </td>
+                                <td>{{ item.prints.friendly_name }}</td>
+                                <td>{{ item.prints.quantity }}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="5">
+                                <h4 class="heading-font">Sub Total: £{{ total|floatformat:2 }}</h4>
+                                <h5 class="heading-font">Delivery: {{ delivery|floatformat:2 }}</h5>
+                                <h4 class="heading-font">Total: £{{ grand_total|floatformat:2 }}</h4>
+                                {% if free_delivery_delta > 0 %}
+                                    <p>Spend £{{ free_delivery_delta }} more for free delivery.</p>
+                                {% endif %}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        
+        {% else %}
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 empty-bag-container table-responsive table-container justify-content-center">
                 <h4 class="header-container">Your Bag is empty.</h4>
                 <p class="paragraph-font">Keep shopping <span><a href="{% url 'all_prints' %}">HERE</a></span>.</p>
             </div>
-        
+        {% endif %}        
     </div>
 
 {% endblock %}

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Prints
-from .forms import PrintsForm
+from .models import Prints, PriceAndSize
+from .forms import PrintsForm, PriceAndSizeForm
 
 
 def all_prints(request):
@@ -22,10 +22,12 @@ def all_prints(request):
 def print_info(request, prints_id):
     """ Print information view """
 
+    price_and_size = PriceAndSize.objects.all()
     prints = get_object_or_404(Prints, pk=prints_id)
     template = 'shop/print_info.html'
     context = {
         'prints': prints,
+        'price_and_size': price_and_size,
     }
 
     return render(request, template, context)

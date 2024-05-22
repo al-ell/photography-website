@@ -44,7 +44,22 @@
                     </div>
                     <div class="col-10 offset-1 mb-3">
                         <h5 class="heading-font text-uppercase">Choose Size</h5>
-                        <p class="paragraph-font"></p>
+                            <table class="table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for size in price_and_size %}
+                                        <tr>
+                                            <td>{{ size.size }}</td>
+                                            <td>£{{ size.price }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                     </div>
                     <div class="col-10 offset-1 mb-3">
                         <h5 class="heading-font text-uppercase">Choose Quantity</h5>
