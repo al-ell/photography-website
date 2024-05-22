@@ -43,31 +43,23 @@
                         <p class="paragraph-font">{{ prints.description }}</p>
                     </div>
                     <div class="col-10 offset-1 mb-3">
-                        <h5 class="heading-font text-uppercase">Choose Size</h5>
-                            <table class="table-responsive">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Size</th>
-                                        <th scope="col">Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for size in price_and_size %}
-                                        <tr>
-                                            <td>{{ size.size }}</td>
-                                            <td>£{{ size.price }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                    </div>
-                    <div class="col-10 offset-1 mb-3">
                         <h5 class="heading-font text-uppercase">Choose Quantity</h5>
                         <form class="form" action="{% url 'add_to_bag' prints.id %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="col-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
+                                        {% for size in price_and_size %}
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="id_price_radio" name="price_radio" class="custom-control-input">
+                                                <label class="custom-control-label" for="price_radio">
+                                                    {{ size.size }}   
+                                                    £{{ size.price }}
+                                                </label>
+                                            </div>                                                    
+                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group mt-3">
                                         <input type="number" name="quantity" value="1" min="1" max="20" data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
                                     </div>
                                 </div>
