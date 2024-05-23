@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Prints, PriceAndSize
-from .forms import PrintsForm, PriceAndSizeForm
+from .models import Prints
+from .forms import PrintsForm
 
 
 def all_prints(request):

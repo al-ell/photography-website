@@ -3,12 +3,6 @@ from django.apps import apps
 from projects.models import Photo, Project
 
 
-class PriceAndSize(models.Model):
-    
-    size = models.CharField(max_length=5)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-
-
 class Prints(models.Model):
     class Meta:
         verbose_name_plural = 'Prints'
@@ -21,8 +15,8 @@ class Prints(models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    price_and_size = models.ForeignKey(PriceAndSize, null=True, blank=True, on_delete=models.CASCADE)
-    
+    a4_price = models.DecimalField(max_digits=6, decimal_places=2)
+    a5_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     
     def __str__(self):

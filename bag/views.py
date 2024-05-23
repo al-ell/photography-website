@@ -1,5 +1,6 @@
+import json
 from django.shortcuts import render, redirect
-from shop.models import PriceAndSize
+from django.contrib import messages
 from shop.views import *
 
 
@@ -13,23 +14,21 @@ def add_to_bag(request, prints_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    size = None
-    if 'price_radio' in request.POST:
-        size = request.POST['price_radio']
 
     bag = request.session.get('bag', {})
-
-    if size:
-        if prints_id in list(bag.keys()):
-            if size in bag[prints_id]['items_by_size'].keys():
-                bag[prints_id]['items_by_size'][size] += quantity
+    if request.session == 'POST':
+        price_size_choice = request.POST.get('price_radio')
+        
+        if price_size_choice:
+            if prints_id in list(bag.keys()):
+                if size_choice in bag[prints_id]['items_by_size'].values():
+                    bag[prints_id]['items_by_size'][price_size_choice] += quantity
+                else:
+                    bag[prints_id]['items_by_size'][price_size_choice] = quantity
             else:
-                bag[prints_id]['items_by_size'][size] = quantity
+                bag[prints_id] = {'items_by_size': {price_size_choice: quantity}}
         else:
-            bag[prints_id] = {'items_by_size': {size: quantity}}
-    else:
-        messages.error(f'Please select a size to add to bag')
-
+            messages.error(request, f'Please select a size to add to bag')
 
     request.session['bag'] = bag
     print(request.session['bag'])
