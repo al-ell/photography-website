@@ -9,9 +9,12 @@ def wales(request):
     photos = Photo.objects.all()
     project = Project.objects.all()
 
-    
+    context = {
+        'photos': photos,
+        'project': project,
+    }
 
-    return render(request, 'projects/wales.html')
+    return render(request, 'projects/wales.html', context)
 
 
 # def discovery(request):
