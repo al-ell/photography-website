@@ -188,6 +188,11 @@ width: 100%;
 }
 
 
+.radio-selects {
+    list-style-type: none !important;
+}
+
+
 /* Media Queries */
 
 @media screen and (max-width: 768px) {

@@ -17,6 +17,8 @@ def add_to_bag(request, prints_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
+    
+
     bag = request.session.get('bag', {})
 
     if prints_id in list(bag.keys()):

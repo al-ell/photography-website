@@ -49,7 +49,14 @@
                             <div class="form-row">
                                 <div class="col-12 mb-3">
                                     <div class="form-group mb-3">
-                                        sizes here
+                                        {% for radio in form.selected_price %}
+                                        
+                                            <li class="radio-select">
+                                                {{ radio.tag }}
+                                                <label for="selected_price_{{ forloop.counter0 }}">{{ radio.choice_label }}</label>
+                                            </li>
+                                            <br>
+                                        {% endfor %}
                                     </div>
                                     <div class="form-group mt-3">
                                         <input type="number" name="quantity" value="1" min="1" max="20" data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
