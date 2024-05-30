@@ -26,8 +26,18 @@ class PrintsForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
 
-        
 
+
+class PriceSelectionForm(forms.Form):
+    PRICE_CHOICES = (
+        ('A5', '80'),
+        ('A4', '120'),
+    )
+    selected_price = forms.ChoiceField(choices=PRICE_CHOICES, widget=forms.RadioSelect)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
 
     
 

@@ -37,13 +37,14 @@
                                     <img class="img-fluid" src="{{ item.prints.image.url }}">
                                 </td>
                                 <td>{{ item.prints.friendly_name }}</td>
-                                <td>{{ item.prints.quantity }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>item price</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>subtotal</td>
+                                
                             </tr>
                         {% endfor %}
                         <tr>
-                            <td colspan="5">
+                            <td colspan="5" class="text-right">
                                 <h4 class="heading-font">Sub Total: £{{ total|floatformat:2 }}</h4>
                                 <h5 class="heading-font">Delivery: {{ delivery|floatformat:2 }}</h5>
                                 <h4 class="heading-font">Total: £{{ grand_total|floatformat:2 }}</h4>

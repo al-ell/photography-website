@@ -18,6 +18,11 @@ class Prints(models.Model):
     a4_price = models.DecimalField(max_digits=6, decimal_places=2)
     a5_price = models.DecimalField(max_digits=6, decimal_places=2)
 
+    def get_price_options(self):
+        return [
+            ('A5', self.a5_price),
+            ('A4', self.a4_price),
+        ]
     
     def __str__(self):
         return self.name, self.category, self.image
