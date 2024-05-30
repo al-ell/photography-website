@@ -8,8 +8,8 @@ class Prints(models.Model):
         verbose_name_plural = 'Prints'
 
     # Import model from the projects app
-    category = models.ForeignKey(Project, on_delete=models.CASCADE)
-    name = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    category = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+    name = models.ForeignKey(Photo, blank=True, null=True, on_delete=models.CASCADE)
     sku = models.CharField(max_length=150, null=True, blank=True)
     friendly_name = models.CharField(max_length=200, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -25,7 +25,7 @@ class Prints(models.Model):
         ]
     
     def __str__(self):
-        return self.name, self.category, self.image
+        return self.name
     
     def get_friendly_name(self):
         return self.friendly_name

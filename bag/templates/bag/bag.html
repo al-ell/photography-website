@@ -15,10 +15,9 @@
 {% block content %}
     <div class="row">
         {% if bag_items %}
-        {{ bag_items }}
         <br>
         <br>
-        {{ request.session.bag }}
+        
             <div class="col-12 col-md-8 offset-md-2 bag-table-container table-responsive justify-content-center">
                 <table class="bag-table">
                     <thead class="bag-thead heading-font">
@@ -34,7 +33,7 @@
                         {% for item in bag_items %}
                             <tr>
                                 <td class="p-2 w-25">
-                                    <img class="img-fluid" src="{{ item.prints.image.url }}">
+                                    <img class="img-fluid" src="">
                                 </td>
                                 <td>{{ item.prints.friendly_name }}</td>
                                 <td>item price</td>
