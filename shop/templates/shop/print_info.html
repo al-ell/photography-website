@@ -64,7 +64,23 @@
                                         </h5>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <input type="number" class="form-control qty_input" name="quantity" value="1" min="1" max="20" data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-dark rounded-0" 
+                                                    data-item_id="{{ prints.id }}" id="decrement-qty_{{ prints.id }}">
+                                                    <span class="icon"><i class="fas fa-minus"></i></span>
+                                                </button>
+                                            </div>
+                                            <input type="number" class="form-control qty_input"
+                                                name="quantity" value="1" min="1" max="20"
+                                                data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
+                                                <div class="input-group-append w-75">
+                                                    <button class="increment-qty btn btn-dark rounded-0" 
+                                                        data-item_id="{{ prints.id }}" id="increment-qty_{{ prints.id }}">
+                                                        <span class="icon"><i class="fas fa-plus"></i></span>
+                                                    </button>
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -91,16 +107,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ blocksuper }}
-    <script>
-        $('input[name="selected_price"]').on("click", function(){
-            var priceDisplay = $("input[name=selected_price]:checked").val();
-            alert(priceDisplay)
-        })
-
-        function getSize() {
-            priceDisplay = document.querySelector('input[name=selected_price]:checked').value;
-            document.querySelector("#price_display").textContent = priceDisplay;
-        }
-    </script>
+{{ block.super }}
+{% include 'shop/includes/quantity_input_script.html' %}
 {% endblock %}
