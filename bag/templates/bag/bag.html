@@ -23,6 +23,7 @@
                     <thead class="bag-thead heading-font">
                         <tr>
                             <th scope="col">Prints</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Subtotal</th>
@@ -35,6 +36,7 @@
                                     <img class="img-fluid" src="{{ item.prints.image.url }}"><br>
                                     <p>{{ item.prints.friendly_name }}</p>
                                 </td>
+                                <td>{{ item.size }}</td>
                                 <td class="py-2">£{{ item.prints.a4_price }}</td>
                                 <td class="py-2 w-25">{{ item.quantity }}</td>
                                 <td class="py-2">subtotal</td>

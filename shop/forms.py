@@ -29,8 +29,8 @@ class PrintsForm(forms.ModelForm):
 
 
 PRICE_CHOICES = (
-        ('A5', '80'),
-        ('A4', '120'),
+        ('A5', 'A5'),
+        ('A4', 'A4'),
     )
 
 

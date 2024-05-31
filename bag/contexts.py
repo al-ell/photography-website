@@ -13,17 +13,38 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
     form = PriceSelectionForm(request.POST)
 
-    for prints_id, quantity in bag.items():
-        prints = get_object_or_404(Prints, pk=prints_id)
-        total += quantity * prints.a4_price
-        product_count =+ quantity
-        bag_items.append({
-            'prints_id': prints_id,
-            'quantity': quantity,
-            'prints': prints,
-            'form': form, 
-        })
-
+    for prints_id, print_data in bag.items():
+        if isinstance(print_data, int):
+            prints = get_object_or_404(Prints, pk=prints_id)
+            total += print_data * prints.a4_price
+            product_count =+ print_data
+            bag_items.append({
+                'prints_id': prints_id,
+                'quantity': print_data,
+                'prints': prints,
+                'form': form, 
+            })
+        else:
+            for size, quantity in print_data['prints_by_size'].items():
+                prints = get_object_or_404(Prints, pk=prints_id)
+                if size == 'a4':
+                    total += quantity * prints.a4_price
+                    product_count += quantity
+                    bag_items.append({
+                    'prints_id': prints_id,
+                    'quantity': print_data,
+                    'prints': prints,
+                    'form': form, 
+                    })
+                else:
+                    total += quantity * prints.a5_price
+                    product_count += quantity
+                    bag_items.append({
+                    'prints_id': prints_id,
+                    'quantity': print_data,
+                    'prints': prints,
+                    'form': form, 
+                    })
 
 
     if not bag_items and total < settings.FREE_DELIVERY_THRESHOLD:
