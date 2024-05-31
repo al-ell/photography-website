@@ -32,7 +32,7 @@ def bag_contents(request):
                     product_count += quantity
                     bag_items.append({
                     'prints_id': prints_id,
-                    'quantity': print_data,
+                    'quantity': quantity,
                     'prints': prints,
                     'form': form, 
                     })
@@ -41,7 +41,7 @@ def bag_contents(request):
                     product_count += quantity
                     bag_items.append({
                     'prints_id': prints_id,
-                    'quantity': print_data,
+                    'quantity': quantity,
                     'prints': prints,
                     'form': form, 
                     })

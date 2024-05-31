@@ -193,6 +193,11 @@ width: 100%;
 }
 
 
+.update-link,
+.remove-link {
+    cursor: pointer;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 768px) {

@@ -38,7 +38,31 @@
                                 </td>
                                 <td>{{ item.size }}</td>
                                 <td class="py-2">£{{ item.prints.a4_price }}</td>
-                                <td class="py-2 w-25">{{ item.quantity }}</td>
+                                <td class="py-2 w-25">
+                                    <form class="update-quantity" method="POST" action="">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-dark btn-sm rounded-0" 
+                                                    data-item_id="{{ item.prints_id }}" id="decrement-qty_{{ item.prints_id }}">
+                                                    <span><i class="fas fa-minus fa-sm"></i></span>
+                                                </button>
+                                            </div>
+                                            <input type="number" class="form-control qty_input"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="20"
+                                                data-item_id="{{ item.prints_id }}" id="id_qty_{{ item.prints_id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-dark btn-sm rounded-0" 
+                                                    data-item_id="{{ item.prints_id }}" id="increment-qty_{{ item.prints_id }}">
+                                                    <span><i class="fas fa-plus fa-sm"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <a class="remove-link text-info text-left" id="remove{{ item.prints_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
+                                    <a class="update-link text-info text-right"><small>Update</small></a>
+                                    
+                                </td>
                                 <td class="py-2">subtotal</td>
                             </tr>
                         {% endfor %}
@@ -79,4 +103,29 @@
         {% endif %}        
     </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'shop/includes/quantity_input_script.html' %}
+
+    <script type="text/javascript">
+        $('.update-link').click(function(e) {
+            var form = $(this).prev('.update-quantity');
+            form.submit();
+        });
+
+        $('.remove-link').click(function(e) {
+            var csrfToken = "{{ csrf_token }}"
+            var printsId = $(this).attr('id').split('remove_')[1];
+            var size = $(this).data('size');
+            var url = `/bag/remove/${printsId}`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+
+            $.post(url, data)
+            .done(function() {
+                location.reload();
+            })
+        });
+    </script>
 {% endblock %}
