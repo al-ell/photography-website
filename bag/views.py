@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
 from shop.views import *
 from shop.forms import PriceSelectionForm
@@ -38,3 +38,51 @@ def add_to_bag(request, prints_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+
+def adjust_bag(request, prints_id):
+
+    quantity = int(request.POST.get('quantity'))
+    size = None
+    if 'selected_size' in request.POST:
+        size = request.POST['selected_size']
+    
+    bag = request.session.get('bag', {})
+
+    if size:
+        if quantity > 0:
+            bag[prints_id]['prints_by_size'][size] = quantity
+        else:
+            del bag[prints_id]['prints_by_size'][size]
+            if not bag[prints_id]['prints_by_size']:
+                bag.pop(prints_id)
+    else:
+        if quantity > 0:
+            bag[prints_id] = quantity
+        else:
+            bag.pop(prints_id)
+
+    request.session['bag'] = bag
+    return redirect(reverse('bag'))
+
+
+def remove_from_bag(request, prints_id):
+
+    try:
+        size = None
+        if 'selected_size' in request.POST:
+            size = request.POST['selected_size']
+        
+        bag = request.session.get('bag', {})
+
+        if size:
+                del bag[prints_id]['prints_by_size'][size]
+                if not bag[prints_id]['prints_by_size']:
+                    bag.pop(prints_id)
+        else:
+            bag.pop(prints_id)
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
