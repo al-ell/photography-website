@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"
+{% endblock %}
+
+{% block page_header %}
+    <div class="container page-header-container mb-5">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-3">
+                <h2 class="heading-font mb-3">Checkout</h2>
+                <h3 class="heading-font"></h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-6 offset-md-1">
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                <fieldset class="mb-3">
+                    <legend class="fieldset-label">Your Details</legend>
+                    {{ order_form.full_name | as_crispy_field }}
+                    {{ order_form.email | as_crispy_field }}
+                    <hr>
+                    {{ order_form.number | as_crispy_field }}
+                    {{ order_form.street_address1 | as_crispy_field }}
+                    {{ order_form.street_address2 | as_crispy_field }}
+                    {{ order_form.town_or_city | as_crispy_field }}
+                    {{ order_form.county | as_crispy_field }}
+                    {{ order_form.post_code | as_crispy_field }}
+                    {{ order_form.country | as_crispy_field }} 
+                    <div class="form-check">
+                        {% if user.is_authenticated %}
+                            <label class="form-check-label" for="id-save-info">
+                                <span>Save to your profile.</span>
+                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
+                            </label>
+                        {% else %}
+                            <label for="id-save-info" class="form-check-label">
+                                <a class="text-info" href="{% url 'account_signup' %}">Make an account</a> or
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save your details.
+                            </label>
+                        {% endif %}
+                    </div>                   
+                </fieldset>
+
+                <fieldset class="mb-3">
+                    <legend class="fieldset-label">Payment</legend>
+                    <div class="mb-2" id="card-element"></div>
+                    <div class="mb-2" id="card-errors" role="alert"></div>
+                </fieldset>
+                <div class="submit-button text-right mt-3 mb-2">                    
+                    <a href="{% url 'bag' %}" class="btn btn-dark">
+                        <span class="icon">
+                            <i class="fa-solid fa-left-long"></i>
+                        </span>
+                        <span class="heading-font">Edit Bag</span>
+                    </a>
+                    <button id="submit-button" class="btn btn-black">
+                        <span class="heading-font">Complete Purchase</span>
+                        <span class="icon">
+                            <i class="fa-regular fa-credit-card"></i>
+                        </span>
+                    </button>
+                    <p class="small text-danger">
+                        <span class="icon">
+                            <i icon="fa-thin fa-circle-exclamation"></i>
+                        </span>
+                        <span class="paragraph-font">You'll be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                    </p>
+                </div>
+            </form>
+        </div>       
+    </div>
+
+{% endblock %}
