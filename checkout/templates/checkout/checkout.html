@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -18,25 +18,72 @@
 
 {% block content %}
     <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-6 order-lg-last mb-5">
+            <p class="text-muted">Order Summary ({{ product_count }})</p>            
+            <div class="row">
+                <div class="col-12">
+                    <table>
+                        <thead class="heading-font">
+                            <tr>
+                                <th scope="col">Print</th>
+                                <th scope="col">Details</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="paragraph-font">
+                            {% for item in bag_items %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'print_info' item.prints.id %}">
+                                            {% if item.prints.image %}
+                                                <img class="w-25" src="{{ item.prints.image.url }}" alt="{{ prints.friendly_name }}">
+                                            {% else %}
+                                                <img class="w-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ prints.friendly_name }}">
+                                            {% endif %}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <p>{{ item.prints.friendly_name }}</p><br>
+                                        <p>Size: {{ item.size|upper }}</p><br>
+                                        <p>Qty: {{ item.quantity }}</p>
+                                    </td>
+                                    <td>
+                                        <p>subtotoal</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="3">
+                                    <p>Total: £{{ total | floatformat:2 }}</p><br>
+                                    <p>Delivery: £{{ delivery | floatformat:2 }}</p><br>
+                                    <p><strong>Grand Total: £{{ grand_total | floatformat:2 }}</strong></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
         <div class="col-12 col-md-10 col-lg-6 offset-md-1">
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="paragraph-font">
                 {% csrf_token %}
                 <fieldset class="mb-3">
-                    <legend class="fieldset-label">Your Details</legend>
+                    <legend class="heading-font fieldset-label">Your Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                     <hr>
-                    {{ order_form.number | as_crispy_field }}
+                    {{ order_form.phone_number | as_crispy_field }}
                     {{ order_form.street_address1 | as_crispy_field }}
                     {{ order_form.street_address2 | as_crispy_field }}
-                    {{ order_form.town_or_city | as_crispy_field }}
+                    {{ order_form.city_or_town | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
-                    {{ order_form.post_code | as_crispy_field }}
+                    {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }} 
                     <div class="form-check">
                         {% if user.is_authenticated %}
                             <label class="form-check-label" for="id-save-info">
-                                <span>Save to your profile.</span>
+                                <span class="paragraph-font">Save to your profile.</span>
                                 <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
                             </label>
                         {% else %}
@@ -49,7 +96,7 @@
                 </fieldset>
 
                 <fieldset class="mb-3">
-                    <legend class="fieldset-label">Payment</legend>
+                    <legend class="fieldset-label heading-font">Payment</legend>
                     <div class="mb-2" id="card-element"></div>
                     <div class="mb-2" id="card-errors" role="alert"></div>
                 </fieldset>
@@ -76,5 +123,13 @@
             </form>
         </div>       
     </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script type="text/javascript" src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 
 {% endblock %}

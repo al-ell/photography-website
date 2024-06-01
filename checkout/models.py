@@ -41,7 +41,7 @@ class Order(models.Model):
         super().save(*args, **kwargs)
    
 
-def __str__(self):
+    def __str__(self):
         return self.order_number
 
 
@@ -57,7 +57,7 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        self.lineitem_total = self.prints.a4_price * self.quantity
+        self.lineitem_total = self.prints.size * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
