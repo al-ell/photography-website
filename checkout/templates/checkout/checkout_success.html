@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container page-header-container mb-5">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-3">
+                <h2 class="heading-font mb-3">Order Complete</h2>
+                <h3 class="heading-font">Your details are below.</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-lg10 col-lg-6 offset-med-1 offset-lg-3">
+            
+        </div>      
+    </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script type="text/javascript" src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
+{% endblock %}
