@@ -20,6 +20,8 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     county = models.CharField(max_length=100, null=True, blank=True)
     country = models.CharField(max_length=40, null=False, blank=False)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=250, null=False, blank=False, default='')
 
     def _make_order_number(self):
 
