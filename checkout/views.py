@@ -1,8 +1,9 @@
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from .forms import OrderForm
-from prints.models import Prints
+from shop.models import Prints
 from .models import OrderLineItem, Order
 from bag.contexts import bag_contents
 import stripe
@@ -11,7 +12,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    if request.meth == 'POST':
+    if request.method == 'POST':
         bag = request.session.get('bag', {})
 
         form_data = {
@@ -27,7 +28,7 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order_form.save()
+            order = order_form.save()
             for prints_id, print_data in bag.items():
                 try:
                     prints = Prints.objects.get(id=prints_id)
@@ -39,15 +40,15 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data[prints_by_size].items():
+                        for size, quantity in print_data['prints_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 prints=prints,
                                 quantity=quantity,
-                                selected_size=size,
+                                prints_size=size,
                             )
                             order_line_item.save()
-                except Print.DoesNotExist:
+                except Prints.DoesNotExist:
                     messages.error(request, (
                         "We can't find one of the selected prints right now! Please contact us."
                     ))

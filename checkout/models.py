@@ -23,10 +23,10 @@ class Order(models.Model):
 
     def _make_order_number(self):
 
-        return uuid4().hex.upper()
+        return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = settings.DELIVERY_FEE
         else:
@@ -54,10 +54,11 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the lineitem total
-        and update the order total.
+        
         """
-        self.lineitem_total = self.prints.size * self.quantity
+        
+        self.lineitem_total = self.prints.a4_price * self.quantity
+        
         super().save(*args, **kwargs)
 
     def __str__(self):
