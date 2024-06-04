@@ -13,7 +13,7 @@ def bag(request):
 
 
 def add_to_bag(request, prints_id):
-
+    prints = get_object_or_404(Prints, pk=prints_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None

@@ -8,9 +8,10 @@
 {% block page_header %}
     <div class="container page-header-container mb-5">
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-3">
+            <div class="col-12 col-md-8 offset-md-2 page-heading text-center text-uppercase p-3">
                 <h2 class="heading-font mb-3">Order Complete</h2>
-                <h3 class="heading-font">Your details are below.</h3>
+                <h3 class="heading-font">Thank you, your details are below.</h3>
+                <p class="paragraph-font">A confirmation email has been sent to {{ order.email }}.</p>
             </div>
         </div>
     </div>
@@ -19,7 +20,90 @@
 {% block content %}
     <div class="row">
         <div class="col-12 col-lg10 col-lg-6 offset-med-1 offset-lg-3">
-            
+            <h4 class="heading-font mb-1 success-heading">Order Info:</h4>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-5 heading-font mb-1">
+                    <p class="mb-0">Order Number:</p><br>
+                    <p class="mb-0">Order Date:</p>
+                </div>
+                <div class="col-12 col-md-8 col-lg-7 paragraph-font mb-1">
+                    <p class="mb-0">{{ order.order_number }}</p><br>
+                    <p class="mb-0">{{ order.date }}</p>
+                </div>              
+            </div>
+            {% for item in orderlineitems.all %}
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-5 heading-font mb-1">
+                        <p class="mb-0">{{ item.prints.name }}{% if item.prints_size %} - Size {{ item.prints.size|upper }}{% endif %}</p>
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-7 paragraph-font mb-1">
+                        {% if 'selected_size' == 'a4' %}
+                            <p class="mb-0">{{ item.quantity }} for £ {{ item.prints.a4.price }} each.</p>
+                        {% else %}
+                            <p class="mb-0">{{ item.quantity }} for £ {{ item.prints.a5.price }} each.</p>
+                        {% endif %}
+                    </div>           
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-12 mb-1 success-heading heading-font"><h4>Order Details:</h4></div>
+                <div class="col-12 col-md-4 col-lg-5 heading-font mb-1">
+                    <p class="mb-0">Name:</p>
+                    <p class="mb-0">Number:</p>
+                    <p class="mb-0">Email:</p>
+                </div>
+                <div class="col-12 col-md-8 col-lg-7 paragraph-font mb-1">
+                    <p class="mb-0">{{ order.full_name }}</p><br>
+                    <p class="mb-0">{{ order.phone_number }}</p><br>
+                    <p class="mb-0">{{ order.email }}</p>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="col-12 mb-1 success-heading heading-font"><h4>Delivering To:</h4></div>
+                <div class="col-12 col-md-4 col-lg-5 heading-font mb-1">
+                    <p class="mb-0">Address 1:</p><br>
+                    {% if order.street_address2 %}
+                        <p class="mb-0">Address 2:</p><br>
+                    {% endif %}
+                    <p class="mb-0">Town or City:</p><br>
+                    <p class="mb-0">County:</p><br>
+                    <p class="mb-0">Postcode:</p><br>
+                    <p class="mb-0">Country:</p>
+                </div>
+                <div class="col-12 col-md-8 col-lg-7 paragraph-font mb-1">
+                    <p class="mb-0">{{ order.street_address1 }}</p><br>
+                    {% if order.street_address2 %}
+                        <p class="mb-0">{{ order.street_address2 }}</p><br>
+                    {% endif %}
+                    <p class="mb-0">{{ order.city_or_town }}</p><br>
+                    <p class="mb-0">{{ order.county }}</p><br>
+                    <p class="mb-0">{{ order.postcode }}</p><br>
+                    <p class="mb-0">{{ order.country }}</p>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="col-12 mb-1 success-heading heading-font"><h4>Payment Info:</h4></div>
+                <div class="col-12 col-md-4 col-lg-5 heading-font mb-1">
+                    <p class="mb-0">Sub-Total:</p><br>
+                    <p class="mb-0">Delivery:</p><br>
+                    <p class="mb-0">Total:</p><br>
+                </div>
+                <div class="col-12 col-md-8 col-lg-7 paragraph-font mb-1">
+                    <p class="mb-0">{{ order.order_total }}</p><br>
+                    <p class="mb-0">{{ order.delivery_cost }}</p><br>
+                    <p class="mb-0">{{ order.grand_total }}</p>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
+                    <a href="{% url 'all_prints' %}" class="btn btn-dark my-2">
+                        <span>
+                            <i class="fa-solid fa-left-long"></i>
+                            Back to all prints
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>      
     </div>
 
