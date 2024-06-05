@@ -198,6 +198,13 @@ width: 100%;
     cursor: pointer;
 }
 
+/* allauth */
+
+.auth-container {
+    margin-top: 8rem;
+}
+
+
 /* Media Queries */
 
 @media screen and (max-width: 768px) {
