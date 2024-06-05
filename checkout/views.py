@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+
 from .forms import OrderForm
 from shop.models import Prints
 from .models import OrderLineItem, Order
 from bag.contexts import bag_contents
+
 import json
 import stripe
 
