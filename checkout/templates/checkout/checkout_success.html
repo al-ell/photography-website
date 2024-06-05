@@ -96,12 +96,21 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
-                    <a href="{% url 'all_prints' %}" class="btn btn-dark my-2">
-                        <span>
-                            <i class="fa-solid fa-left-long"></i>
-                            Back to all prints
-                        </span>
-                    </a>
+                    {% if from profile %}
+                        <a href="{% url 'profile' %}" class="btn btn-dark my-2">
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                Back to profile
+                            </span>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'all_prints' %}" class="btn btn-dark my-2">
+                            <span>
+                                <i class="fa-solid fa-left-long"></i>
+                                Back to all prints
+                            </span>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>      

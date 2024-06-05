@@ -16,3 +16,9 @@
 #id_default_country option:not(:first-child) {
     color: #000;
 }
+
+
+.order-hisotry {
+    max-height: 416px;
+    overflow-y: auto;
+}
