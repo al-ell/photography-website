@@ -19,6 +19,23 @@
 
 {% block content %}
     
-    
+    <div class="row no-gutters">
+        <div class="col-12 col-lg-6">
+            <h4 class="heading-font ml-3">Delivery Info:</h4>
+            <form class="m-2 paragraph-font ml-3 mr-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-secondary float-right" type="submit">Update</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h4 class="heading-font">Order History:</h4>
+            {{ orders}}
+        </div>
+    </div>
 {% endblock %}
 
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}
