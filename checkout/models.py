@@ -1,7 +1,11 @@
 import uuid
+
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+
+from django_countries.fields import CountryField
+
 from shop.models import Prints
 
 
@@ -18,7 +22,7 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=100, null=True, blank=True)
     city_or_town = models.CharField(max_length=40, null=False, blank=False)    
     postcode = models.CharField(max_length=20, null=True, blank=True)
-    county = models.CharField(max_length=100, null=True, blank=True)
+    county = CountryField(blank_label="Country *", null=False, blank=False)
     country = models.CharField(max_length=40, null=False, blank=False)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=250, null=False, blank=False, default='')

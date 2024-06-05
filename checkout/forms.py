@@ -21,7 +21,6 @@ class OrderForm(forms.ModelForm):
             'city_or_town': 'City or Town', 
             'county': 'County',
             'postcode': 'Postal Code',
-            'country': 'Country'
         }
     
 
