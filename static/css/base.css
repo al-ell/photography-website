@@ -201,9 +201,19 @@ width: 100%;
 /* allauth */
 
 .auth-container {
-    margin-top: 8rem;
+    margin-top: 10rem;
 }
 
+.auth-box {
+    border: #264d00 2px solid;
+    border-radius: 4px;
+}
+
+.auth-box,
+.auth-row {
+    display: flex;
+    text-align: center;
+}
 
 /* Media Queries */
 

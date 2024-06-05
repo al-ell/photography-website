@@ -7,7 +7,7 @@
 
 {% block inner_content %}
 
-<h1>{% trans "Sign In" %}</h1>
+<h2 class="m-3 heading-font">{% trans "Sign In" %}</h2>
 
 {% get_providers as socialaccount_providers %}
 
@@ -29,21 +29,21 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p class="paragraph-font mb-2">{% blocktrans %}If you have not created an account yet, then please
+<p class="paragraph-font mb-4">{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login paragraph-font mb-2" method="POST" action="{% url 'account_login' %}">
+<form class="login text-left paragraph-font mb-2" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
   <input type="hidden" class="mb-2" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <p>
-    <a class="button secondaryAction m-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  </p>
-  <a class="btn btn-outline-dark m-2" href="{% url 'home' %}">Home</a>
-  <button class="primaryAction btn btn-success m-2" type="submit">{% trans "Sign In" %}</button>
+  <div class="text-center">
+    <a class="button secondaryAction m-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a><br>
+    <a class="btn btn-outline-dark m-2" href="{% url 'home' %}">Home</a>
+    <button class="primaryAction btn btn-success m-2" type="submit">{% trans "Sign In" %}</button>
+  </div>
 </form>
 
 {% endblock %}
