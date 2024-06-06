@@ -7,7 +7,7 @@
 {% block inner_content %}
 <div class="justify-content-center align-items-center">
   <h2 class="m-3 heading-font">{% trans "Sign Up" %}</h2>
-  <p class="mb-4 paragraph-font">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+  <p class="mb-4 paragraph-font link-text">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 </div>
 
 <form class="signup paragraph-font mb-3 text-left" id="signup_form" method="post" action="{% url 'account_signup' %}">

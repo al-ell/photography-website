@@ -12,7 +12,7 @@
         </div>
         <div class="row justify-content-center">
             {% if request.user.is_superuser %}
-            <div class="col-12 text-center">
+            <div class="col-12 text-center link-text">
                 <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2">Edit</a>
                 <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2">Delete</a>
             </div>

@@ -68,11 +68,13 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="remove-link text-info float-left" 
-                                        id="remove{{ item.prints_id }}" data-selected_size="{{ item.size }}">
-                                        <small>Remove</small>
-                                    </a>
-                                    <a class="update-link text-info float-right"><small>Update</small></a>
+                                    <div class="remove-link">
+                                        <a class="remove-link text-info float-left" 
+                                            id="remove{{ item.prints_id }}" data-selected_size="{{ item.size }}">
+                                            <small>Remove</small>
+                                        </a>
+                                        <a class="update-link text-info float-right"><small>Update</small></a>
+                                    </div>
                                 </td>
                                 <td class="py-2">
                                     £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
@@ -112,7 +114,7 @@
         {% else %}
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 empty-bag-container table-responsive table-container justify-content-center">
                 <h4 class="header-container">Your Bag is empty.</h4>
-                <p class="paragraph-font">Keep shopping <span><a href="{% url 'all_prints' %}">HERE</a></span>.</p>
+                <p class="paragraph-font link-text">Keep shopping <span><a href="{% url 'all_prints' %}">HERE</a></span>.</p>
             </div>
         {% endif %}        
     </div>

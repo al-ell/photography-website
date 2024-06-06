@@ -12,7 +12,7 @@
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
+<p class="paragraph-font link-text mb-2">{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
 for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
@@ -29,7 +29,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p class="paragraph-font mb-4">{% blocktrans %}If you have not created an account yet, then please
+<p class="paragraph-font mb-4 link-text">{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
@@ -40,7 +40,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <input type="hidden" class="mb-2" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <div class="text-center">
-    <a class="button secondaryAction m-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a><br>
+    <a class="button btn secondaryAction m-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a><br>
     <a class="btn btn-outline-dark m-2" href="{% url 'home' %}">Home</a>
     <button class="primaryAction btn btn-success m-2" type="submit">{% trans "Sign In" %}</button>
   </div>

@@ -97,9 +97,9 @@
 
                                 {% else %}
 
-                                    <label for="id-save-info" class="form-check-label">
+                                    <label for="id-save-info" class="form-check-label link-text">
                                         <a class="text-info m-1" href="{% url 'account_signup' %}">Make an account</a> or
-                                        <a class="text-info m-1" href="{% url 'account_login' %}">login</a> to save your details.
+                                        <a class="text-info m-1" href="{% url 'account_login' %}">login</a> to save info and checkout faster next time.
                                     </label>
 
                                 {% endif %}
@@ -112,7 +112,7 @@
                             <div class="mb-2" id="card-errors" role="alert"></div>
                             <input type="hidden" value="{{ client_secret }}" name="client_secret">
                         </fieldset>
-                        <div class="submit-button text-right mt-3 mb-2">                    
+                        <div class="submit-button text-right m-3 link-text">                    
                             <a href="{% url 'bag' %}" class="btn btn-dark m-2">
                                 <span>
                                     <i class="fa-solid fa-left-long"></i>
@@ -125,7 +125,7 @@
                                     <i class="fa-regular fa-credit-card"></i>
                                 </span>
                             </button>
-                            <p class="small text-danger">
+                            <p class="small text-danger m-1">
                                 <span>
                                     <i icon="fa-thin fa-circle-exclamation"></i>
                                 </span>

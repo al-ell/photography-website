@@ -78,6 +78,10 @@ p {
     font-style: normal;
 }
 
+.link-text a {
+    color: #000 !important;
+}
+
 
 /* Nav */
 
