@@ -1,0 +1,35 @@
+Hello {{ order.full_name }},
+
+Thank you for ordering from us! We hope you enjoy your new prints!
+
+Your order info is below:
+
+Date: {{ order.date }}
+Order Number: {{ order.order_number }}
+
+
+Your order will be sent to:
+
+{{ order.sttreet_address1 }}
+{{ order.sttreet_address2 }}
+{{ order.city_or_town }}
+{{ order.county }}
+{{ order.postcode }}
+{{ order.country }}
+
+{{ order.phone_number }}
+
+Payment:
+
+Order Total: £ {{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Total: £{{ order.grand_total }}
+
+
+If any of these details aren't correct please get in touch via our website.
+
+Delivery is sent via Hermes, we will confirm your tracking details once your order is dispatched.
+
+Thank you,
+
+Gwilym Llywelyn Phtography Team
