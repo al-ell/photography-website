@@ -88,7 +88,11 @@ p {
 .navbar {
     text-transform: uppercase;
     width: 100%;
-    height: 6rem;
+    height: 8rem;
+}
+
+.nav-link {
+    color: #264d00;
 }
 
 .navbar-nav li {
@@ -101,6 +105,11 @@ p {
     font-size: 2rem;
     letter-spacing: 0.2rem;
 }
+
+.logo-container {
+    width: fit-content;
+}
+
 
 .bag-total {
     font-size: 0.9rem !important;
@@ -173,7 +182,6 @@ width: 100%;
     cursor: pointer;
 }
 
-
 /* Toasts */
 
 .message-container {
@@ -191,11 +199,9 @@ width: 100%;
     height: 1rem;
 }
 
-
 .radio-selects {
     list-style-type: none !important;
 }
-
 
 .update-link,
 .remove-link {
@@ -234,12 +240,12 @@ width: 100%;
     .nav-item {
         text-align: center;
     }
-    .navbar-nav {
+    /* .navbar-nav {
         /* Bootstrap color for light nav */
-        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+        /* background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
         width: 40%;
-        float: right;
-    }
+        float: right; */
+    /* } */
     /* Project gallery - single column per row on smaller screens */
     .project-column {
         -ms-flex: 100%;

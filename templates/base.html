@@ -41,12 +41,60 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Gwilym Llywelyn {% block extra_title %}{% endblock %}</title>
+    <title>G L {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top no-gutters header-container">
-      {% include 'includes/main-nav.html' %}
+    <header class="container-fluid fixed-top bg-light no-gutters header-container">
+      <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
+        <div class="col-12 col-lg-3 my-auto py-1 py-lg-0 text-left logo-container d-block">
+          <a class="logo playfair-display-sc-black uppercase nav-link main-logo-link" href="{% url 'home' %}">
+            <span><h1>Gwilym Llywelyn</h1></span>
+          </a>
+        </div>
+        <div class="col-12 col-lg-2 order-lg-last my-auto py-1 py-lg-0">
+          <ul class="list-inline list-unstyled heading-font uppercase text-center text-lg-right my-0 w-auto mx-auto">
+            <li class="list-inline-item">
+              <a class="nav-link" href="{% url 'bag' %}">
+                <i class="fas fa-bag-shopping fa-lg"></i>
+                {% if grand_total %}
+                  <p class="bag-total">£{{ grand_total|floatformat:2 }}</p>
+                {% else %}
+                  <p class="bag-total d-none">£{{ grand_total|floatformat:2 }}</p>
+                {% endif %}
+              </a>
+            </li>
+            <li class="list-inline-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="user-options" role="button" data-toggle="dropdown" aria-expanded="false">
+                <div class="text-center">
+                  <i class="fa fa-user fa-lg"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                {% else %}
+                    <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                    <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                {% endif %}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-7 my-auto py-1 py-lg-0">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              {% include 'includes/mobile-nav.html' %}
+              {% include 'includes/main-nav.html' %}
+            </div>
+          </nav>
+        </div>
+      </div>
     </header>
+
 
     {% if messages %}
         <div class="message-container">
@@ -104,9 +152,9 @@
   </div>
 
     {% block postloadjs %}
-    <script type="text/javascript">
-      $('.toast').toast('show');
-    </script>
+      <script type="text/javascript">
+        $('.toast').toast('show');
+      </script>
     {% endblock %}   
   </body>
 </html>
