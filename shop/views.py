@@ -1,16 +1,14 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Prints
-from .forms import PrintsForm
+from .models import Prints, Category
+from .forms import PrintsForm, CategoryForm
 
 
 def all_prints(request):
     """ Shop view """
     prints = Prints.objects.all()
     
-    
-
     template = 'shop/prints.html'
     context = {
         'prints': prints,
@@ -69,7 +67,6 @@ def add_size(request):
 @login_required
 def add_print(request):
     """ Add print view """
-    
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -91,6 +88,7 @@ def add_print(request):
 
 @login_required
 def edit_print(request, prints_id):
+    """ Edit print view """
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES, instance=prints)
@@ -119,4 +117,61 @@ def delete_print(request, prints_id):
     prints = get_object_or_404(Prints, pk=prints_id)
     prints.delete()
     messages.success(request, f'Deleted {prints.name} from {prints.category}.')
+    return redirect(reverse('all_prints'))
+
+
+@login_required
+def add_category(request):
+    """ Add category view """
+    
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            category = form.save()
+            messages.success(request, f'Added {category.name}.')
+            return redirect(reverse('all_prints'))
+        else:
+            messages.error(request, f'Please make sure form is valid.')
+    else:
+        form = CategoryForm()
+
+    template = 'shop/add_category.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_category(request, category_id):
+    """ Edit category view """
+    category = get_object_or_404(Prints, pk=category_id)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Edited {category.name}.')
+            return redirect(reverse('all_prints'))
+        else:
+            messages.error(request, f'Please make sure form is valid.')
+    else:
+        form = CategoryForm(instance=category)
+    messages.info(request, f'Editing {category.name}.')
+
+    template = 'shop/edit_category.html'
+    context = {
+        'form': form,
+        'category': category,
+    }
+
+    return render (request, template, context)
+
+
+@login_required
+def delete_category(request, category_id):
+    """ Delete category view """
+    category = get_object_or_404(Category, pk=category_id)
+    category.delete()
+    messages.success(request, f'Deleted {category.name}.')
     return redirect(reverse('all_prints'))

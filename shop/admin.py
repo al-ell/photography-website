@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Prints
+from .models import Prints, Category
+
+class CategoryAdmin(admin.ModelAdmin):
+    fields = ('name',)
+
+    list_display = ('name',)
 
 
 class PrintsAdmin(admin.ModelAdmin):
@@ -31,4 +36,4 @@ class PrintsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Prints, PrintsAdmin)
-
+admin.site.register(Category, CategoryAdmin)

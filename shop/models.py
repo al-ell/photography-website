@@ -3,12 +3,23 @@ from django.apps import apps
 from projects.models import Photo, Project
 
 
+
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    # Import model from the projects app
+    name = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+
+
+
+
 class Prints(models.Model):
     class Meta:
         verbose_name_plural = 'Prints'
 
     # Import model from the projects app
-    category = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
     name = models.ForeignKey(Photo, blank=True, null=True, on_delete=models.CASCADE)
     sku = models.CharField(max_length=150, null=True, blank=True)
     friendly_name = models.CharField(max_length=200, null=True, blank=True)

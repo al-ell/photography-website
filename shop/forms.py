@@ -2,7 +2,18 @@ from django import forms
 from .widgets import CustomClearableFileInput
 from django.forms.widgets import RadioSelect
 from crispy_forms.helper import FormHelper
-from .models import Prints
+from .models import Prints, Category
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
 
 
 class PrintsForm(forms.ModelForm):
@@ -41,8 +52,3 @@ class PriceSelectionForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-
-    
-
-    
-
