@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
+
 from .models import Prints, Category
 from .forms import PrintsForm, CategoryForm
 
@@ -8,10 +10,24 @@ from .forms import PrintsForm, CategoryForm
 def all_prints(request):
     """ Shop view """
     prints = Prints.objects.all()
-    
+    query = None
+
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter search criteria, please try agin.")
+                return redirect(reverse('all_prints'))
+            
+            queries = Q(friendly_name__icontains=query) | Q(description__icontains=query)
+            prints = prints.filter(queries)
+
+
     template = 'shop/prints.html'
     context = {
         'prints': prints,
+        'search_term': query,
     }
 
     return render(request, template, context)
@@ -67,6 +83,7 @@ def add_size(request):
 @login_required
 def add_print(request):
     """ Add print view """
+    category = get_object_or_404(Category)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -81,6 +98,7 @@ def add_print(request):
     template = 'shop/add_print.html'
     context = {
         'form': form,
+        'category': category,
     }
 
     return render(request, template, context)
