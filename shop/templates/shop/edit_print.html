@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block extra_title %}
+    Edit {{ prints.friendly_name }}
+{% endblock %}
 
 {% block page_header %}
     <div class="container page-header-container mb-5">

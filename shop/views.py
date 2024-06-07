@@ -11,7 +11,13 @@ def all_prints(request):
     """ Shop view """
     prints = Prints.objects.all()
     query = None
+    categories = None
 
+    if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category']
+            prints = prints.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
 
     if request.GET:
         if 'q' in request.GET:
@@ -28,6 +34,7 @@ def all_prints(request):
     context = {
         'prints': prints,
         'search_term': query,
+        'category': categories,
     }
 
     return render(request, template, context)

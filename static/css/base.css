@@ -122,6 +122,12 @@ p {
 /* Index */
 
 
+/* Shop */
+
+.project-link {
+    color: #264d00;
+}
+
 
 
 
@@ -247,6 +253,13 @@ width: 100%;
     .navbar {
         height: 0;
     }
+
+    .navbar-collapse {
+        position: fixed;
+        left: 0%;
+        width: 100vw;
+    }
+
     /* .navbar-nav {
         /* Bootstrap color for light nav */
         /* background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
@@ -264,6 +277,10 @@ width: 100%;
         display: flex;
         justify-content: center;
     }
+
+    .page-header-container {
+        margin-top: 3rem;
+    }
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -275,6 +292,9 @@ width: 100%;
         max-width: 50%;
     }
 
+    .page-header-container {
+        margin-top: 3rem;
+    }
 
     .nav-icons {
         display: flex;
