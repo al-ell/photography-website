@@ -56,10 +56,13 @@ p {
 }
 
 /* Fonts - from Google Fonts */
+h1 {
+    font-weight: 900 !important;
+}
 
 .playfair-display-sc-black {
     font-family: "Playfair Display SC", serif;
-    font-weight: 900;
+    font-weight: 900 !important;
     font-style: normal;
   }
 
@@ -121,6 +124,14 @@ p {
 
 /* Index */
 
+
+/* About */
+
+.about-heading {
+    color: black;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+}
 
 /* Shop */
 
