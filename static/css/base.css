@@ -71,7 +71,7 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #000;
 }
 
@@ -81,7 +81,10 @@ h1 {
     font-weight: 300;
     font-style: normal;
     color: #000;
+    font-size: 1rem;
 }
+
+
 
 .link-text a {
     color: #000 !important;
@@ -89,6 +92,37 @@ h1 {
 
 
 /* Nav */
+
+
+.nav-icons ul {
+    margin: 0;
+ }
+
+.nav-icons {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.icon-container {
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+}
+
+.icon-container {
+    display: inline-flex;
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+.icon-link {
+    color: rgba(0, 0, 0, .5);
+    display: inline-flex;
+    padding: .5rem 1rem;
+}
 
 .navbar {
     text-transform: uppercase;
@@ -108,7 +142,7 @@ h1 {
 .logo {
     text-decoration: none;
     color: #264d00 !important;
-    font-size: 1.8rem;
+    font-size: 2rem;
     letter-spacing: 0.2rem;
 }
 
@@ -317,23 +351,6 @@ width: 100%;
 
     .page-header-container {
         margin-top: 3rem;
-    }
-
-    .nav-icons {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .icon-container {
-        padding: .5rem 1rem;
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
     }
 
     

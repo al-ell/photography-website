@@ -15,7 +15,8 @@
       {{ message }}
     </div>
     <hr class="mt-1 mb-2">
-    {% if grand_total and not on_profile_page %}
+    <!-- Update to prevent bag from showing on success as postage cost -->
+    {% if grand_total > 4 and not on_profile_page %}
       <div class="bag-container">
         <p class="heading-font text-muted text-center small py-1">Your Bag ({{ product_count }})</p>
         <div class="bag-notification-wrapper m-1">

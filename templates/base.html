@@ -54,11 +54,11 @@
           </a>
         </div>
         <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
-          <ul class="list-inline list-unstyled heading-font icon-container uppercase text-center text-lg-right my-0 w-auto mx-auto">
+          <ul class="list-inline list-unstyled heading-font icon-container">
             <li class="list-inline-item">
-              <a class="nav-link dropdown-toggle" href="#" id="shop-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="icon-link dropdown-toggle" href="#" id="shop-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="text-center">
-                      <div><i class="fas fa-search fa-lg"></i></div>
+                      <div><i class="fas fa-search"></i></div>
                   </div>
               </a>
               <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="shop-search">
@@ -77,19 +77,14 @@
               </div>
             </li>
             <li class="list-inline-item">
-              <a class="nav-link" href="{% url 'bag' %}">
-                <i class="fas fa-bag-shopping fa-lg"></i>
-                {% if grand_total %}
-                  <p class="bag-total">£{{ grand_total|floatformat:2 }}</p>
-                {% else %}
-                  <p class="bag-total d-none">£{{ grand_total|floatformat:2 }}</p>
-                {% endif %}
+              <a class="icon-link" href="{% url 'bag' %}">
+                <i class="fas fa-bag-shopping"></i>
               </a>
             </li>
             <li class="list-inline-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="user-options" role="button" data-toggle="dropdown" aria-expanded="false">
+              <a class="icon-link dropdown-toggle" href="#" id="user-options" role="button" data-toggle="dropdown" aria-expanded="false">
                 <div>
-                  <i class="fa fa-user fa-lg"></i>
+                  <i class="fa fa-user"></i>
                 </div>
               </a>
               <div class="dropdown-menu" aria-labelledby="user-options">
