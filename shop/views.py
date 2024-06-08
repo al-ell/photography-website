@@ -29,7 +29,6 @@ def all_prints(request):
             queries = Q(friendly_name__icontains=query) | Q(description__icontains=query)
             prints = prints.filter(queries)
 
-    # print(categories)
     template = 'shop/prints.html'
     context = {
         'prints': prints,

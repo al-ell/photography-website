@@ -7,20 +7,15 @@ from .forms import ProjectForm, PhotoForm, DateInput
 def wales(request):
     """ Wales Project view """
     photos = Photo.objects.all()
-    project = Project.objects.all()
+    projects = Project.objects.all()
 
+    template = 'projects/wales.html'
     context = {
         'photos': photos,
-        'project': project,
+        'projects': projects,
     }
 
-    return render(request, 'projects/wales.html', context)
-
-
-# def discovery(request):
-#     """ Wales Project view """
-    
-#     return render(request, 'projects/discovery.html')
+    return render(request, template, context)
 
 
 # Project and photo admin views
