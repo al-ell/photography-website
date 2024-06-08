@@ -6,13 +6,51 @@
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-center text-uppercase p-2">
                 <h2 class="heading-font mb-2">Shop Admin</h2>
-                <h3 class="heading-font">Prints</h3>
+                <h3 class="heading-font">Edit Prints and Categories</h3>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 mb-5 justify-content-center btn-container">
+                <a href="{% url 'add_category' %}" class="btn btn-warning mt-2 mr-2">Add Category</a>
+                <a href="{% url 'add_print' %}" class="btn btn-warning mt-2 mr-2">Add Print</a>
+                <a href="{% url 'add_size' %}" class="btn btn-warning mt-2 mr-2">Add Print Size</a>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 category-table-container table-responsive table-container justify-content-center">
+                <table class="category-table">
+                    <thead class="category-thead heading-font">
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Edit or Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="category-tbody paragraph-font">
+                        {% for category in categories %}
+                            <tr>
+                                <td>                               
+                                    {{ category.name }}
+                                <td>
+                                    <a href="{% url 'edit_category' category.id %}" class="btn btn-success m-2">Edit</a>
+                                    <a href="{% url 'delete_category' category.id %}" class="btn btn-danger m-2">Delete</a>
+                                    <!-- <button type="button" class="btn btn-danger mt-2 ml-2" data-toggle="modal" data-target="#deleteModal">
+                                        Delete
+                                    </button> -->
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12 col-lg-10 offset-lg-1">
             {% for print in prints %}
@@ -28,15 +66,15 @@
                             </a>
                         {% endif %}
                             <div class="card-body">
-                                <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
-                                <div class="col-12 paragraph-font text-center link-text">
-                                    <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2">Edit</a>
-                                    <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2">Delete</a>
-                                </div>
+                                <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.name }}: {{ print.friendly_name }}</small></p>
+                                <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.category.name }}</small></p>
+                                <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-2">Edit</a>
+                                <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-2">Delete</a>
                             </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+</div>
 {% endblock %}

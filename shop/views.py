@@ -54,10 +54,13 @@ def print_info(request, prints_id):
 @login_required
 def shop_admin(request):
     """ Shop view """
+    prints = Prints.objects.all()
+    categories = Category.objects.all()
 
     template = 'shop/shop_admin.html'
     context = {
-
+        'prints': prints,
+        'categories': categories,
     }
 
     return render(request, template, context)
@@ -72,7 +75,7 @@ def add_size(request):
         if form.is_valid():
             sizes = form.save()
             messages.success(request, f'Added {sizes.name}.')
-            return redirect(reverse('all_prints'))
+            return redirect(reverse('shop_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -95,7 +98,7 @@ def add_print(request):
         if form.is_valid():
             prints = form.save()
             messages.success(request, f'Added {prints.name} to {prints.category}.')
-            return redirect(reverse('all_prints'))
+            return redirect(reverse('shop_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -119,7 +122,7 @@ def edit_print(request, prints_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Edited {prints.name} in {prints.category}.')
-            return redirect(reverse('all_prints'))
+            return redirect(reverse('shop_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -141,7 +144,7 @@ def delete_print(request, prints_id):
     prints = get_object_or_404(Prints, pk=prints_id)
     prints.delete()
     messages.success(request, f'Deleted {prints.name} from {prints.category}.')
-    return redirect(reverse('all_prints'))
+    return redirect(reverse('shop_admin'))
 
 
 @login_required
@@ -153,7 +156,7 @@ def add_category(request):
         if form.is_valid():
             category = form.save()
             messages.success(request, f'Added {category.name}.')
-            return redirect(reverse('all_prints'))
+            return redirect(reverse('shop_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -176,7 +179,7 @@ def edit_category(request, category_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Edited {category.name}.')
-            return redirect(reverse('all_prints'))
+            return redirect(reverse('shop_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -198,4 +201,4 @@ def delete_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     category.delete()
     messages.success(request, f'Deleted {category.name}.')
-    return redirect(reverse('all_prints'))
+    return redirect(reverse('shop_admin'))

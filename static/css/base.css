@@ -172,6 +172,7 @@ width: 100%;
     width: 100%;
 }
 
+.category-table,
 .project-table {
     height: 100%;
     width: 100%;
@@ -256,6 +257,13 @@ width: 100%;
 
 /* Media Queries */
 
+@media screen and (max-width: 576px) {
+    .btn {
+        transform: scale(0.7);
+    }
+}
+
+
 @media screen and (max-width: 768px) {
     /* Nav */
     .nav-item {
@@ -291,6 +299,10 @@ width: 100%;
 
     .page-header-container {
         margin-top: 3rem;
+    }
+
+    .btn {
+        transform: scale(0.8);
     }
 }
 

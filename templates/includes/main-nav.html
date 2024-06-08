@@ -14,7 +14,7 @@
             <a class="dropdown-item" href="{% url 'discovery' %}">Discovery</a>
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                    <a class="dropdown-item" href="#">Project Admin</a>
+                    <a class="dropdown-item" href="{% url 'all_projects' %}">Project Admin</a>
                     <a class="dropdown-item" href="{% url 'all_photos' %}">Photo Admin</a>
                 {% endif %}
             {% endif %}
@@ -34,7 +34,7 @@
         <a class="dropdown-item" href="{% url 'all_prints' %}">Prints</a>
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                    <a class="dropdown-item" href="">Manage Shop</a>
+                    <a class="dropdown-item" href="{% url 'shop_admin' %}">Manage Shop</a>
                 {% endif %}
             {% endif %}
       </div>
