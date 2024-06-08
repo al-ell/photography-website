@@ -36,7 +36,7 @@ class Prints(models.Model):
         ]
     
     def __str__(self):
-        return self.name
+        return self.name.name
     
     def get_friendly_name(self):
         return self.friendly_name

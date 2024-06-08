@@ -15,9 +15,9 @@ def all_prints(request):
 
     if request.GET:
         if 'category' in request.GET:
-            categories = request.GET['category']
-            prints = prints.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            categories = [request.GET['category']]
+            prints = prints.filter(category__name__name__in=categories)
+            categories = Category.objects.filter(name__name__in=categories)
 
     if request.GET:
         if 'q' in request.GET:
@@ -29,7 +29,7 @@ def all_prints(request):
             queries = Q(friendly_name__icontains=query) | Q(description__icontains=query)
             prints = prints.filter(queries)
 
-
+    # print(categories)
     template = 'shop/prints.html'
     context = {
         'prints': prints,
