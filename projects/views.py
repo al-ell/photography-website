@@ -11,8 +11,6 @@ def wales(request):
     photos = Photo.objects.all()
     projects = Project.objects.all()
 
-
-
     template = 'projects/wales.html'
     context = {
         'photos': photos,
@@ -22,11 +20,11 @@ def wales(request):
 
     return render(request, template, context)
 
+
 def discovery(request):
     """ Discovery Project view """
     photos = Photo.objects.all()
     projects = Project.objects.all()
-
 
     template = 'projects/discovery.html'
     context = {
@@ -40,28 +38,14 @@ def discovery(request):
 
 # Project and photo admin views
 @login_required
-def all_projects(request):
-    """ Project management view """
+def portfolio_admin(request):
+    """ Project and photo management view """
     photos = Photo.objects.all()
     projects = Project.objects.all()
-    template = 'projects/all_projects.html'
+    template = 'projects/portfolio_admin.html'
     context = {
         'projects': projects,
         'photos': photos,
-    }
-
-    return render(request, template, context)
-
-
-@login_required
-def all_photos(request):
-    """ Photo management view """
-    photos = Photo.objects.all()
-    projects = Project.objects.all()
-    template = 'projects/all_photos.html'
-    context = {
-        'photos': photos,
-        'projects': projects,
     }
 
     return render(request, template, context)
@@ -76,7 +60,7 @@ def add_project(request):
         if form.is_valid():
             project = form.save()
             messages.success(request, f'Added {project.name} to Portfolio.')
-            return redirect(reverse('add_project'))
+            return redirect(reverse('portfolio_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -99,7 +83,7 @@ def edit_project(request, project_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Updated {project.name} to Portfolio.')
-            return redirect('all_projects')
+            return redirect('portfolio_admin')
         else:
             messages.error(request, f'Please make sure form is valid.')
     form = ProjectForm(instance=project)
@@ -120,7 +104,7 @@ def delete_project(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     project.delete()
     messages.success(request, f'Deleted {project.name} from Portfolio.')
-    return redirect(reverse('all_projects'))
+    return redirect(reverse('portfolio_admin'))
 
 
 @login_required
@@ -132,7 +116,7 @@ def add_photo(request):
         if form.is_valid():
             photo = form.save()
             messages.success(request, f'Added {photo.name} to {photo.project}.')
-            return redirect(reverse('add_photo'))
+            return redirect(reverse('portfoio_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     else:
@@ -156,7 +140,7 @@ def edit_photo(request, photo_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Edited {photo.name} in {photo.project}.')
-            return redirect(reverse('all_photos'))
+            return redirect(reverse('portfolio_admin'))
         else:
             messages.error(request, f'Please make sure form is valid.')
     form = ProjectForm(instance=photo)
@@ -177,4 +161,4 @@ def delete_photo(request, photo_id):
     photo = get_object_or_404(Photo, pk=photo_id)
     photo.delete()
     messages.success(request, f'Deleted {photo.name} from {photo.project}.')
-    return redirect(reverse('all_photos'))
+    return redirect(reverse('portfolio_admin'))
