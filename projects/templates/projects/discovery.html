@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_title %}
-    Wales
+    Discovery
 {% endblock %}
 
 {% block extra_css %}
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
                 {% for project in projects %}
-                    {% if project.name == 'Wales' %}
+                    {% if project.name == 'Discovery' %}
                     <h2 class="heading-font mb-3">{{ project.name }}</h2>
                     <p class="paragraph-font mb-2">{{ project.description }}</p>
                     {% endif %}
@@ -29,7 +29,7 @@
 <div class="container-fluid">
     <div class="row project-row">
         {% for photo in photos %}
-            {% if photo.project.name == 'Wales' %}
+            {% if photo.project.name == 'Discovery' %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <!-- Trigger the Modal -->

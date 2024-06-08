@@ -4,15 +4,35 @@ from django.contrib import messages
 from .models import Project, Photo
 from .forms import ProjectForm, PhotoForm, DateInput
 
+from shop.models import Prints
+
 def wales(request):
     """ Wales Project view """
     photos = Photo.objects.all()
     projects = Project.objects.all()
 
+
+
     template = 'projects/wales.html'
     context = {
         'photos': photos,
         'projects': projects,
+
+    }
+
+    return render(request, template, context)
+
+def discovery(request):
+    """ Discovery Project view """
+    photos = Photo.objects.all()
+    projects = Project.objects.all()
+
+
+    template = 'projects/discovery.html'
+    context = {
+        'photos': photos,
+        'projects': projects,
+
     }
 
     return render(request, template, context)
