@@ -5,7 +5,9 @@
 Link to deployed site can be found [Here]()
 
 
+# Purpose
 
+To create a functional website for the documentary photographer Gwilym Llywelyn to showcase his previous project work. The website will have distinct portfolio and shop sections as this follows the design layout of many artist's websites.
 
 
 # UX
@@ -39,6 +41,8 @@ Link to deployed site can be found [Here]()
 
 ## Architecture
 
+
+
 ## Database
 
 #### __Database Plan__
@@ -49,44 +53,93 @@ Link to deployed site can be found [Here]()
 |  | `Bag` |
 
 | | `Checkout` |
-
-| `Signed In User` |
-|  | Username(unique) | TextInput |
-|  | Name | TextInput | 
-|  | Password | TextInput |
-|  | Phone | TextInput |
-|  | Address1 | TextInput |
-|  | Address2 | TextInput |
-|  | Town | TextInput |
-|  | County | TextInput |
-|  | Postcode | TextInput |
-|  | Country | TextInput |
-
+|  | `Order` |  |
+| ForeignKey | user_profile | UserProfile |
+|  | date | DateTimeField |
+|  | order_number | CharField |
+|  | delivery_cost | DecimalField |
+|  | order_total | DecimalField |
+|  | grand_total | DecimalField |
+|  | full_name | CharField |
+|  | email = | EmailField |
+|  | phone_number | CharField |
+|  | street_address1 | CharField |
+|  | street_address2 | CharField |
+|  | city_or_town | CharField |    
+|  | postcode = | CharField |
+|  | county = | CharField |
+|  | country | CountryField |
+|  | original_bag | TextField |
+|  | stripe_pid | CharField |
+|  | `OrderLineItem` |
+| ForeignKey | order | Order |
+| ForeignKey | prints | Prints |
+|  | prints_size | CharField |
+|  | quantity | IntegerField |
+|  | lineitem_total | DecimalField |
+|  | `Profiles` |
+|  | `UserProfile` |
+| OneToOneField | user | User |
+|  | default_email | EmailField |
+|  | default_phone_number | CharField |
+|  | default_street_address1 | CharField |
+|  | default_street_address2 | CharField |
+|  | default_city_or_town | CharField |  
+|  | default_postcode | CharField |
+|  | default_county | CharField |
+|  | default_country | CountryField |
 |  | `Superuser` |
 |  | Username | TextInput |
 |  | Email address | TextInput |
 |  | Password | TextInput |
-
-| `Project` |
+| `Projects` |
+|  | `Project` |
 |  | Name(unique) | TextInput|
 |  | Description | TextInput |
 |  | Where | TextInput |
-|  | When | DateTime |
-
-| `Images` |
+|  | When | DateTimeField |
+| `Photos` |
+| ForeignKey | project | Project |
+|  | name | CharField |
+|  | friendly_name | CharField |
+|  | image_url | URLField |
+|  | image | ImageField |
+|  | description | TextField |
 |  | Name(unique) | TextInput |
 |  | Image |  |
-| ForeignKey | Project Name | Project Model |
-
+| ForeignKey | project_name | Project Model |
 | `Shop` |
-|  | Product Name(unique) | TextInput |
-|  | Sizes |  |
-|  | Price | Integer |
-| ForeignKey | Image Name | Images Model |
-| ForeignKey | Image | Images Model |
+|  | `Category` |
+| ForeignKey | name | Project |
+|  | `Prints` |
+| ForeignKey | name(unique) | Photo |
+| ForeignKey | category |  Category |
+|  | sku | CharField |
+|  | friendly_name | CharField |
+|  | image_url | URLField |
+|  | image | ImageField |
+|  | description | TextField |
+|  | a4_price | DecimalField |
+|  | a5_price | DecimalField |
+|  | `PriceSelectionForm`|
+|  | selected_price | ChoiceField |
 
 
 ## Design
+
+### Color Scheme
+
+I have chosen to keep the webpage mostly white like gallery walls. This is to draw attention to the work and not to distract the user. This was a joint decision with the artist. I chose the dark earthy green for the logo as I felt this would compliment the earthy tones in his landscape pictures.
+
+
+### Font Choices 
+
+I wanted to contrast a modern font, which I've used for the headings with traditional fonts for the logo and the paragraphs. 
+
+!(logo)[media/docs/logo-font.png]
+!(heading)[media/docs/heading-font.png]
+!(paragraph)[media/docs/paragraph-font.png]
+
 
 ### Wireframes
 
@@ -212,9 +265,9 @@ Link to deployed site can be found [Here]()
 
 ### Future Implementations
 
-- Link the Country option to an RestCountries API to ensure correct use of country option.
-- Use the api to provide useful information about different travel destinations
-- Allow users to follow friends.
+- 
+- 
+- 
 
 ### Accessibility
 
@@ -292,6 +345,16 @@ HTML, CSS, JavaScript, Python
 ### Error Handling
 
 ### Defensive Programming
+
+#### User
+
+I have used "@login_required" to prevent users from accessing some pages. This prevents those not logged in from accessing the admin pages.
+
+#### Admin User
+
+I have used if statements in the templates to prevent non-superusers from accessing the admin pages.
+
+I have set up AWS to prevent others from accessing keys and being able to write to the media and static buckets.
 
 # Deployment
 

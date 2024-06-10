@@ -173,7 +173,10 @@ h1 {
     color: #264d00;
 }
 
-
+.shop-thumbnail {
+    height: 26rem;
+    max-height: 26rem;
+}
 
 
 
