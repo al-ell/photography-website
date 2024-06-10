@@ -1,1 +1,1 @@
-[{"pk":1,"model":"shop.category","fields":{"name":"Wales"}},{"pk":2,"model":"shop.category","fields":{"name":"Discovery"}}]
+[{"id":1,"model":"shop.category","fields":{"name":1}},{"id":2,"model":"shop.category","fields":{"name":2}}]

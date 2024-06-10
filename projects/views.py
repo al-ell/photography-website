@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Project, Photo
-from .forms import ProjectForm, PhotoForm, DateInput
+from .forms import ProjectForm, PhotoForm
 
 from shop.models import Prints
 

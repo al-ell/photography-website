@@ -8,7 +8,6 @@ class Project(models.Model):
 
     name = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    date = models.DateTimeField(editable=True, null=True, blank=True)
 
     def __str__(self):
         return self.name

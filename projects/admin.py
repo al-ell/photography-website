@@ -6,16 +6,15 @@ class ProjectAdmin(admin.ModelAdmin):
     fields = (
         'name',
         'description',
-        'date',
     )
 
     list_display = (
         'name',
         'description',
-        'date',
+
     )
 
-    ordering = ('-date',)
+    ordering = ('-name',)
 
 
 class PhotoAdmin(admin.ModelAdmin):

@@ -1,28 +1,19 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from .models import Project, Photo
-from datetime import datetime
-
-
-class DateInput(forms.DateInput):
-        input_type = 'date'
 
 
 class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ['name', 'description', 'date',]
+        fields = ['name', 'description',]
 
     placeholders = {
         'name': 'Project Name',
         'description': 'Description',
-        'date': 'Date',
     }
     
-    widgets = {
-        'date': DateInput(),
-    }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
