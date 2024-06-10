@@ -1,14 +1,14 @@
 [
     {
       "pk": 1,
-      "model": "prints.category",
+      "model": "shop.category",
       "fields": {
         "name": "Wales"
       }
     },
     {
       "pk": 2,
-      "model": "prints.category",
+      "model": "shop.category",
       "fields": {
         "name": "Discovery"
       }

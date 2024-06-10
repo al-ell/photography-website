@@ -8,14 +8,14 @@ class Project(models.Model):
 
     name = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    date = models.DateField(editable=True, null=True, blank=True)
+    date = models.DateTimeField(editable=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
     
 
 class Photo(models.Model):
-    project = models.ForeignKey('Project', null=True, blank=True, on_delete=models.SET_NULL)
+    project = models.ForeignKey(Project, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)
     friendly_name = models.CharField(max_length=200, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)

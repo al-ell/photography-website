@@ -29,7 +29,7 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)        
 
-        if form.is_valid(self):            
+        if form.is_valid():            
             self._send_contact_email(form)
             messages.success(request, "Message sent!")
             return redirect(request, 'home')
