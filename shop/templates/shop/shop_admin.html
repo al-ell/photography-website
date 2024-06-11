@@ -13,10 +13,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="flex-row justify-content-center">
     <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
 
-        <div class="row mb-3">
+        <div class="flex-row mb-3">
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 mb-5 justify-content-center btn-container">
                 <a href="{% url 'add_category' %}" class="btn btn-warning mt-2 mr-2">Add Category</a>
                 <a href="{% url 'add_print' %}" class="btn btn-warning mt-2 mr-2">Add Print</a>
@@ -51,29 +51,31 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="flex-row justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1">
-            {% for print in prints %}
-                <div class="col-12 col-md-4 col-lg-3 justify-content-center">
-                    <div class="card m-2 p-1 shop-thumbnail">
-                        {% if print.image %}
-                            <a href="{% url 'print_info' print.id %}">
-                                <img src="{{ print.image.url }}" class="card-img" alt="{{ print.description }}">
-                            </a>
-                        {% else %}
-                            <a href="{% url 'print_info' print.id %}">
-                                <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
-                            </a>
-                        {% endif %}
-                            <div class="card-body">
+            <div class="flex-row card-group">
+                {% for print in prints %}
+                    <div class="col-12 col-md-4 col-lg-3 justify-content-center card-group">
+                        <div class="card m-2 p-1 shop-thumbnail">
+                            {% if print.image %}
+                                <a href="{% url 'print_info' print.id %}">
+                                    <img src="{{ print.image.url }}" class="card-img" alt="{{ print.description }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'print_info' print.id %}">
+                                    <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
+                                </a>
+                            {% endif %}
+                            <div class="card-body mb-2">
                                 <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.name }}: {{ print.friendly_name }}</small></p>
                                 <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.category.name }}</small></p>
-                                <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-2">Edit</a>
-                                <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-2">Delete</a>
+                                <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-1">Edit</a>
+                                <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-1">Delete</a>
                             </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

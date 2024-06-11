@@ -13,9 +13,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="flex-row justify-content-center">
     <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
-        <div class="row mb-3">
+        <div class="flex-row mb-3">
             <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 mb-5 justify-content-center btn-container">
                 <a href="{% url 'add_project' %}" class="btn btn-warning mt-2 mr-2">Add Project</a>
                 <a href="{% url 'add_photo' %}" class="btn btn-warning mt-2 mr-2">Add Photo</a>
@@ -51,23 +51,25 @@
     </div>
     <div class="row">
         <div class="col-12 col-lg-10 offset-lg-1">
-            {% for photo in photos %}
-                <div class="col-12 col-md-4 col-lg-3 justify-content-center">
-                    <div class="card m-2 p-1 photo-thumbnail">
-                        {% if photo.image %}
-                            <img src="{{ photo.image.url }}" class="card-img" alt="{{ photo.description }}">
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ photo.description }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <p class="card-text paragraph-font mb-1 text-left"><small>{{ photo.name }}: {{ photo.friendly_name }}</small></p>
-                            <p class="card-text paragraph-font mb-1 text-left"><small>{{ photo.project.name }}</small></p>
-                            <a href="{% url 'edit_photo' photo.id %}" class="btn btn-small btn-success m-2">Edit</a>
-                            <a href="{% url 'delete_photo' photo.id %}" class="btn btn-small btn-danger m-2">Delete</a>
+            <div class="row card-group">
+                {% for photo in photos %}
+                    <div class="col-12 col-md-4 col-lg-3 justify-content-center card-group">
+                        <div class="card m-2 p-1 photo-thumbnail">
+                            {% if photo.image %}
+                                <img src="{{ photo.image.url }}" class="card-img" alt="{{ photo.description }}">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ photo.description }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="card-text paragraph-font mb-1 text-left"><small>{{ photo.name }}: {{ photo.friendly_name }}</small></p>
+                                <p class="card-text paragraph-font mb-1 text-left"><small>{{ photo.project.name }}</small></p>
+                                <a href="{% url 'edit_photo' photo.id %}" class="btn btn-small btn-success m-2">Edit</a>
+                                <a href="{% url 'delete_photo' photo.id %}" class="btn btn-small btn-danger m-2">Delete</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
