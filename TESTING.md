@@ -174,8 +174,8 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | `Add Project Page`|
 
 | enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
-| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
-| enter an existing trip name into form | user is informed trip name is taken via flash message, form won't submit | entering an exisiting existing trip | user is informed trip name is taken via flash message, form won't submit | pass |
+| leave any details blank or only contains a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing project name into form | user is informed project name is taken via flash message, form won't submit | entering an exisiting existing project | user is informed project name is taken via flash message, form won't submit | pass |
 | `Edit Project Page` |
 
 | expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on trips page | form is pre-populated | pass |
