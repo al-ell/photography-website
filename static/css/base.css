@@ -16,6 +16,10 @@ body {
     padding: 0;
 }
 
+tbody tr {
+    vertical-align: sub;
+}
+
 .header-container {
     padding: 0 !important;
     text-align: center;

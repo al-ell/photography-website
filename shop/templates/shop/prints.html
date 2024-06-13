@@ -6,7 +6,7 @@
 
 {% block page_header %}
     <div class="container-fluid page-header-container mb-1">
-        <div class="row">
+        <div class="flex-row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-center text-uppercase p-2">
                 <h2 class="heading-font mb-2">Shop</h2>
                 <h3 class="heading-font">Prints</h3>
@@ -16,23 +16,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row justify-content-center">
+    <div class="flex-row justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
-            <div class="row">
-
-                <div class="col-12 col-lg-10 mb-3">
+            <div class="flex-row">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1">
                     <h4 class="heading-font mb-2">Prints by Project</h4>
                     <p>Click the links below to choose a project to view.</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-lg-10 mb-3">
+            <div class="flex-row">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1">
                     <ul class="list-unstyled list-inline d-flex justify-content-around">
                         <li class="list-inline-item">
-                            <a href="{% url 'all_prints' %}?category=Wales" class="project-link heading-font mb-2"><h5>Wales</h5></a>
+                            <a href="{% url 'all_prints' %}?category=The Celtic Archipelago" class="project-link heading-font mb-2"><h5>The Celtic Archipelago</h5></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" class="heading-font mb-2 project-link"><h5>Discovery</h5></a>
+                            <a href="{% url 'all_prints' %}?category=Discovery" class="heading-font mb-2 project-link"><h5>Discovery</h5></a>
                         </li>
                     </ul>
                 </div>

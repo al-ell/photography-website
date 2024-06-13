@@ -7,7 +7,7 @@
 
 {% block page_header %}
     <div class="container-fluid page-header-container mb-5 text-center">
-        <div class="row">
+        <div class="flex-row">
             <div class="col-12 col-md-8 offset-md-2 page-heading text-uppercase p-3">
                 <h2 class="heading-font mb-3">Shopping Bag</h2>
                 <h3 class="heading-font"></h3>
@@ -17,12 +17,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="flex-row">
         {% if bag_items %}
-        <br>
-        <br>
-        
-            <div class="col-12 col-md-8 offset-md-2 bag-table-container table-responsive justify-content-center">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 bag-table-container table-responsive align-items-center justify-content-center">
                 <table class="bag-table text-center">
                     <thead class="bag-thead small-heading heading-font">
                         <tr>
@@ -73,7 +70,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="remove-link">
+                                    <div class="remove-link link-text">
                                         <a class="remove-link text-info float-left" 
                                             id="remove{{ item.prints_id }}" data-selected_size="{{ item.size }}">
                                             <small>Remove</small>
@@ -121,8 +118,8 @@
                 </table>
             </div>
         {% else %}
-            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 empty-bag-container table-responsive table-container justify-content-center">
-                <h4 class="header-container">Your Bag is empty.</h4>
+            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 empty-bag-container justify-content-center">
+                <h4 class="heading-font mb-3">Your Bag is empty.</h4>
                 <p class="paragraph-font link-text">Keep shopping <span><a href="{% url 'all_prints' %}">HERE</a></span>.</p>
             </div>
         {% endif %}        

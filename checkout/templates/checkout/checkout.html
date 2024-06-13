@@ -10,8 +10,8 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container page-header-container mb-2">
-        <div class="row">
+    <div class="container-fluid page-header-container mb-2 justify-content-center">
+        <div class="flex-row d-flex">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase text-center p-3">
                 <h2 class="heading-font mb-2">Checkout</h2>
                 <h3 class="heading-font"></h3>
@@ -21,23 +21,22 @@
 {% endblock %}
 
 {% block content %}
-    
-    <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <div class="row">
-                <div class="col-10 offset-1">
-                    <p class="text-muted">Order Summary ({{ product_count }})</p>            
+    <div class="flex-row d-flex align-items-center">
+        <div class="col-12 col-lg-6 order-lg-last mb-5 d-flex">
+            <div class="flex-row d-flex">
+                <div class="flex-column d-flex col-10 col-offset-1 ">
+                    <p class="text-muted heading-font small-heading">Order Summary ({{ product_count }})</p>            
                     <div class="row">
-                        <div class="col-12">
+                        <div class="flex-column d-flex">
                             <table>
-                                <thead class="heading-font">
+                                <thead class="heading-font small-heading">
                                     <tr>
                                         <th scope="col">Print</th>
                                         <th scope="col">Details</th>
                                         <th scope="col">Subtotal</th>
                                     </tr>
                                 </thead>
-                                <tbody class="paragraph-font">
+                                <tbody class="paragraph-font small-heading">
                                     {% for item in bag_items %}
                                         <tr>
                                             <td>
@@ -53,7 +52,7 @@
                                                 <p>{{ item.prints.friendly_name }}</p><br>
                                                 <p>Size: {{ item.size|upper }}</p><br>
                                                 <p>Qty: {{ item.quantity }}</p>
-                                            </td>
+                                                </td>
                                             <td>
                                                 <p>subtotoal</p>
                                             </td>
@@ -118,14 +117,14 @@
                         <div class="submit-button text-right m-3 link-text">                    
                             <a href="{% url 'bag' %}" class="btn btn-dark m-2">
                                 <span>
-                                    <i class="fa-solid fa-left-long"></i>
+                                    <i class="fa-solid fa-left-long text-white"></i>
                                 </span>
-                                <span class="heading-font">Edit Bag</span>
+                                <span class="heading-font text-white">Edit Bag</span>
                             </a>
-                            <button id="submit-button" class="btn btn-success m-2">
-                                <span class="heading-font">Complete Purchase</span>
+                            <button id="submit-button" class="btn btn-success m-2 text-white">
+                                <span class="heading-font text-white">Complete Purchase</span>
                                 <span>
-                                    <i class="fa-regular fa-credit-card"></i>
+                                    <i class="text-white fa-regular fa-credit-card"></i>
                                 </span>
                             </button>
                             <p class="small text-danger m-1">
