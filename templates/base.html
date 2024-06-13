@@ -83,6 +83,13 @@
             <li class="list-inline-item">
               <a class="icon-link" href="{% url 'bag' %}">
                 <i class="fas fa-bag-shopping"></i>
+                <p class="paragraph-font"><small>
+                  {% if grand_total %}
+                    ${{ grand_total|floatformat:2 }}
+                  {% else %}
+                    $0.00
+                  {% endif %}
+                </small></p>
               </a>
             </li>
             <li class="list-inline-item dropdown">

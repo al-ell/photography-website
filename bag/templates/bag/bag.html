@@ -40,9 +40,13 @@
                                     <img class="img-fluid" src="{{ item.prints.image.url }}"><br>
                                     <p>{{ item.prints.friendly_name }}</p>
                                 </td>
-                                <td>{{ item.selected_size }}</td>
+                                <td>
+                                    {% if item.prints.has_sizes %}
+                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    {% endif %}
+                            </td>
                                 <td class="py-2">
-                                    {% if size == 'a4' %}
+                                    {% if selected_size.value == 'a4' %}
                                         £{{ item.prints.a4_price }}
                                     {% else %}
                                         £{{ item.prints.a5_price }}
@@ -80,8 +84,12 @@
                                     </div>
                                 </td>
                                 <td class="py-2">
-                                    £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
-
+                                    
+                                        {% if selected_size == 'a4' %}
+                                            £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
+                                        {% else %}
+                                            £{{ item.prints.a5_price | calc_subtotal:item.quantity }}
+                                        {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}

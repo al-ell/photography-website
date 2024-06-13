@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-9">
                         <p class="my-0 small heading-font"><strong>{{ item.prints.friendly_name }}</strong></p>
-                        <p class="my-0 small paragraph-font">Size: {% if item.prints.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                        <p class="my-0 small paragraph-font" id="size">Size: {% if item.prints.has_sizes %}{{ item.selected_size|upper }}{% else %}N/A{% endif %}</p>
                         <p class="my-0 small text-muted paragraph-font">Qty: {{ item.quantity }}</p>
                     </div>
                 </div>

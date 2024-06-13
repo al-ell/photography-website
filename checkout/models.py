@@ -18,17 +18,17 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=8, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    full_name = models.CharField(max_length=80, null=False, blank=False)
-    email = models.EmailField(max_length=254, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=False, blank=False)
-    street_address1 = models.CharField(max_length=100, null=False, blank=False)
+    full_name = models.CharField(max_length=80, null=False)
+    email = models.EmailField(max_length=254, null=False)
+    phone_number = models.CharField(max_length=20, null=False)
+    street_address1 = models.CharField(max_length=100, null=False)
     street_address2 = models.CharField(max_length=100, null=True, blank=True)
-    city_or_town = models.CharField(max_length=40, null=False, blank=False)    
-    postcode = models.CharField(max_length=20, null=True, blank=True)
+    city_or_town = models.CharField(max_length=40, null=False)    
+    postcode = models.CharField(max_length=20, null=False, default="")
     county = models.CharField(max_length=40, null=False, blank=False)
     country = CountryField(blank_label="Country *", null=False, blank=False)
-    original_bag = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=250, null=False, blank=False, default='')
+    original_bag = models.TextField(null=False, default='')
+    stripe_pid = models.CharField(max_length=250, null=False, default='')
 
     def _make_order_number(self):
 
@@ -55,18 +55,20 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-    prints = models.ForeignKey(Prints, null=False, blank=False, on_delete=models.CASCADE)
-    prints_size = models.CharField(max_length=2, null=True, blank=True) # A5, A4
-    quantity = models.IntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    order = models.ForeignKey(Order, null=True, blank=True, on_delete=models.CASCADE, related_name='lineitems')
+    prints = models.ForeignKey(Prints, null=True, blank=True, on_delete=models.CASCADE)
+    prints_size = models.CharField(max_length=2, null=False, default="a4") # A5, A4
+    quantity = models.IntegerField(null=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, editable=False)
 
     def save(self, *args, **kwargs):
         """
         
         """
-        
-        self.lineitem_total = self.prints.a4_price * self.quantity
+        if prints_size.value == 'a4':
+            self.lineitem_total = self.prints.a4_price * self.quantity
+        else:
+            self.lineitem_total = self.prints.a5_price * self.quantity
         
         super().save(*args, **kwargs)
 
