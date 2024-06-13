@@ -60,11 +60,6 @@ h1 {
     font-weight: 900 !important;
 }
 
-.playfair-display-sc-black {
-    font-family: "Playfair Display SC", serif;
-    font-weight: 900 !important;
-    font-style: normal;
-  }
 
 .heading-font {
     font-family: "Karla", sans-serif;
@@ -141,9 +136,12 @@ h1 {
 .logo h1,
 .logo {
     text-decoration: none;
-    color: #264d00 !important;
+    color: #880808 !important;
     font-size: 2rem;
     letter-spacing: 0.2rem;
+    font-family: "Crimson Pro", serif;
+    font-weight: 700 !important;
+    font-style: normal;
 }
 
 
