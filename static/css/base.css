@@ -60,6 +60,7 @@ h1 {
     font-weight: 900 !important;
 }
 
+.small-heading,
 .card h5 {
     font-size: 0.9rem !important;
 }
@@ -114,6 +115,14 @@ h1 {
     display: inline-flex;
     padding-right: .5rem;
     padding-left: .5rem;
+}
+
+.icon-link-bag {
+    color: rgba(0, 0, 0, .5);
+    display: inline-flex;
+    padding: .5rem 1rem;
+    flex-direction: column;
+    margin-top: 1.5rem;
 }
 
 .icon-link {

@@ -16,9 +16,9 @@
     </div>
     <hr class="mt-1 mb-2">
     <!-- Update to prevent bag from showing on success as postage cost -->
-    {% if grand_total > 4 and not on_profile_page %}
+    {% if grand_total and not on_profile_page %}
       <div class="bag-container">
-        <p class="heading-font text-muted text-center small py-1">Your Bag ({{ product_count }})</p>
+        <p class="heading-font small-heading text-muted text-center small py-1">Your Bag ({{ product_count }})</p>
         <div class="bag-notification-wrapper m-1">
             {% for item in bag_items %}
                 <div class="row">
@@ -26,8 +26,8 @@
                         <img class="w-100" src="{{ item.prints.image.url }}">
                     </div>
                     <div class="col-9">
-                        <p class="my-0 small heading-font"><strong>{{ item.prints.friendly_name }}</strong></p>
-                        <p class="my-0 small paragraph-font" id="size">Size: {% if item.prints.has_sizes %}{{ item.selected_size|upper }}{% else %}N/A{% endif %}</p>
+                        <p class="my-0 small small-heading heading-font"><strong>{{ item.prints.friendly_name }}</strong></p>
+                        <p class="my-0 small paragraph-font" id="size">Size: {% if item.prints.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                         <p class="my-0 small text-muted paragraph-font">Qty: {{ item.quantity }}</p>
                     </div>
                 </div>

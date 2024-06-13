@@ -25,8 +25,8 @@ def bag_contents(request):
                 'form': form, 
             })
         else:
+            prints = get_object_or_404(Prints, pk=prints_id)
             for size, quantity in print_data['prints_by_size'].items():
-                prints = get_object_or_404(Prints, pk=prints_id)
                 if size == 'a4':
                     total += quantity * prints.a4_price
                     product_count += quantity
@@ -35,6 +35,7 @@ def bag_contents(request):
                     'quantity': quantity,
                     'prints': prints,
                     'form': form, 
+                    'size': size,
                     })
                 else:
                     total += quantity * prints.a5_price
@@ -43,18 +44,17 @@ def bag_contents(request):
                     'prints_id': prints_id,
                     'quantity': quantity,
                     'prints': prints,
+                    'size': size,
                     'form': form, 
                     })
 
 
-    if total == 0:
-        delivery = 0
-    elif total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = Decimal(settings.DELIVERY_FEE)
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
-    else:
+    if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = 0 
         free_delivery_delta = 0
+    else:
+        delivery = settings.DELIVERY_FEE
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
 
     grand_total = delivery + total
 
