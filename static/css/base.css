@@ -65,6 +65,18 @@ p {
     color: #000;
 }
 
+.project-link,
+.project-link a {
+    color: #264d00;
+}
+
+.icon-container li a:hover,
+.project-link a:hover,
+.nav-item li a:hover,
+.btt-button:hover {
+    color: #660000;
+}
+
 .social-links li a i:hover {
     color: #660000;
     background-color: #fff;
@@ -197,11 +209,7 @@ h1 {
     letter-spacing: 0.2rem;
 }
 
-/* Shop */
 
-.project-link {
-    color: #264d00;
-}
 
 /* From W3 Schools */
 /* https://www.w3schools.com/howto/howto_css_dropdown.asp */
@@ -241,6 +249,20 @@ display: block;
 
 
 
+/* scroll button */
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 1rem;
+}
+
+.btt-link {
+    cursor: pointer;
+}
 
 /* Project Galleries */
 

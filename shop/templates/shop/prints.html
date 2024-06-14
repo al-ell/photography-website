@@ -19,13 +19,15 @@
     <div class="flex-row justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
             <div class="flex-row d-flex justify-content-start">
-                <div class="dropdown text-uppercase">
-                    <button class="dropbtn btn btn-lg btn-outline-dark"><i class="fa-solid fa-sort mr-1"></i> Sort</button>
-                    <div class="dropdown-content paragraph-font rounded text-left">
-                      <a href="{% url 'all_prints' %}?sort=friendly_name&direction=asc" class="project-link m-2"><h5>Name (A - Z)</h5></a>
-                      <a href="{% url 'all_prints' %}?sort=friendly_name&direction=desc" class=" m-2 project-link"><h5>Name (Z - A)</h5></a>
-                      <a href="{% url 'all_prints' %}?sort=category.name&direction=asc" class="m-2 project-link"><h5>Category (A - Z)</h5></a>
-                      <a href="{% url 'all_prints' %}?sort=category.name&direction=desc" class="m-2 project-link"><h5>Category (Z - A)</h5></a>
+                <div class="col-12 col-md-10 col-lg-6">
+                    <div class="sort-select-wrapper paragraph-font w-50">
+                        <select id="sort-selector" class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <option class="m-2" value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                            <option class="m-2" value="friendly_name_asc" {% if current_sorting == 'friendly_name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                            <option class="m-2" value="friendly_name_desc" {% if current_sorting == 'friendly_name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                            <option class="m-2" value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                            <option class="m-2" value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -72,12 +74,11 @@
                                 {% if print.category %}
                                     <p class="small paragraph-font">
                                         <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.name }}">
-                                            </i>{{ print.category.name.name }}
+                                            {{ print.category.name.name }}
                                         </a>
                                     </p>
                                 {% endif %}
                                 <p class="card-text paragraph-font">From £{{ print.a5_price }}</p>
-                                
                             </div>
                         </div>
                     </div>
@@ -85,4 +86,63 @@
             </div>
         </div>
     </div>
+    <div class="btt-button bg-light rounded border border-black">
+        <a class="btt-link d-flex h-100 project-link">
+            <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
+<script type="text/javascript">
+    $('#sort-selector').change(function() {
+        var selector = $(this)
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if (selectedVal == "category_asc" | "category_desc") {
+            if(selectedVal != "reset") {
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort", sort);
+                currentUrl.searchParams.delete("direction", direction);
+
+                window.location.replace(currentUrl);
+            }
+        } else {
+            // Extra if/else statement as the name of the data being filtered has two '_'
+            if(selectedVal != "reset") {
+                if(selectedVal == 'friendly_name_asc') {
+                    var sort = selectedVal.slice(0, -4);
+                    var direction = selectedVal.split("_")[2];
+                } else {
+                    var sort = selectedVal.slice(0, -5);
+                    var direction = selectedVal.split("_")[2];
+                }
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort", sort);
+                currentUrl.searchParams.delete("direction", direction);
+
+                window.location.replace(currentUrl);
+            }
+        }
+    });
+</script>
 {% endblock %}

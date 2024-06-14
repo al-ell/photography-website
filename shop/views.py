@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models.functions import Lower
 from django.db.models import Q
 
 from .models import Prints, Category
@@ -18,10 +19,12 @@ def all_prints(request):
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
-            sort = sortkey 
+            sort = sortkey
             if sortkey == 'friendly_name':
-                sortkey = 'lower_name'
-                prints = prints.annotate(lower_name=Lower('friendly_name'))
+                sortkey = 'lower_friendly_name'
+                prints = prints.annotate(lower_friendly_name=Lower('friendly_name'))
+            elif sortkey == 'category':
+                sortkey = 'category__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -37,12 +40,12 @@ def all_prints(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter search criteria, please try agin.")
+                messages.error(request, "You didn't enter search criteria, please try again.")
                 return redirect(reverse('all_prints'))
-            
-            queries = Q(friendly_name__icontains=query) | Q(description__icontains=query) | Q(category__name__name__icontains=query)
+
+            queries = Q(friendly_name__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query)
             prints = prints.filter(queries).all()
-    
+
     current_sorting = f'{sort}_{direction}'
 
     template = 'shop/prints.html'
@@ -54,6 +57,10 @@ def all_prints(request):
     }
 
     return render(request, template, context)
+
+
+
+
 
 
 def print_info(request, prints_id):
