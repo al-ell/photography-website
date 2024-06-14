@@ -17,7 +17,7 @@ def all_prints(request):
         if 'category' in request.GET:
             categories = [request.GET['category']]
             prints = prints.filter(category__name__name__in=categories)
-            categories = Category.objects.filter(name__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
 
     if request.GET:
         if 'q' in request.GET:
@@ -26,14 +26,14 @@ def all_prints(request):
                 messages.error(request, "You didn't enter search criteria, please try agin.")
                 return redirect(reverse('all_prints'))
             
-            queries = Q(friendly_name__icontains=query) | Q(description__icontains=query)
-            prints = prints.filter(queries)
+            queries = Q(friendly_name__icontains=query) | Q(description__icontains=query) | Q(category__name__name__icontains=query)
+            prints = prints.filter(queries).all()
 
     template = 'shop/prints.html'
     context = {
         'prints': prints,
         'search_term': query,
-        'category': categories,
+        'current_categories': categories,
     }
 
     return render(request, template, context)
