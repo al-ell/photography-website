@@ -57,6 +57,14 @@ def shop_admin(request):
     prints = Prints.objects.all()
     categories = Category.objects.all()
 
+    
+    if request.GET:
+        categories = None
+        if 'category' in request.GET:
+            categories = [request.GET['category']]
+            prints = prints.filter(category__name__name__in=categories)
+            categories = Category.objects.filter(name__name__in=categories)
+
     template = 'shop/shop_admin.html'
     context = {
         'prints': prints,

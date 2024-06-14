@@ -51,7 +51,22 @@
             </div>
         </div>
     </div>
-    <div class="flex-row justify-content-center">
+    <div class="flex-row d-flex justify-content-around mb-3">
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <ul class="list-unstyled text-uppercase list-inline d-flex justify-content-around">
+                <li class="list-inline-item">
+                    <a href="{% url 'shop_admin' %}?category=The Celtic Archipelago" class="project-link heading-font mb-2"><h5>The Celtic Archipelago</h5></a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="{% url 'shop_admin' %}?category=Discovery" class="heading-font mb-2 project-link"><h5>Discovery</h5></a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="{% url 'shop_admin' %}" class="project-link small-heading heading-font mb-2"><h5>Reset Filters</h5></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex-row d-flex justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1">
             <div class="flex-row card-group">
                 {% for print in prints %}
