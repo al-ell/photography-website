@@ -59,6 +59,22 @@ p {
     display: flex;
 }
 
+/* Colors */
+
+.logo:hover {
+    color: #000;
+}
+
+.social-links li a i:hover {
+    color: #660000;
+    background-color: #fff;
+}
+
+.social-links li a i {
+    background-color: #660000;
+    color: #fff;
+}
+
 /* Fonts - from Google Fonts */
 h1 {
     font-weight: 900 !important;
@@ -152,7 +168,7 @@ h1 {
 .logo h1,
 .logo {
     text-decoration: none;
-    color: #880808 !important;
+    color: #660000 !important;
     font-size: 2rem;
     letter-spacing: 0.2rem;
     font-family: "Crimson Pro", serif;
@@ -305,6 +321,56 @@ width: 100%;
     border-width: 2px;
 }
 
+/* Footer */
+
+footer {
+    height: 8vh;
+    margin: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 500;
+}
+
+.copyright,
+.social-container {
+    flex-direction: row;
+    width: 100%;
+}
+
+.social-icon {
+    display: flex;
+}
+
+.social-links {
+    list-style-type: none;
+    display: flex;
+
+}
+
+.social-links li {
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+}
+
+.social-links li a {
+    text-decoration: none;
+}
+
+.social-links li a i {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    line-height: 6px;
+    margin-bottom: 1rem;
+    /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
 
 /* Media Queries */
 
