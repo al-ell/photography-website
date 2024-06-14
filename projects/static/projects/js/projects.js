@@ -27,3 +27,10 @@ Fancybox.bind('[data-fancybox]', {
           </div>`,
   },
 });
+
+
+// Add back to top functions to Project app
+
+$('.btt-link').click(function(e) {
+  window.scrollTo(0,0)
+})
