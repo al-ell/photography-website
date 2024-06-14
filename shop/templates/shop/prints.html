@@ -18,6 +18,17 @@
 {% block content %}
     <div class="flex-row justify-content-center">
         <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
+            <div class="flex-row d-flex justify-content-start">
+                <div class="dropdown text-uppercase">
+                    <button class="dropbtn btn btn-lg btn-outline-dark"><i class="fa-solid fa-sort mr-1"></i> Sort</button>
+                    <div class="dropdown-content paragraph-font rounded text-left">
+                      <a href="{% url 'all_prints' %}?sort=friendly_name&direction=asc" class="project-link m-2"><h5>Name (A - Z)</h5></a>
+                      <a href="{% url 'all_prints' %}?sort=friendly_name&direction=desc" class=" m-2 project-link"><h5>Name (Z - A)</h5></a>
+                      <a href="{% url 'all_prints' %}?sort=category.name&direction=asc" class="m-2 project-link"><h5>Category (A - Z)</h5></a>
+                      <a href="{% url 'all_prints' %}?sort=category.name&direction=desc" class="m-2 project-link"><h5>Category (Z - A)</h5></a>
+                    </div>
+                </div>
+            </div>
             <div class="flex-row">
                 <div class="col-12 col-lg-10 mb-3 offset-lg-1">
                     <h4 class="heading-font mb-2">Prints by Project</h4>
@@ -56,10 +67,18 @@
                                     <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
                                 </a>
                             {% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
-                                    <p class="card-text paragraph-font">From £{{ print.a5_price }}</p>
-                                </div>
+                            <div class="card-body">
+                                <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
+                                {% if print.category %}
+                                    <p class="small paragraph-font">
+                                        <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.name }}">
+                                            </i>{{ print.category.name.name }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                                <p class="card-text paragraph-font">From £{{ print.a5_price }}</p>
+                                
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

@@ -41,7 +41,11 @@
             <div class="col-12 col-md-7 pl-2">
                 <div class="row">
                     <div class="col-10 offset-1 mb-3">
-                        <h4 class="heading-font">{{ prints.category.name }}</h4>
+                        {% if print.category %}
+                            <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.id }}">
+                                <h4 class="heading-font">{{ print.category.name }}</h4>
+                            </a>
+                        {% endif %}
                         <p class="paragraph-font">{{ prints.description }}</p>
                     </div>
                     <div class="col-10 offset-1 mb-3">

@@ -12,14 +12,28 @@ def all_prints(request):
     prints = Prints.objects.all()
     query = None
     categories = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey 
+            if sortkey == 'friendly_name':
+                sortkey = 'lower_name'
+                prints = prints.annotate(lower_name=Lower('friendly_name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            prints = prints.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = [request.GET['category']]
             prints = prints.filter(category__name__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            categories = Category.objects.filter(name__name__in=categories)
 
-    if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -28,12 +42,15 @@ def all_prints(request):
             
             queries = Q(friendly_name__icontains=query) | Q(description__icontains=query) | Q(category__name__name__icontains=query)
             prints = prints.filter(queries).all()
+    
+    current_sorting = f'{sort}_{direction}'
 
     template = 'shop/prints.html'
     context = {
         'prints': prints,
         'search_term': query,
         'current_categories': categories,
+        'current_sorting': current_sorting,
     }
 
     return render(request, template, context)
