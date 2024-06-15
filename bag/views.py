@@ -46,12 +46,11 @@ def add_to_bag(request, prints_id):
 
 
 def adjust_bag(request, prints_id):
-
+    prints = get_object_or_404(Prints, pk=prints_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'selected_size' in request.POST:
         size = request.POST['selected_size']
-    
     bag = request.session.get('bag', {})
 
     if size:
@@ -64,9 +63,9 @@ def adjust_bag(request, prints_id):
                 bag.pop(prints_id)
             messages.success(request, f'Removed size {size.upper()} {prints.friendly_name} from your bag')
     else:
-        if quantity > 0:
+        if quantity > 0:        
             bag[prints_id] = quantity
-            messages.success(request, f'Updated {prints.friendly_name} quantity to {bag[prints_id]}')
+            messages.success(request, f'Updated {prints.friendly_name} quantity to {bag[quantity]}')
         else:
             bag.pop(prints_id)
             messages.success(request, f'Removed {prints.friendly_name} from your bag')
@@ -76,12 +75,11 @@ def adjust_bag(request, prints_id):
 
 
 def remove_from_bag(request, prints_id):
-
     try:
+        prints = get_object_or_404(Prints, pk=prints_id)
         size = None
         if 'selected_size' in request.POST:
             size = request.POST['selected_size']
-        
         bag = request.session.get('bag', {})
 
         if size:

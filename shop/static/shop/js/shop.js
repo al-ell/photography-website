@@ -1,15 +1,3 @@
-
-// Add back to top functions to Project app
-
-$('.btt-link').click(function(e) {
-    window.scrollTo(0,0)
-  })
-
-  $('.btt-link').click(function(e) {
-    window.scrollTo(0,0)
-})
-
-
 $('#sort-selector').change(function() {
     var selector = $(this)
     var currentUrl = new URL(window.location);
