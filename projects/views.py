@@ -102,9 +102,11 @@ def edit_project(request, project_id):
 def delete_project(request, project_id):
     """ Delete project view """
     project = get_object_or_404(Project, pk=project_id)
-    project.delete()
-    messages.success(request, f'Deleted {project.name} from Portfolio.')
-    return redirect(reverse('portfolio_admin'))
+    if request.method == 'POST':
+        project.delete()
+        return redirect('portfolio_admin')
+        messages.success(request, f'Deleted {project.name} from Portfolio.')
+    return render(request, 'projects/delete_project.html')
 
 
 @login_required
