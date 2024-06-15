@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row contact-container">
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
             <form method="POST" action="{% url 'contact' %}" class="form contact-form paragraph-font" id="contact-form" enctype="multipart/form-data">
                 {% csrf_token %}

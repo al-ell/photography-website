@@ -1,4 +1,14 @@
 /* Margins and Paddings */
+.print-container,
+.project-container,
+.profile-container,
+.contact-container,
+.checkout-container,
+.bag-container,
+.admin-container,
+.about-container {
+    margin-bottom: 15vh;
+}
 
 .no-gutters {
     margin-right: 0;
@@ -30,17 +40,17 @@ tbody tr {
 }
 
 .page-heading h2 {
-    font-size: 2rem;
-    text-transform: uppercase;
-}
-
-.page-heading h3 {
     font-size: 1.5rem;
     text-transform: uppercase;
 }
 
+.page-heading h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
 p {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .main-container {
@@ -60,6 +70,14 @@ p {
 
 /* Colors */
 
+body {
+    background-color: #fff;
+}
+
+header {
+    background-color: #f8f9fa;
+}
+
 .logo:hover {
     color: #000;
 }
@@ -69,16 +87,17 @@ p {
     color: #264d00;
 }
 
+.nav-link:hover,
 .icon-container li a:hover,
 .project-link a:hover,
-.nav-item li a:hover,
+.nav-item a:hover,
 .btt-button:hover {
-    color: #660000;
+    color: #660000 !important;
 }
 
 .social-links li a i:hover {
-    color: #660000;
-    background-color: #fff;
+    color: #fff;
+    background-color: #264d00;
 }
 
 .social-links li a i {
@@ -93,7 +112,7 @@ h1 {
 
 .small-heading,
 .card h5 {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
 }
 
 .heading-font {
@@ -101,7 +120,7 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #000;
 }
 
@@ -226,26 +245,6 @@ background-color: #f8f9fa;
 min-width: 15rem;
 z-index: 400;
 }
-
-/* Links inside the dropdown */
-.dropdown-content a {
-color: #660000;
-text-decoration: none;
-display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #fff;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #fff;}
-
-
-/* Amdin pages */
-
 
 
 /* scroll button */
