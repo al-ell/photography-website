@@ -40,6 +40,10 @@ def discovery(request):
 @login_required
 def portfolio_admin(request):
     """ Project and photo management view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     photos = Photo.objects.all()
     projects = Project.objects.all()
     template = 'projects/portfolio_admin.html'
@@ -54,6 +58,9 @@ def portfolio_admin(request):
 @login_required
 def add_project(request):
     """ Add project view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -77,6 +84,10 @@ def add_project(request):
 @login_required
 def edit_project(request, project_id):
     """ Edit project view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     project = get_object_or_404(Project, pk=project_id)
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
@@ -101,6 +112,10 @@ def edit_project(request, project_id):
 @login_required
 def delete_project(request, project_id):
     """ Delete project view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     project = get_object_or_404(Project, pk=project_id)
     if request.method == 'POST':
         project.delete()
@@ -112,6 +127,10 @@ def delete_project(request, project_id):
 @login_required
 def add_photo(request):
     """ Add photo view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     projects = Project.objects.all()
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
@@ -135,6 +154,10 @@ def add_photo(request):
 @login_required
 def edit_photo(request, photo_id):
     """ Edit photo view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     projects = Project.objects.all()
     photo = get_object_or_404(Photo, pk=photo_id)
     if request.method == 'POST':
@@ -160,10 +183,13 @@ def edit_photo(request, photo_id):
 @login_required
 def delete_photo(request, photo_id):
     """ Delete photo view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     photo = get_object_or_404(Photo, pk=photo_id)
     if request.method == 'POST':
         photo.delete()
         return redirect('portfolio_admin')
         messages.success(request, f'Deleted {photo.name}:{photo.friendly_name} from {photo.project}.')
     return render(request, 'projects/delete_photo.html')
-

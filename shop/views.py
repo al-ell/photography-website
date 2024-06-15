@@ -78,6 +78,10 @@ def print_info(request, prints_id):
 @login_required
 def shop_admin(request):
     """ Shop view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     prints = Prints.objects.all()
     categories = Category.objects.all()
 
@@ -101,7 +105,10 @@ def shop_admin(request):
 @login_required
 def add_size(request):
     """ Add size and price view """
-    
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = PriceAndSizeForm(request.POST, request.FILES)
         if form.is_valid():
@@ -124,6 +131,10 @@ def add_size(request):
 @login_required
 def add_print(request):
     """ Add print view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     category = get_object_or_404(Category)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
@@ -148,6 +159,10 @@ def add_print(request):
 @login_required
 def edit_print(request, prints_id):
     """ Edit print view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES, instance=prints)
@@ -173,6 +188,10 @@ def edit_print(request, prints_id):
 @login_required
 def delete_print(request, prints_id):
     """ Delete print view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         prints.delete()
@@ -184,7 +203,10 @@ def delete_print(request, prints_id):
 @login_required
 def add_category(request):
     """ Add category view """
-    
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
@@ -207,6 +229,10 @@ def add_category(request):
 @login_required
 def edit_category(request, category_id):
     """ Edit category view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     category = get_object_or_404(Prints, pk=category_id)
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES, instance=category)
@@ -232,6 +258,10 @@ def edit_category(request, category_id):
 @login_required
 def delete_category(request, category_id):
     """ Delete category view """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin has access to this page.')
+        return redirect(reverse('home'))
+
     category = get_object_or_404(Category, pk=category_id)
     if request.method == 'POST':
         category.delete()
