@@ -377,7 +377,6 @@ width: 100%;
 /* Footer */
 
 footer {
-    height: 8vh;
     margin: 0;
     bottom: 0;
     width: 100%;
@@ -387,8 +386,11 @@ footer {
 
 .copyright,
 .social-container {
-    flex-direction: row;
     width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icon {
@@ -398,6 +400,7 @@ footer {
 .social-links {
     list-style-type: none;
     display: flex;
+    padding: 0;
 
 }
 
@@ -436,6 +439,19 @@ footer {
 
 
 @media screen and (max-width: 768px) {
+    footer {
+        height: 14vh;
+    }
+
+    .social-links {
+        margin: 0;
+    }
+
+    .socail-links,
+    .social-links li {
+        padding-bottom: 0 !important;
+    }
+
     /* Nav */
     .nav-item {
         text-align: center;
@@ -476,6 +492,13 @@ footer {
         transform: scale(0.8);
     }
 }
+
+@media screen and (min-width: 768px) {
+    footer {
+        height: 8vh;
+    }
+}
+
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (min-width: 992px) {
