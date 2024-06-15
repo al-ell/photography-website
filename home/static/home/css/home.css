@@ -1,0 +1,30 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.carousel-item {
+    background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center center;
+	width: 100vw;
+    height: 100vh;
+}
+
+
+.main-container {
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.carousel-container {
+    margin-top: 6.5rem;
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .carousel-indicators {
+        bottom: 10rem !important;
+    }
+}

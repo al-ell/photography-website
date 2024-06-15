@@ -51,74 +51,77 @@
   </head>
   <body>
     <header class="container-fluid fixed-top bg-light no-gutters header-container">
-      <div id="topnav" class="row no-gutters">
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center logo-container no-gutters">
-          <a class="logo text-uppercase nav-link main-logo-link" href="{% url 'home' %}">
-            <span><h1>Gwilym Llywelyn</h1></span>
-          </a>
-        </div>
-        <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
-          <ul class="list-inline list-unstyled heading-font icon-container">
-            <li class="list-inline-item">
-              <a class="icon-link dropdown-toggle" href="#" id="shop-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="text-center">
-                      <div><i class="fas fa-search"></i></div>
-                  </div>
-              </a>
-              <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="shop-search">
-                  <form class="form" method="GET" action="{% url 'all_prints' %}">
-                      <div class="input-group w-100">
-                          <input class="form-control border border-black" type="text" name="q" placeholder="Search">
-                          <div class="input-group-append">
-                              <button class="form-control form-control btn btn-dark" type="submit">
-                                  <span>
-                                      <i class="fas fa-search"></i>
-                                  </span>
-                              </button>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-            </li>
-            <li class="list-inline-item text-nowrap">
-              <a class="icon-link-bag" href="{% url 'bag' %}">
-                <i class="fas fa-bag-shopping"></i>
-                <p class="paragraph-font"><small>
-                  {% if grand_total %}
-                    ${{ grand_total|floatformat:2 }}
-                  {% else %}
-                    £0.00
-                  {% endif %}
-                </small></p>
-              </a>
-            </li>
-            <li class="list-inline-item dropdown">
-              <a class="icon-link dropdown-toggle" href="#" id="user-options" role="button" data-toggle="dropdown" aria-expanded="false">
-                <div>
-                  <i class="fa fa-user"></i>
+      <div id="topnav">
+        <div class="row no-gutters">
+
+          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center logo-container no-gutters">
+            <a class="logo text-uppercase nav-link main-logo-link" href="{% url 'home' %}">
+              <span><h1>Gwilym Llywelyn</h1></span>
+            </a>
+          </div>
+          <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
+            <ul class="list-inline list-unstyled heading-font icon-container">
+              <li class="list-inline-item">
+                <a class="icon-link dropdown-toggle" href="#" id="shop-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-center">
+                        <div><i class="fas fa-search"></i></div>
+                    </div>
+                </a>
+                <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="shop-search">
+                    <form class="form" method="GET" action="{% url 'all_prints' %}">
+                        <div class="input-group w-100">
+                            <input class="form-control border border-black" type="text" name="q" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="form-control form-control btn btn-dark" type="submit">
+                                    <span>
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="user-options">
-                {% if request.user.is_authenticated %}
-                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                    <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
-                {% else %}
-                    <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
-                    <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
-                {% endif %}
+              </li>
+              <li class="list-inline-item text-nowrap">
+                <a class="icon-link-bag" href="{% url 'bag' %}">
+                  <i class="fas fa-bag-shopping"></i>
+                  <p class="paragraph-font"><small>
+                    {% if grand_total %}
+                      ${{ grand_total|floatformat:2 }}
+                    {% else %}
+                      £0.00
+                    {% endif %}
+                  </small></p>
+                </a>
+              </li>
+              <li class="list-inline-item dropdown">
+                <a class="icon-link dropdown-toggle" href="#" id="user-options" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <div>
+                    <i class="fa fa-user"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="user-options">
+                  {% if request.user.is_authenticated %}
+                      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                      <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                  {% else %}
+                      <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                      <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                  {% endif %}
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 col-lg-5 my-0 py-1 py-lg-0">
+            <nav class="navbar navbar-expand-lg navbar-light w-100 no-gutters">
+              <div class="">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include 'includes/main-nav.html' %}
               </div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-4 col-lg-5 my-0 py-1 py-lg-0">
-          <nav class="navbar navbar-expand-lg navbar-light w-100 no-gutters">
-            <div class="">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              {% include 'includes/main-nav.html' %}
-            </div>
-          </nav>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
