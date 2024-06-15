@@ -161,6 +161,9 @@ def edit_photo(request, photo_id):
 def delete_photo(request, photo_id):
     """ Delete photo view """
     photo = get_object_or_404(Photo, pk=photo_id)
-    photo.delete()
-    messages.success(request, f'Deleted {photo.name} from {photo.project}.')
-    return redirect(reverse('portfolio_admin'))
+    if request.method == 'POST':
+        photo.delete()
+        return redirect('portfolio_admin')
+        messages.success(request, f'Deleted {photo.name}:{photo.friendly_name} from {photo.project}.')
+    return render(request, 'projects/delete_photo.html')
+

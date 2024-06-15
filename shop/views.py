@@ -174,9 +174,11 @@ def edit_print(request, prints_id):
 def delete_print(request, prints_id):
     """ Delete print view """
     prints = get_object_or_404(Prints, pk=prints_id)
-    prints.delete()
-    messages.success(request, f'Deleted {prints.name} from {prints.category}.')
-    return redirect(reverse('shop_admin'))
+    if request.method == 'POST':
+        prints.delete()
+        return redirect('shop_admin')
+        messages.success(request, f'Deleted {prints.name} from {prints.category}.')
+    return render(request, 'projects/delete_print.html')
 
 
 @login_required
@@ -231,6 +233,9 @@ def edit_category(request, category_id):
 def delete_category(request, category_id):
     """ Delete category view """
     category = get_object_or_404(Category, pk=category_id)
-    category.delete()
-    messages.success(request, f'Deleted {category.name}.')
-    return redirect(reverse('shop_admin'))
+    if request.method == 'POST':
+        category.delete()
+        return redirect('shop_admin')
+        messages.success(request, f'Deleted {category.name}.')
+
+    return render(request, 'projects/delete_category.html')

@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container-fluid page-header-container text-center mb-1">
+    <div class="container-fluid page-header-container mb-1">
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2 text-center">
                 {% for project in projects %}
                     {% if project.name == 'Discovery' %}
                     <h2 class="heading-font mb-3">{{ project.name }}</h2>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-10 offset-md-1">
+            <div class="col-12 col-md-10 offset-md-1 text-left">
                 {% for project in projects %}
                     {% if project.name == 'Discovery' %}
                         <p class="paragraph-font mb-2">{{ project.description }}</p>
@@ -38,7 +38,6 @@
 
 
 {% block content %}
-
 <div class="container-fluid">
     <div class="row project-row card-group" id="app">   
         {% for photo in photos %}

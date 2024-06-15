@@ -2,28 +2,27 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block extra_title %}
-    Delete Project
+    Delete Photo
 {% endblock %}
 
 {% block page_header %}
     <div class="container-fluid page-header-container mb-1">
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2 text-center">
-                <h2 class="heading-font m-2">Project Maintenence</h2>
-                <h3 class="heading-font">Delete Project</h3>
+                <h2 class="heading-font m-2">Photo Maintenence</h2>
+                <h3 class="heading-font">Delete Photo</h3>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3 text-center">
-            <form method="POST" action="" class="form project-form paragraph-font" id="delete-project-form">
+            <form method="POST" action="" class="form project-form paragraph-font" id="delete-photo-form">
                 {% csrf_token %}                
-                    <h4 class="heading-font">Are you sure you want to delete {{ project.name }}?</h4>
-                    <p class="mb-5">This action is permanent and may delete associated shop items and photos.</p>
-
+                    <h4 class="heading-font">Are you sure you want to delete {{ photo.name }}:{{ photo.friendly_name }}?</h4>
+                    <p class="mb-5">This action is permanent and may delete associated shop items anf projects.</p>
                     <a class="btn btn-secondary m-2" href="{% url 'portfolio_admin' %}">Cancel</a>
                     <input class="btn btn-danger m-2" type="submit" value="Yes">
                 </div>
