@@ -1,10 +1,13 @@
 # Gwilym Llywelyn
 
+
+
+
+
 ## Introduction
 
-
 Link to deployed site can be found [Here]()
-
+Github last commit [here]()
 
 # Purpose
 
@@ -251,9 +254,7 @@ I wanted to contrast a modern font, which I've used for the headings with tradit
 
 ![delete]()
 
-### New Arrivals
 
-![arrivals]()
 
 # Footer
 

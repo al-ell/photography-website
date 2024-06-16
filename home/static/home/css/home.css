@@ -7,19 +7,31 @@ body {
     background-repeat:no-repeat;
 	background-size:cover;
 	background-position:center center;
-	width: 100vw;
-    height: 100vh;
+	width: 100%;
+    height: 100%;
 }
 
 .main-container {
+    margin-top: 2rem;
     height: calc(100vh - 6rem);
     overflow: hidden;
     padding: 0 !important;
 }
 
 .carousel-container {
-    margin-top: 6.5rem;
+    margin-top: 3vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.home-img {
+    margin-top: 8vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
+    height: 100vh;
 }
 
 /* Media queries */

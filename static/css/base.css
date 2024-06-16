@@ -386,10 +386,7 @@ footer {
 .copyright,
 .social-container {
     width: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .social-icon {
@@ -400,12 +397,11 @@ footer {
     list-style-type: none;
     display: flex;
     padding: 0;
-
+    margin: 0;
 }
 
 .social-links li {
     text-align: center;
-    padding: 0.5rem;
     display: flex;
 }
 
@@ -428,6 +424,12 @@ footer {
     text-decoration: none;
 }
 
+i {
+    margin: 0 !important;
+}
+
+
+
 /* Media Queries */
 
 @media screen and (max-width: 576px) {
@@ -439,7 +441,7 @@ footer {
 
 @media screen and (max-width: 768px) {
     footer {
-        height: 14vh;
+        height: 12vh;
     }
 
     .social-links {
@@ -494,7 +496,7 @@ footer {
 
 @media screen and (min-width: 768px) {
     footer {
-        height: 8vh;
+        height: 6vh;
     }
 }
 
