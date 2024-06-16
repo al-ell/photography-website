@@ -157,7 +157,6 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 ### Full Testing
 
-
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | ----- | --- | --- | --- | --- |
 | `Navbar` |
@@ -174,14 +173,13 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | `Home Page` |
 | Click on carousel arrows and buttons | skips to next or selected image | clicking on button |skips to next or selected image | pass 
 | `Register Page` |
-| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
 | enter an existing username into form | user is informed username is taken via message, form won't submit | entering an exisiting username | user is informed username is taken via flash message, form won't submit | pass |
 | enter a password that doesn't match criteria | user is informed of password criteria, form won't submit | entering invalid details | user is informed of password criteria, form won't submit | pass |
 | `Log in Page` |
 | enter pre registered valid details into form | form submits | clicking on submit | taken to home page | pass |
-| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
 | enter an incorrect username or password into form | user is informed username or password is incorred via flash message, form won't submit | entering invalid details | user is informed username or password is incorred via flash message, form won't submit | pass |
-
 | `Manage Portfolio` |
 | Click on "add project" button | taken to add project page | clicking on button | taken to add project page | pass |
 | Click on "edit project" button | taken to edit project page, prepopulated with selected project | clicking on button | taken to  edit project page | pass |
@@ -189,41 +187,83 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | Click on "edit photo" button | taken to edit photo page, prepopulated with selected photo info | clicking on button | taken to  edit photo page, prepopulated with selected photo info | pass |
 | Click on "delete" buttons | taken to delete confirmation page | clicking on delete button | taken to delete confirmation page | pass |
 | `Add Project Page`|
-
-| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
 | leave any details blank or only contains a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
 | enter an existing project name into form | user is informed project name is taken via flash message, form won't submit | entering an exisiting existing project | user is informed project name is taken via flash message, form won't submit | pass |
 | `Edit Project Page` |
-
-| expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on trips page | form is pre-populated | pass |
-| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
+| expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on portfolio admin page | form is pre-populated | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
 | leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
-| enter an existing trip name into form | user is informed trip name is taken via flash message, form won't submit | entering an exisiting existing trip | user is informed trip name is taken via flash message, form won't submit | pass |
-
+| enter an existing project name into form | user is informed project name is taken via flash message, form won't submit | entering an exisiting existing project | user is informed project name is taken via flash message, form won't submit | pass |
 | `Add Photo Page`|
-| `Edit Photo Page`|
-
-
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only contains a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing photo name into form | user is informed photo name is taken via flash message, form won't submit | entering an exisiting existing photo | user is informed photo name is taken via flash message, form won't submit | pass |
+| `Edit Photo Page` |
+| expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on portfolio admin page | form is pre-populated | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing photo name into form | user is informed photo name is taken via flash message, form won't submit | entering an exisiting existing photo | user is informed photo name is taken via flash message, form won't submit | pass |
 | `Manage Shop Page`|
+| Click on "add category" button | taken to add category page | clicking on button | taken to add category page | pass |
+| Click on "edit category" button | taken to edit category page, prepopulated with selected category | clicking on button | taken to  edit category page | pass |
+| Click on "add photo" button | taken to add photo page | clicking on button | taken to add photo page | pass |
+| Click on "edit photo" button | taken to edit photo page, prepopulated with selected photo info | clicking on button | taken to  edit photo page, prepopulated with selected photo info | pass |
+| Click on "delete" buttons | taken to delete confirmation page | clicking on delete button | taken to delete confirmation page | pass |
 | `Add Category Page`|
-| `Edit Category Page`|
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only contains a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing category name into form | user is informed category name is taken via flash message, form won't submit | entering an exisiting existing category | user is informed category name is taken via flash message, form won't submit | pass |
+| `Edit Category Page` |
+| expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on shop admin page | form is pre-populated | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing category name into form | user is informed category name is taken via flash message, form won't submit | entering an exisiting existing category | user is informed category name is taken via flash message, form won't submit | pass |
 | `Add Print Page`|
-| `Edit Print Page`|
-
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only contains a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing print name into form | user is informed print name is taken via flash message, form won't submit | entering an exisiting existing print | user is informed print name is taken via flash message, form won't submit | pass |
+| `Edit Print Page` |
+| expect form to be pre-populated with correct data on page load | form is pre populated | clicking edit button on shop admin page | form is pre-populated | pass |
+| enter invalid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter an existing print name into form | user is informed print name is taken via flash message, form won't submit | entering an exisiting existing print | user is informed print name is taken via flash message, form won't submit | pass |
 | `Bag Page`|
+| Update the quantity of items in the bag using quantity adjuster | quantity will go up or down depending on buttons pressed | clicking on up and down buttons and update | quantity will go up or down depending on buttons pressed | pass |
+| remove an item from the bag using remove button| item is removed | clicking on up and down buttons and update | item is removed | pass |
+| Click back to prints button | taken back to all prints | clicking button | taken back to all prints | pass |
+| Click checkout button | taken to checkout | clicking button | taken to checkout | pass |
 | `Checkout Page`|
+| enter invalid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| enter invalid details into Stripe payment | user is informed data not valid, form won't submit | entering invalid details |  messages tell the user data is not valid | pass |
+| Click back to bag button | taken back to bag | clicking button | taken back to bag | pass |
+| Click complete purchase button | taken to checkout success, order processes and payment taken | clicking button | taken to checkout success, order processes and payment taken | pass |
 | `Profile Page`|
-
-| `About Page`|
-
-
-
-
-
-
+| enter invalid details into form | user is informed data not valid, form won't submit | entering invalid details | messages tell the user data is not valid | pass |
+| leave any details blank or only containt a space in the form | user is informed data is missing, form won't submit | attempting to enter the form with blank details | user is informed data is missing, form won't submit | pass |
+| click update details button | form updates | entering invalid details | form updates | pass |
+| click on order history link (order no.) | taken to order history page | clicking on link | taken to order history page | pass |
 | `Delete Confirmation Page` |
 | click on the "cancel" button | taken back to previous page | clicking cancel | taken back to previous page | pass |
 |click on the "delete" button | item is deleted, taken back to previous page | clicking delete | item is deleted, taken back to previous page | pass |
+| `Portfolio Project Pages` |
+| click on image | Fancybox gallery pops up | clicking on any image | Fancybox gallery pops up | pass |
+| `All Prints Page` |
+| click on image in card | Print info page loads | clicking on any image | Print info page loads | pass |
+| sort print name ascending | prints sort A - Z | selecting the option in the dropdown | prints sort A - Z | pass |
+| sort print name descending | prints sort Z - A | selecting the option in the dropdown | prints sort Z - A | pass |
+| sort category name ascending | sort by category name A - Z | selecting the option in the dropdown | sort by category name A - Z | pass |
+| sort category name ascending | sort by category name Z - A | selecting the option in the dropdown | sort by category name Z - A | pass |
+| filter to project name | only prints from that project will show | clicking filter link | only prints from that project show | pass |
+| clear filter to view all prints | all prints now show | clicking filter link | all prints now show | pass |
+| `Print Info` |
+| choose a print size to display price | using size dropdown, displayed price will change | selecting option in dropdown | price changes depending on selected size | pass |
+| Adjust quantity to add to the bag using adjuster | quantity adjusts | clicking on buttons | quantity adjusts | pass |
+| Click back to prints button | taken back to all prints | clicking button | taken back to all prints | pass |
+| Click add to bag button | added to bag, success message, bag total updates in nav | clicking button | added to bag, success message, bag total updates in nav | pass |
+| `Contact Page` |
+
 | `Accessability`  |
 | title, alt text or aria features for all non-text media | text appears/screenreader will read out                                            | hovering over media     | text appears/screenreader will read out | pass      |
 
