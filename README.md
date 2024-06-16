@@ -27,7 +27,7 @@ To create a functional website for the documentary photographer Gwilym Llywelyn 
 * Before logging in:
 	* I can browse photo galleries
 	* I can search for products so that I can find specific products
-	* I can sort products on criteria such as price and category so that I can I have a method of ordering the products products as I prefer
+	* I can sort products on criteria such as name and category so that I can I have a method of ordering the products products as I prefer
 	* I can browse through products so that I can decide what I may be interested in buying
 	* I can look at product details to find out more about the product
 	* I can easily add products I want to purchase to a basket

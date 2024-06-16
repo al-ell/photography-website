@@ -2,7 +2,7 @@
 
 [Am I Responsive?]()
 
-Visit the deployed site: [Wanderlist]()
+Visit the deployed site: [Gwilym Llywelyn]()
 
 - - -
 
@@ -28,7 +28,6 @@ Visit the deployed site: [Wanderlist]()
 ### W3C HTML Validator
 
 [W3C](https://validator.w3.org/) was used to validate the HTML on all pages of the website.
-
 
 
 - - -
@@ -126,12 +125,33 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 | Goals | How are they achieved? |
 | :--- | :--- |
-| `First Time Visitors` |
-
-| Login | Redirection to login page to allow signin, verification user exists |
-
 |`Admin User` |
+| Manage products in the shop (add , update or delete products) | print and category admin pages |
+| View created orders to fulfil or edit them | Admin back end allows the admin to see order details |
+| View messages sent via contact form and can act upon them | contact form linked to site email address |
+| `Website Visitors` |
+| Register | Redirection to register page to allow signin, verification user exists |
+| Login | Redirection to login page to allow signin, verification user exists |
+| Browse photo galleries | Two pages of galleries linked to the projects |
+| Search for products so that I can find specific products | Shop searchbar in nav |
+| Sort products on criteria such as name and category | Sort input on prints page will sort by category or name |
+| Browse through products so that I can decide what I may be interested in buying | Shop page for prints |
+| Look at product details to find out more about the product | clicking on print card to get print details |
+| Easily add products I want to purchase to a basket | Add to basket and quantity input |
+| View the contents of my shopping basket so that I can be able to make any adjustments | Bag link in top nav |
+| Update my bag by adding more or remove products so that I can decide on the number of products I intend to buy | Quantity adjustor with update and remove functions in the bag |
+| View my order summary so that I can verify it before confirming | Order summary on page for customer details |
+| Checkout securely so that I can I maintain the level of trust on the site | Use of stripe |
+| Use the contact form so that I can contact the site owners | Contact form linked to website email address |
+| Save my personal details after making a purchase | Option to save if checking out when signed in |
+| Create or edit my account to update my details | Registration, login and profile pages |
+| Login in my account so that I can view my order history | Links on profile page to order history summary |
 
+#### Future Implementation
+
+* Manage users' accounts so that I can make any required changes to them if needed
+* Make new galleries and upload new images to the galleries 
+* Users can add gallery images to favouries
 
 - - -
 
@@ -151,26 +171,23 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | Click on login nav link  | User is taken to login page  | clicking on link        | taken to homepage and pages that can only be accessed when logged in |
 | Click on signup nav link  | User is taken to signup page  | clicking on link        | taken to signup page |
 | Click on logout nav link  | User is logged out  | clicking on link        | taken to homepage and pages that can only be accessed when logged out are shown | pass      |
-
 | `Home Page` |
 | Click on carousel arrows and buttons | skips to next or selected image | clicking on button |skips to next or selected image | pass 
-| `Log in Page` |
-| enter pre registered valid details into form | form submits | clicking on submit | taken to home page | pass |
-| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
-| enter an incorrect username or password into form | user is informed username or password is incorred via flash message, form won't submit | entering invalid details | user is informed username or password is incorred via flash message, form won't submit | pass |
-
 | `Register Page` |
 | enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
 | enter an existing username into form | user is informed username is taken via message, form won't submit | entering an exisiting username | user is informed username is taken via flash message, form won't submit | pass |
 | enter a password that doesn't match criteria | user is informed of password criteria, form won't submit | entering invalid details | user is informed of password criteria, form won't submit | pass |
+| `Log in Page` |
+| enter pre registered valid details into form | form submits | clicking on submit | taken to home page | pass |
+| enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
+| enter an incorrect username or password into form | user is informed username or password is incorred via flash message, form won't submit | entering invalid details | user is informed username or password is incorred via flash message, form won't submit | pass |
 
 | `Manage Portfolio` |
 | Click on "add project" button | taken to add project page | clicking on button | taken to add project page | pass |
 | Click on "edit project" button | taken to edit project page, prepopulated with selected project | clicking on button | taken to  edit project page | pass |
 | Click on "add photo" button | taken to add photo page | clicking on button | taken to add photo page | pass |
 | Click on "edit photo" button | taken to edit photo page, prepopulated with selected photo info | clicking on button | taken to  edit photo page, prepopulated with selected photo info | pass |
-| Click on "delete" buttons | delete modal pops up | clicking on delete button | delete modal pops up | pass |
-
+| Click on "delete" buttons | taken to delete confirmation page | clicking on delete button | taken to delete confirmation page | pass |
 | `Add Project Page`|
 
 | enter invalid valid details into form | user is informed data not valid, form won't submit | entering invalid details | HTML5 messages tell the user data is not valid | pass |
@@ -204,9 +221,9 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 
 
-| `Delete Modal` |
-| click on the "cancel" button | taken back to previous page | clicking cancel | taken back to previous page |  |
-|click on the "delete" button | entry is deleted, taken back to previous page | clicking delete | item is deleted, taken back to previous page |  |
+| `Delete Confirmation Page` |
+| click on the "cancel" button | taken back to previous page | clicking cancel | taken back to previous page | pass |
+|click on the "delete" button | item is deleted, taken back to previous page | clicking delete | item is deleted, taken back to previous page | pass |
 | `Accessability`  |
 | title, alt text or aria features for all non-text media | text appears/screenreader will read out                                            | hovering over media     | text appears/screenreader will read out | pass      |
 
