@@ -3,7 +3,6 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-
 from django_countries.fields import CountryField
 
 from shop.models import Prints
@@ -11,6 +10,7 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """ Order Model """
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True,
                                      blank=True, related_name='orders')
     date = models.DateTimeField(auto_now_add=True)
@@ -35,7 +35,9 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.order_total = self.lineitems.aggregate(
+                                                    Sum('lineitem_total')
+                                                    )['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = settings.DELIVERY_FEE
         else:
@@ -49,12 +51,12 @@ class Order(models.Model):
             self.order_number = self._make_order_number()
         super().save(*args, **kwargs)
    
-
     def __str__(self):
         return self.order_number
 
 
 class OrderLineItem(models.Model):
+    """ Order Items Model """
     order = models.ForeignKey(Order, null=True, blank=True, on_delete=models.CASCADE, related_name='lineitems')
     prints = models.ForeignKey(Prints, null=True, blank=True, on_delete=models.CASCADE)
     prints_size = models.CharField(max_length=2, null=False, default="a4") # A5, A4
@@ -62,9 +64,7 @@ class OrderLineItem(models.Model):
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, editable=False)
 
     def save(self, *args, **kwargs):
-        """
-        
-        """
+        """ Depending on selected size, calculate correct price """
         if prints_size.value == 'a4':
             self.lineitem_total = self.prints.a4_price * self.quantity
         else:

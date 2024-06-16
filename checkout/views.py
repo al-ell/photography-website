@@ -14,8 +14,10 @@ from bag.contexts import bag_contents
 import json
 import stripe
 
+
 @require_POST
 def cache_checkout_data(request):
+    """ Cahce data view, to allow saving details to profile """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -32,6 +34,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ Checkout view """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -85,11 +88,12 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
+            # error handling
             messages.error(request, "An error occured with your form \
                     Please try again.")
     else:
         bag = request.session.get('bag', {})
-        # defensive programming
+        # prevent checking out if bag is empty
         if not bag:
             messages.error(request, "Your bag is empty.")
             return redirect(reverse('all_prints'))
@@ -136,6 +140,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    """ Checkout success view """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number = order_number)
     # If user is signed in, save profile data
@@ -144,7 +149,7 @@ def checkout_success(request, order_number):
         
         order.user_profile = profile
         order.save()
-        # if save infor box is checked:
+        # if save info box is checked:
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,
@@ -162,7 +167,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'`Your order has been processed. \
             Order number: {order_number}. \
             A confirmation email has been sent.')
-    
+    # delete the bag contents if checkout successful
     if 'bag' in request.session:
         del request.session['bag']
 

@@ -13,6 +13,7 @@ def bag(request):
 
 
 def add_to_bag(request, prints_id):
+    """ add to bag view """
     prints = get_object_or_404(Prints, pk=prints_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -22,6 +23,7 @@ def add_to_bag(request, prints_id):
     
     bag = request.session.get('bag', {})
 
+    # If item is already in the bag (incl. size) then add to it, otherwise add new item to bag
     if size:
         if prints_id in list(bag.keys()):
             if size in bag[prints_id]['prints_by_size'].keys():
@@ -40,19 +42,20 @@ def add_to_bag(request, prints_id):
         else:
             bag[prints_id] = quantity
             messages.success(request, f'Added {prints.friendly_name} to your bag')
-
+    # update session variable
     request.session['bag'] = bag
     return redirect(redirect_url)
 
 
 def adjust_bag(request, prints_id):
+    """ Adjust bag view """
     prints = get_object_or_404(Prints, pk=prints_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'selected_size' in request.POST:
         size = request.POST['selected_size']
     bag = request.session.get('bag', {})
-
+    # Update items already in the bag, remove if no others
     if size:
         if quantity > 0:
             bag[prints_id]['prints_by_size'][size] = quantity
@@ -75,6 +78,8 @@ def adjust_bag(request, prints_id):
 
 
 def remove_from_bag(request, prints_id):
+    """ Remove from bag view """
+    # remove items from the bag via id
     try:
         prints = get_object_or_404(Prints, pk=prints_id)
         size = None
@@ -92,6 +97,7 @@ def remove_from_bag(request, prints_id):
             messages.success(request, f'Removed {prints.friendly_name} from your bag')
 
         request.session['bag'] = bag
+        # handle response
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')

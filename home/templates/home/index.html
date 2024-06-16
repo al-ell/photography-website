@@ -10,10 +10,7 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="row no-gutters">
-  <!-- https://www.w3schools.com/tags/tag_picture.asp -->
-
   <div class="carousel-container">
     <!-- Carousel from Bootstrap 4.6 Docs  -->
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
@@ -24,9 +21,10 @@
         <li data-target="#carouselIndicators" data-slide-to="3" aria-label="Slide 4"></li>
         <li data-target="#carouselIndicators" data-slide-to="4" aria-label="Slide 5"></li>
         <li data-target="#carouselIndicators" data-slide-to="5" aria-label="Slide 6"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active" id="carousel-1">
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" id="carousel-1">
+          <!-- https://www.w3schools.com/tags/tag_picture.asp -->
           <picture>
             <source media="(min-width:992px)" srcset="media/home/home47.webp">
             <img src="media/home/47.webp" class="d-block h-100" alt="{{ photos.47.description }}">
