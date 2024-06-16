@@ -13,6 +13,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            <!-- Only allow a superuser to edit the prints -->
             {% if request.user.is_superuser %}
             <div class="col-12 text-center link-text">
                 <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2">Edit</a>
@@ -28,6 +29,7 @@
     <div class="col-12 col-md-10 offset-md-1">
         <div class="row">
             <div class="col-10 col-sm-10 col-md-5 offset-1 offset-sm-1 offset-md-0 print-detail-image">
+                <!-- If no image, display alternate -->
                 {% if prints.image %}
                     <a href="{{ prints.image.url }}" target="_blank">
                         <img src="{{ prints.image.url }}" class="card-img" alt="{{ prints.description }}">
@@ -113,20 +115,8 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super }}
-{% include 'shop/includes/quantity_input_script.html' %}
-    <!-- JS adapted from https://www.youtube.com/watch?v=m2UzB9JL--c -->
-    <script type="text/javascript">
-        $("#id_selected_size").change(function() {
-
-            var val = $(this).val();
-            if (val == 'a5') {
-                $('#price').html('£80')
-            } else if (val == 'a4') {
-                $('#price').html('£120')
-            } else {
-                $('#price').html()
-            }
-        });
-    </script>
+    {{ block.super }}
+    {% include 'shop/includes/quantity_input_script.html' %}
+    <!-- Load local JS -->
+    <script type="text/javascript" src="{% static 'shop/js/shop.js' %}"></script>
 {% endblock %}

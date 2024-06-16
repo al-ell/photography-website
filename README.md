@@ -302,6 +302,8 @@ HTML, CSS, JavaScript, Python
 
 [Bootstrap4](https://getbootstrap.com/) - A css framework
 
+[Fancybox](https://fancyapps.com/fancybox/) - A JS framework
+
 - - -
 
 ### Libraries & Packages Used

@@ -19,6 +19,7 @@
 {% block content %}
     <div class="row admin-container">
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3 text-center">
+            <!-- Delete confirmation page -->
             <form method="POST" action="" class="form project-form paragraph-font" id="delete-photo-form">
                 {% csrf_token %}                
                     <h4 class="heading-font">Are you sure you want to delete {{ photo.name }}:{{ photo.friendly_name }}?</h4>

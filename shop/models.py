@@ -4,6 +4,7 @@ from projects.models import Photo, Project
 
 
 class Category(models.Model):
+    """ Category model """
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -12,11 +13,12 @@ class Category(models.Model):
 
 
 class Prints(models.Model):
+    """ Prints model """
     class Meta:
         verbose_name_plural = 'Prints'
-
-    # Import model from the projects app
+    # import from category model
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
+    # Import model from the projects app
     name = models.ForeignKey(Photo, null=True, blank=True, on_delete=models.CASCADE)
     sku = models.CharField(max_length=150, null=False, unique=True, default="00") 
     friendly_name = models.CharField(max_length=200, default="", unique=True)
@@ -28,6 +30,7 @@ class Prints(models.Model):
     a4_price = models.DecimalField(max_digits=6, decimal_places=2, default=120.00)
     a5_price = models.DecimalField(max_digits=6, decimal_places=2,default=80.00)
 
+    # Return price options for different sizes
     def get_price_options(self):
         return [
             ('A5', self.a5_price),

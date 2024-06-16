@@ -1,3 +1,5 @@
+// Local JS file
+// From https://fancyapps.com/fancybox/
 Fancybox.bind('[data-fancybox]', {
   compact: false,
   idle: false,
@@ -30,7 +32,6 @@ Fancybox.bind('[data-fancybox]', {
 
 
 // Add back to top functions to Project app
-
 $('.btt-link').click(function(e) {
   window.scrollTo(0,0)
 })

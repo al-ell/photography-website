@@ -31,6 +31,7 @@
                         </tr>
                     </thead>
                     <tbody class="project-tbody paragraph-font">
+                        <!-- Loop through current projects -->
                         {% for project in projects %}
                             <tr>
                                 <td>                               
@@ -52,6 +53,7 @@
     <div class="row">
         <div class="col-12 col-lg-10 offset-lg-1">
             <div class="row card-group">
+                <!-- loop through all photos -->
                 {% for photo in photos %}
                     <div class="col-12 col-md-4 col-lg-3 justify-content-center card-group">
                         <div class="card m-2 p-1 photo-thumbnail">
@@ -73,6 +75,7 @@
         </div>
     </div>
 </div>
+<!-- Back to top button -->
 <div class="btt-button bg-light rounded border border-black">
     <a class="btt-link d-flex h-100 project-link">
         <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
@@ -82,5 +85,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    <!-- Load local JS -->
     <script type="text/javascript" src="{% static 'projects/js/projects.js' %}"></script>
 {% endblock %}

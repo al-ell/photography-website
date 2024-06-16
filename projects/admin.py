@@ -3,6 +3,7 @@ from .models import Project, Photo
 
 
 class ProjectAdmin(admin.ModelAdmin):
+    """ Project Admin """
     fields = (
         'name',
         'description',
@@ -18,6 +19,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class PhotoAdmin(admin.ModelAdmin):
+    """ Photo admin """
     fields = (
         'project',
         'name',

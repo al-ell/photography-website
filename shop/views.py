@@ -10,6 +10,7 @@ from .forms import PrintsForm, CategoryForm
 
 def all_prints(request):
     """ Shop view """
+    # begin variables as none and update as the user filters and sorts
     prints = Prints.objects.all()
     query = None
     categories = None
@@ -31,7 +32,7 @@ def all_prints(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             prints = prints.order_by(sortkey)
-
+        # extra "name__" due to use of foreign keys
         if 'category' in request.GET:
             categories = [request.GET['category']]
             prints = prints.filter(category__name__name__in=categories)
@@ -59,10 +60,6 @@ def all_prints(request):
     return render(request, template, context)
 
 
-
-
-
-
 def print_info(request, prints_id):
     """ Print information view """
     prints = get_object_or_404(Prints, pk=prints_id)
@@ -74,10 +71,11 @@ def print_info(request, prints_id):
     return render(request, template, context)
 
 
+# Only logged in superusers can access the views below
 # Shop admin views
 @login_required
 def shop_admin(request):
-    """ Shop view """
+    """ Manage shop view """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
@@ -85,11 +83,11 @@ def shop_admin(request):
     prints = Prints.objects.all()
     categories = Category.objects.all()
 
-    
     if request.GET:
         categories = None
         if 'category' in request.GET:
             categories = [request.GET['category']]
+            # Extra use of "name__" due to foreign keys
             prints = prints.filter(category__name__name__in=categories)
             categories = Category.objects.filter(name__name__in=categories)
 
@@ -108,10 +106,11 @@ def add_size(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-
+    # Use of size selection to also filter price
     if request.method == 'POST':
         form = PriceAndSizeForm(request.POST, request.FILES)
         if form.is_valid():
+            # check if form is valid, then save
             sizes = form.save()
             messages.success(request, f'Added {sizes.name}.')
             return redirect(reverse('shop_admin'))
@@ -139,6 +138,7 @@ def add_print(request):
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
+            # check if form is valid, then save
             prints = form.save()
             messages.success(request, f'Added {prints.name} to {prints.category}.')
             return redirect(reverse('shop_admin'))
@@ -162,11 +162,12 @@ def edit_print(request, prints_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-
+    # identify which category to edit to preload into form
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES, instance=prints)
         if form.is_valid():
+            # check if form is valid, then save
             form.save()
             messages.success(request, f'Edited {prints.name} in {prints.category}.')
             return redirect(reverse('shop_admin'))
@@ -191,7 +192,7 @@ def delete_print(request, prints_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-
+    # identify which print to delete, send user to confirmation page to confirm action
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         prints.delete()
@@ -210,6 +211,7 @@ def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
+            # check if form is valid, then save
             category = form.save()
             messages.success(request, f'Added {category.name}.')
             return redirect(reverse('shop_admin'))
@@ -232,11 +234,12 @@ def edit_category(request, category_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-
+    # identify which category to edit to preload into form
     category = get_object_or_404(Prints, pk=category_id)
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES, instance=category)
         if form.is_valid():
+            # check if form is valid, then save
             form.save()
             messages.success(request, f'Edited {category.name}.')
             return redirect(reverse('shop_admin'))
@@ -261,7 +264,7 @@ def delete_category(request, category_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-
+    # identify which category to delete, send user to confirmation page to confirm action
     category = get_object_or_404(Category, pk=category_id)
     if request.method == 'POST':
         category.delete()

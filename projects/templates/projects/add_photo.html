@@ -19,6 +19,7 @@
 {% block content %}
     <div class="row admin-container">
         <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
+            <!-- Load form as crispy form -->
             <form method="POST" action="{% url 'add_photo' %}" class="form project-form paragraph-font" id="add-project-form" enctype="multipart/form-data">
                 {% csrf_token %}                
                 {{ form|crispy }}

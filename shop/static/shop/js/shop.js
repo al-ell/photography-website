@@ -1,3 +1,4 @@
+// Local JS for shop sorting function
 $('#sort-selector').change(function() {
     var selector = $(this)
     var currentUrl = new URL(window.location);
@@ -19,6 +20,7 @@ $('#sort-selector').change(function() {
             window.location.replace(currentUrl);
         }
     } else {
+        // Organise the direction of the results
         // Extra if/else statement as the name of the data being filtered has two '_'
         if(selectedVal != "reset") {
             if(selectedVal == 'friendly_name_asc') {
@@ -39,5 +41,25 @@ $('#sort-selector').change(function() {
 
             window.location.replace(currentUrl);
         }
+    }
+});
+
+// Alter image input
+$('#new-image').change(function () {
+    var file = $('#new-image')[0].files[0];
+    $('#filename').text(`Image will be set to ${file.name}`);
+})
+
+// Display price depending on selected size
+// JS adapted from https://www.youtube.com/watch?v=m2UzB9JL--c
+$("#id_selected_size").change(function() {
+
+    var val = $(this).val();
+    if (val == 'a5') {
+        $('#price').html('£80')
+    } else if (val == 'a4') {
+        $('#price').html('£120')
+    } else {
+        $('#price').html()
     }
 });

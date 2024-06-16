@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Project(models.Model):
+    """ Project Model """
     # Prevent plural use in Django admin
     class Meta:
         verbose_name_plural = 'Project'
@@ -14,6 +15,7 @@ class Project(models.Model):
     
 
 class Photo(models.Model):
+    """ photo model """
     project = models.ForeignKey(Project, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200, unique=True, default="")
     friendly_name = models.CharField(max_length=200, null=False, unique=True, default="")
@@ -26,4 +28,3 @@ class Photo(models.Model):
     
     def get_friendly_name(self):
         return self.friendly_name
-

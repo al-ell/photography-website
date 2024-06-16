@@ -5,6 +5,7 @@ from .models import Prints, Category
 
 
 class CategoryForm(forms.ModelForm):
+    """ Category form from category model """
     class Meta:
         model = Category
 
@@ -16,7 +17,7 @@ class CategoryForm(forms.ModelForm):
 
 
 class PrintsForm(forms.ModelForm):
-
+    """ Prints form from prints model """
     class Meta:
         model = Prints
         fields = [
@@ -35,12 +36,12 @@ class PrintsForm(forms.ModelForm):
             ''
         }
 
-
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
+
 
 
 PRICE_CHOICES = (
@@ -50,7 +51,7 @@ PRICE_CHOICES = (
 
 
 class PriceSelectionForm(forms.Form):
-    
+    """ Price selection form """
     selected_price = forms.ChoiceField(choices=PRICE_CHOICES, widget=forms.RadioSelect(attrs={'id': 'value'}))
 
     def __init__(self, *args, **kwargs):
