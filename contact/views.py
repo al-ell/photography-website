@@ -6,8 +6,9 @@ from django.conf import settings
 
 from .forms import ContactForm
 
-def contact(request):
 
+def contact(request):
+    """ Contact view """
     def _send_contact_email(self, form):
         contact_email = form.email
         subject = render_to_string(
@@ -24,7 +25,6 @@ def contact(request):
             contact_email,
             [settings.DEFAULT_TO_EMAIL]
         )
-
     
     if request.method == 'POST':
         form = ContactForm(request.POST)        
@@ -38,7 +38,6 @@ def contact(request):
                             Please check and try again.")
     else:
         form = ContactForm()
-
 
     template = 'contact/contact.html'
     context = {

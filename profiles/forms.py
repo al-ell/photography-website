@@ -3,6 +3,7 @@ from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
+    """ User profile form from user profile model """
     class Meta:
         model = UserProfile
         exclude = ('user', 'default_email',)
@@ -18,7 +19,7 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County',
             'default_postcode': 'Postal Code',
         }
-    
+        # replace form labels with placehodlers
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'default_country':

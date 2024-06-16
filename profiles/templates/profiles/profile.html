@@ -4,8 +4,8 @@
     Profile
 {% endblock %}
 
-
 {% block extra_css %}
+<!-- load local stylesheet -->
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
@@ -14,19 +14,18 @@
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
                 <h2 class="heading-font mb-2">Profile</h2>
-                <h3 class="heading-font"></h3>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-    
     <div class="row no-gutters profile-container">
         <div class="col-12 col-lg-6">
             <div class="row">
                 <div class="col-10 offset-1">
                     <h4 class="heading-font ml-3">Delivery Info:</h4>
+                    <!-- Delivery details as cripsy form -->
                     <form class="m-2 paragraph-font ml-3 mr-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                         {% csrf_token %}
                         {{ form|crispy }}
@@ -50,6 +49,7 @@
                                 </tr>
                             </thead>
                             <tbody class="paragraph-font">
+                                <!-- Loop through order history items -->
                                 {% for order in orders %}
                                     <tr>
                                         <td>{{ order.date }}</td>
@@ -82,5 +82,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    <!-- load local JS -->
     <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
