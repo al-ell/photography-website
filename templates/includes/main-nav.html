@@ -1,5 +1,4 @@
-
-
+<!-- Navbar collapses into burger menu for tablet and mobile -->
 <div class="collapse navbar-collapse no-gutters bg-light navbar-light" id="main-nav">
   <ul class="navbar-nav heading-font uppercase w-auto mx-auto">
     <li class="nav-item">
@@ -12,6 +11,7 @@
       <div class="dropdown-menu" aria-labelledby="portfolio-link">
         <a class="dropdown-item" href="{% url 'wales' %}">The Celtic Archipelago</a>
             <a class="dropdown-item" href="{% url 'discovery' %}">Discovery</a>
+            <!-- Only give superusers access to admin pages -->
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                     <a class="dropdown-item" href="{% url 'portfolio_admin' %}">Portfolio Admin</a>
@@ -31,6 +31,7 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="shop-link">
         <a class="dropdown-item" href="{% url 'all_prints' %}">Prints</a>
+        <!-- Only give superusers access to admin pages -->
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                     <a class="dropdown-item" href="{% url 'shop_admin' %}">Manage Shop</a>

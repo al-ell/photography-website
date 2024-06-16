@@ -49,7 +49,9 @@
 
     <title>{% block extra_title %}{% endblock %}</title>
   </head>
+
   <body>
+    <!-- Page header -->
     <header class="container-fluid fixed-top bg-light no-gutters header-container">
       <div id="topnav">
         <div class="row no-gutters">
@@ -59,6 +61,7 @@
             </a>
           </div>
           <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
+            <!-- Search dropdown -->
             <ul class="list-inline list-unstyled heading-font icon-container">
               <li class="list-inline-item">
                 <a class="icon-link dropdown-toggle" href="#" id="shop-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,11 +87,11 @@
               <li class="list-inline-item text-nowrap">
                 <a class="icon-link-bag" href="{% url 'bag' %}">
                   <i class="fas fa-bag-shopping"></i>
-                  <p class="paragraph-font"><small>
+                  <p><small>
                     {% if grand_total %}
                       £ {{ grand_total|floatformat:2 }}
                     {% else %}
-                      £0.00
+                      £ 0.00
                     {% endif %}
                   </small></p>
                 </a>
@@ -100,6 +103,7 @@
                   </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="user-options">
+                  <!-- Change options depending on user logged in -->
                   {% if request.user.is_authenticated %}
                       <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
@@ -117,6 +121,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- load the navbar -->
                 {% include 'includes/main-nav.html' %}
               </div>
             </nav>
@@ -125,7 +130,7 @@
       </div>
     </header>
 
-
+    <!-- messages container -->
     {% if messages %}
         <div class="message-container">
           {% for message in messages %}
@@ -143,7 +148,7 @@
           {% endfor %}
         </div>
     {% endif %}
-    <!-- Navigation and header -->
+    <!-- Page header -->
     {% block page_header %}
     {% endblock %}
 
@@ -153,7 +158,7 @@
       {% endblock %}
     </div>
 
-    <!-- Footer -->
+    <!-- Page Footer -->
     {% block page_footer %}
     {% endblock %}
     <footer class="container-fluid bg-light p-1 footer">
@@ -183,6 +188,7 @@
     </footer>
 
     {% block postloadjs %}
+    <!--  JS for toasts -->
       <script type="text/javascript">
         $('.toast').toast('show');
       </script>
