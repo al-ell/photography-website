@@ -1,4 +1,5 @@
-# 
+# Gwilym Llywelyn
+
 ## Introduction
 
 
@@ -143,6 +144,16 @@ I wanted to contrast a modern font, which I've used for the headings with tradit
 
 ### Wireframes
 
+<details>
+  <summary>Click here to view Wireframes:</summary>
+	![home](media/docs/wireframes/home.png)
+	![register](media/docs/wireframes/register.png)
+	![login](media/docs/wireframes/login.png)
+	![profile](media/docs/wireframes/profile.png)
+	![about](media/docs/wireframes/about.png)
+	![projects](media/docs/wireframes/projects.png)
+	![contact](media/docs/wireframes/contact.png)
+</details>
 
 
 ## Navigation
