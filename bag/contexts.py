@@ -56,7 +56,7 @@ def bag_contents(request):
                     })
 
     # Calculate delivery based on customer spend
-    if total < settings.FREE_DELIVERY_THRESHOLD:
+    if total > settings.FREE_DELIVERY_THRESHOLD:
         delivery = 0 
         free_delivery_delta = 0
     else:

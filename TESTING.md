@@ -275,7 +275,7 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 | Bug | How I solved the issue | Image |
 | :--- | :--- | :--- |
-
+|
 
 
 - - -

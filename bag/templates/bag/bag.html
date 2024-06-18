@@ -76,11 +76,11 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <a class="update-link text-dark float-right"><small>Update</small></a>
                                     <a class="remove-link text-danger float-left" 
-                                        id="remove{{ item.prints_id }}" data-selected_size="{{ item.size }}">
+                                        id="remove_{{ item.prints_id }}" data-selected_size="{{ item.size }}">
                                         <small>Remove</small>
                                     </a>
-                                    <a class="update-link text-dark float-right"><small>Update</small></a>
                                 </td>
                                 <td class="py-2">
                                     <!-- Only display subtotal for selected size -->
@@ -141,6 +141,7 @@
         $('.update-link').click(function(e) {
             var form = $(this).prev('.update-quantity');
             form.submit();
+            console.log("success")
         });
 
         $('.remove-link').click(function(e) {

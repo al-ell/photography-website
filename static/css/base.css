@@ -386,7 +386,8 @@ footer {
 .copyright,
 .social-container {
     width: 100%;
-
+    justify-content: center;
+    align-items: center;
 }
 
 .social-icon {
@@ -496,7 +497,7 @@ i {
 
 @media screen and (min-width: 768px) {
     footer {
-        height: 6vh;
+        height: 9vh;
     }
 }
 
