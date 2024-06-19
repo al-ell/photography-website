@@ -59,6 +59,9 @@ def bag_contents(request):
     if total > settings.FREE_DELIVERY_THRESHOLD:
         delivery = 0 
         free_delivery_delta = 0
+    elif total == 0:
+        delivery = 0 
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD
     else:
         delivery = 4
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
