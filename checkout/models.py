@@ -59,13 +59,13 @@ class OrderLineItem(models.Model):
     """ Order Items Model """
     order = models.ForeignKey(Order, null=True, blank=True, on_delete=models.CASCADE, related_name='lineitems')
     prints = models.ForeignKey(Prints, null=True, blank=True, on_delete=models.CASCADE)
-    prints_size = models.CharField(max_length=2, null=False, default="a4") # A5, A4
+    selected_size = models.CharField(max_length=2, null=False, default="a4") # A5, A4
     quantity = models.IntegerField(null=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, editable=False)
 
     def save(self, *args, **kwargs):
         """ Depending on selected size, calculate correct price """
-        if prints_size.value == 'a4':
+        if self.selected_size == 'a4':
             self.lineitem_total = self.prints.a4_price * self.quantity
         else:
             self.lineitem_total = self.prints.a5_price * self.quantity

@@ -76,7 +76,7 @@ def checkout(request):
                                 order=order,
                                 prints=prints,
                                 quantity=quantity,
-                                prints_size=size,
+                                selected_size=size,
                             )
                             order_line_item.save()
                 except Prints.DoesNotExist:
