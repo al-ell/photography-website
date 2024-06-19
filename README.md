@@ -1,12 +1,9 @@
 # Gwilym Llywelyn
 
-
-
-
-
 ## Introduction
 
 Link to deployed site can be found [Here]()
+
 Github last commit [here]()
 
 # Purpose
