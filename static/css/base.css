@@ -116,7 +116,6 @@ h1 {
 
 .heading-font {
     font-family: "Karla", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-size: 1rem;
@@ -125,7 +124,6 @@ h1 {
 
 .paragraph-font {
     font-family: "Crimson Pro", serif;
-    font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
     color: #000;
