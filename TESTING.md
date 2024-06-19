@@ -158,7 +158,7 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 ### Full Testing
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| ----- | --- | --- | --- | --- |
+| :----- | :--- | :--- | :--- | :--- |
 | `Navbar` |
 | Click on home page nav link | index page loads | clicking on link   | taken to page | pass      |
 | Click on portfolio/wales page nav link | wales gallery page loads | clicking on link        | taken to page | pass      |
@@ -275,7 +275,12 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 | Bug | How I solved the issue | Image |
 | :--- | :--- | :--- |
-|
+| The price wouldn't change on selection of the options on print info page | selected_size was not in the model, after renaming "prints_size" it began to work | ![bag bug](media/docs/bug-getting-price-from-size.png) |
+| Items would not add to the bag as the prints category was expecting to be a string but was instead an integer | This was happening because the category model in the shop is directly taken from the project model in the project app. Adding  an "__name"" allowed access to the name | ![bag bug](media/docs/bug-bag-int.png) |
+| Delivery fee showing when the bag is empty | added "elif" to make delivery 0 when bag total is 0 | ![bag bug](media/docs/bug-basket-0.png) |
+| The remove from bag link wasn't working | I was targeting the wrong value in my HTML, missing the "_" from remove. Once added it worked immediately | ![bag bug](media/docs/bug-remove-typo.png) |
+| The update bag link wasn't updating the bag quantity of an item | The JQuery was targeting the previous element, but the previous element was the remove button. Once I swapped them it worked immediately | ![bag bug](media/docs/bug-js-prev.png) |
+| The webhook was failing | I forgot to update the webhook endpoint when switching to the new student account |  |
 
 
 - - -
