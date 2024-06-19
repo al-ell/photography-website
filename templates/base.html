@@ -1,6 +1,6 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     {% block meta %}
@@ -57,7 +57,7 @@
         <div class="row no-gutters">
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center logo-container no-gutters">
             <a class="logo text-uppercase nav-link main-logo-link" href="{% url 'home' %}">
-              <span><h1>Gwilym Llywelyn</h1></span>
+              <h1><span>Gwilym Llywelyn</span></h1>
             </a>
           </div>
           <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
@@ -162,7 +162,7 @@
     {% block page_footer %}
     {% endblock %}
     <footer class="container-fluid bg-light p-1 footer">
-      <div class="row align-items-center">
+      <div class="row align-items-baseline">
         <div class="col-12 col-md-6 col-lg-6 social-container d-flex justify-content-center">
           <ul class="social-links m-1">
             <li class="list-inline-item social-icon mr-5">
@@ -195,4 +195,3 @@
     {% endblock %}   
   </body>
 </html>
-

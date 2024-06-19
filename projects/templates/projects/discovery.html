@@ -65,7 +65,7 @@
                     <a data-fancybox="gallery"
                         data-src="{{ photo.image.url }}"
                         data-caption="{{ photo.friendly_name }}">
-                        <img src="{{ photo.image.url }}" class="card-img">
+                        <img src="{{ photo.image.url }}" class="card-img" alt="{{ photo.description }}">
                     </a>
                 </div>
             </div>
@@ -78,6 +78,7 @@
             <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
         </a>	
     </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}

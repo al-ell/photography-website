@@ -386,7 +386,7 @@ footer {
 .social-container {
     width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: baseline !important;
 }
 
 .social-icon {

@@ -23,7 +23,7 @@
             {% for item in bag_items %}
                 <div class="row">
                     <div class="col-3 my-1">
-                        <img class="w-100" src="{{ item.prints.image.url }}">
+                        <img class="w-100" src="{{ item.prints.image.url }}" alt="{{ item.prints.description }}">
                     </div>
                     <div class="col-9">
                         <p class="my-0 small small-heading heading-font"><strong>{{ item.prints.friendly_name }}</strong></p>

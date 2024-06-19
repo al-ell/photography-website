@@ -34,28 +34,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid project-container">
-    <div class="row project-row card-group" id="app">
-        <!-- Load all photos with the below project name -->
-        {% for photo in photos %}
-            {% if photo.project.name == 'The Celtic Archipelago' %}
-            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 card-group">
-                <div class="card">
-                    <a data-fancybox="gallery"
-                        data-src="{{ photo.image.url }}"
-                        data-caption="{{ photo.friendly_name }}">
-                        <img src="{{ photo.image.url }}" class="card-img">
-                    </a>
+    <div class="container-fluid project-container">
+        <div class="row project-row card-group" id="app">
+            <!-- Load all photos with the below project name -->
+            {% for photo in photos %}
+                {% if photo.project.name == 'The Celtic Archipelago' %}
+                <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 card-group">
+                    <div class="card">
+                        <a data-fancybox="gallery"
+                            data-src="{{ photo.image.url }}"
+                            data-caption="{{ photo.friendly_name }}">
+                            <img src="{{ photo.image.url }}" class="card-img" alt="{{ photo.description }}">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-    <!-- Back to top button -->
-    <div class="btt-button bg-light rounded border border-black">
-        <a class="btt-link d-flex h-100 project-link">
-            <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
-        </a>	
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- Back to top button -->
+        <div class="btt-button bg-light rounded border border-black">
+            <a class="btt-link d-flex h-100 project-link">
+                <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
+            </a>	
+        </div>
     </div>
 {% endblock %}
 
