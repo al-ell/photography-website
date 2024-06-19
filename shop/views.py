@@ -5,7 +5,7 @@ from django.db.models.functions import Lower
 from django.db.models import Q
 
 from .models import Prints, Category
-from .forms import PrintsForm, CategoryForm
+from .forms import PrintsForm, CategoryForm, PriceSelectionForm
 
 
 def all_prints(request):
@@ -41,7 +41,9 @@ def all_prints(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter search criteria, please try again.")
+                messages.error(
+                                request,
+                                "You didn't enter search criteria, please try again.")
                 return redirect(reverse('all_prints'))
 
             queries = Q(friendly_name__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query)
@@ -108,16 +110,16 @@ def add_size(request):
         return redirect(reverse('home'))
     # Use of size selection to also filter price
     if request.method == 'POST':
-        form = PriceAndSizeForm(request.POST, request.FILES)
+        form = PriceSelectionForm(request.POST, request.FILES)
         if form.is_valid():
             # check if form is valid, then save
             sizes = form.save()
             messages.success(request, f'Added {sizes.name}.')
             return redirect(reverse('shop_admin'))
         else:
-            messages.error(request, f'Please make sure form is valid.')
+            messages.error(request, 'Please make sure form is valid.')
     else:
-        form = PriceAndSizeForm()
+        form = PriceSelectionForm()
 
     template = 'shop/add_size.html'
     context = {
@@ -140,10 +142,12 @@ def add_print(request):
         if form.is_valid():
             # check if form is valid, then save
             prints = form.save()
-            messages.success(request, f'Added {prints.name} to {prints.category}.')
+            messages.success(
+                             request,
+                             f'Added {prints.name} to {prints.category}.')
             return redirect(reverse('shop_admin'))
         else:
-            messages.error(request, f'Please make sure form is valid.')
+            messages.error(request, 'Please make sure form is valid.')
     else:
         form = PrintsForm()
 
@@ -169,10 +173,12 @@ def edit_print(request, prints_id):
         if form.is_valid():
             # check if form is valid, then save
             form.save()
-            messages.success(request, f'Edited {prints.name} in {prints.category}.')
+            messages.success(
+                             request,
+                             f'Edited {prints.name} in {prints.category}.')
             return redirect(reverse('shop_admin'))
         else:
-            messages.error(request, f'Please make sure form is valid.')
+            messages.error(request, 'Please make sure form is valid.')
     else:
         form = PrintsForm(instance=prints)
     messages.info(request, f'Editing {prints.name} in {prints.category}.')
@@ -183,7 +189,7 @@ def edit_print(request, prints_id):
         'prints': prints,
     }
 
-    return render (request, template, context)
+    return render(request, template, context)
 
 
 @login_required
@@ -192,12 +198,15 @@ def delete_print(request, prints_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-    # identify which print to delete, send user to confirmation page to confirm action
+    # identify which print to delete, send user
+    # to confirmation page to confirm action
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
         prints.delete()
         return redirect('shop_admin')
-        messages.success(request, f'Deleted {prints.name} from {prints.category}.')
+        messages.success(
+                         request,
+                         f'Deleted {prints.name} from {prints.category}.')
     return render(request, 'projects/delete_print.html')
 
 
@@ -216,7 +225,7 @@ def add_category(request):
             messages.success(request, f'Added {category.name}.')
             return redirect(reverse('shop_admin'))
         else:
-            messages.error(request, f'Please make sure form is valid.')
+            messages.error(request, 'Please make sure form is valid.')
     else:
         form = CategoryForm()
 
@@ -244,7 +253,7 @@ def edit_category(request, category_id):
             messages.success(request, f'Edited {category.name}.')
             return redirect(reverse('shop_admin'))
         else:
-            messages.error(request, f'Please make sure form is valid.')
+            messages.error(request, 'Please make sure form is valid.')
     else:
         form = CategoryForm(instance=category)
     messages.info(request, f'Editing {category.name}.')
@@ -255,7 +264,7 @@ def edit_category(request, category_id):
         'category': category,
     }
 
-    return render (request, template, context)
+    return render(request, template, context)
 
 
 @login_required
@@ -264,7 +273,8 @@ def delete_category(request, category_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
-    # identify which category to delete, send user to confirmation page to confirm action
+    # identify which category to delete, send user
+    # to confirmation page to confirm action
     category = get_object_or_404(Category, pk=category_id)
     if request.method == 'POST':
         category.delete()

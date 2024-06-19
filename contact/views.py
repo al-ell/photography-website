@@ -12,30 +12,30 @@ def contact(request):
     def _send_contact_email(self, form):
         contact_email = form.email
         subject = render_to_string(
-            'contact/contact_emails/email_subject.txt',
-            {'form': form,})
+                                   'contact/contact_emails/email_subject.txt',
+                                   {'form': form, })
         message = render_to_string(
-        'contact/contact_emails/email_message.txt',
-        { 'form': form, 'reciever': settings.DEFAULT_TO_EMAIL})
-    
+                                    'contact/contact_emails/email_message.txt',
+                                    {'form': form,
+                                    'reciever': settings.DEFAULT_TO_EMAIL})
+
         send_mail(
-            
             subject,
             message,
             contact_email,
             [settings.DEFAULT_TO_EMAIL]
         )
-    
-    if request.method == 'POST':
-        form = ContactForm(request.POST)        
 
-        if form.is_valid():            
-            self._send_contact_email(form)
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            form._send_contact_email(form)
             messages.success(request, "Message sent!")
             return redirect(request, 'home')
         else:
-            messages.error(request, "Sorry, your form can't be processed at the moment.\
-                            Please check and try again.")
+            messages.error(request, "Sorry, your form can't be processed \
+                            at the moment. Please check and try again.")
     else:
         form = ContactForm()
 

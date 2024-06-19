@@ -1,5 +1,10 @@
 
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+                              render,
+                              redirect,
+                              reverse,
+                              get_object_or_404,
+                              HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -28,8 +33,9 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, "Sorry, your order can't be processed at the moment. \
-            Please try again.")
+        messages.error(request,
+                       "Sorry, your order can't be processed \
+                       at the moment. Please try again.")
         return HttpResponse(content=e, status=400)
 
 
@@ -81,12 +87,14 @@ def checkout(request):
                             order_line_item.save()
                 except Prints.DoesNotExist:
                     messages.error(request, (
-                        "We can't find one of the selected prints right now! Please contact us."
+                        "We can't find one of the selected \
+                        prints right now! Please contact us."
                     ))
                     order.delete()
                     return redirect(reverse('bag'))
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             # error handling
             messages.error(request, "An error occured with your form \
@@ -97,7 +105,7 @@ def checkout(request):
         if not bag:
             messages.error(request, "Your bag is empty.")
             return redirect(reverse('all_prints'))
-        
+
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
@@ -142,11 +150,11 @@ def checkout(request):
 def checkout_success(request, order_number):
     """ Checkout success view """
     save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number = order_number)
+    order = get_object_or_404(Order, order_numbeR=order_number)
     # If user is signed in, save profile data
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
+
         order.user_profile = profile
         order.save()
         # if save info box is checked:

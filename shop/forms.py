@@ -36,12 +36,12 @@ class PrintsForm(forms.ModelForm):
             ''
         }
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(label='Image', required=False,
+                             widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-
 
 
 PRICE_CHOICES = (
@@ -52,7 +52,8 @@ PRICE_CHOICES = (
 
 class PriceSelectionForm(forms.Form):
     """ Price selection form """
-    selected_price = forms.ChoiceField(choices=PRICE_CHOICES, widget=forms.RadioSelect(attrs={'id': 'value'}))
+    selected_price = forms.ChoiceField(choices=PRICE_CHOICES,
+                                       widget=forms.RadioSelect(attrs={'id': 'value'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

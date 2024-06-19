@@ -11,5 +11,5 @@ def index(request):
     context = {
         'photos': photos,
     }
-    
+
     return render(request, template, context)

@@ -9,13 +9,13 @@ class UserProfileForm(forms.ModelForm):
         exclude = ('user', 'default_email',)
 
     def __init__(self, *args, **kwargs):
-        
+
         super().__init__(*args, **kwargs)
         placeholders = {
             'default_phone_number': 'Phone Number',
             'default_street_address1': 'Street Address 1',
             'default_street_address2': 'Street Address 2',
-            'default_city_or_town': 'City or Town', 
+            'default_city_or_town': 'City or Town',
             'default_county': 'County',
             'default_postcode': 'Postal Code',
         }

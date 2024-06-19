@@ -1,5 +1,4 @@
 from django import template
-from shop.models import Prints
 
 
 register = template.Library()
