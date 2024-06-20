@@ -10,7 +10,7 @@ from .forms import PrintsForm, CategoryForm, PriceSelectionForm
 
 def all_prints(request):
     """ Shop view """
-    # begin variables as none and update as the user filters and sorts
+    # begin below variables as none and update as the user filters and sorts
     prints = Prints.objects.all()
     query = None
     categories = None
