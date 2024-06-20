@@ -1,1 +1,1 @@
-web: gunicorn gwilym-llywelyn.wsgi:application
+web: gunicorn gl_photography.wsgi:application
