@@ -199,6 +199,15 @@ h1 {
     font-size: 0.7rem !important;
 }
 
+.checkout-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.checkout-table-data {
+    width: 33%;
+}
+
 /* Index */
 
 

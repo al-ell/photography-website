@@ -34,7 +34,7 @@
                         <!-- Loop through the bag items -->
                         {% for item in bag_items %}
                             <tr>
-                                <td class="p-2 w-25">
+                                <td class="p-2">
                                     <img class="img-fluid" src="{{ item.prints.image.url }}"><br>
                                     <p>{{ item.prints.friendly_name }}</p>
                                 </td>
@@ -42,14 +42,16 @@
                                     <p>{% if item.prints.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                                 </td>
                                 <td class="py-2">
-                                    <!-- display correct price for item size -->
-                                    {% if item.size == 'a4' %}
-                                        £{{ item.prints.a4_price }}
-                                    {% else %}
-                                        £{{ item.prints.a5_price }}
-                                    {% endif %}
+                                    <p>
+                                        <!-- display correct price for item size -->
+                                        {% if item.size == 'a4' %}
+                                            £{{ item.prints.a4_price }}
+                                        {% else %}
+                                            £{{ item.prints.a5_price }}
+                                        {% endif %}
+                                    </p>
                                 </td>
-                                <td class="py-2 w-25">
+                                <td class="py-2">
                                     <!-- Update bag form -->
                                     <form class="form update-quantity" method="POST" action="{% url 'adjust_bag' item.prints_id %}">
                                         {% csrf_token %}
@@ -83,12 +85,14 @@
                                     </a>
                                 </td>
                                 <td class="py-2">
-                                    <!-- Only display subtotal for selected size -->
-                                    {% if item.size == 'a4' %}
-                                        £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
-                                    {% else %}
-                                        £{{ item.prints.a5_price | calc_subtotal:item.quantity }}
-                                    {% endif %}
+                                    <p>
+                                        <!-- Only display subtotal for selected size -->
+                                        {% if item.size == 'a4' %}
+                                            £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
+                                        {% else %}
+                                            £{{ item.prints.a5_price | calc_subtotal:item.quantity }}
+                                        {% endif %}
+                                    </p>
                                 </td>
                             </tr>
                         {% endfor %}

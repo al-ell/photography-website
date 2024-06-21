@@ -28,7 +28,7 @@
                     <p class="text-muted heading-font small-heading">Order Summary ({{ product_count }})</p>            
                     <div class="row">
                         <div class="flex-column d-flex">
-                            <table>
+                            <table class="checkout-table">
                                 <thead class="heading-font small-heading">
                                     <tr>
                                         <th scope="col">Print</th>
@@ -40,23 +40,32 @@
                                     <!-- Loop through and display items in the bag -->
                                     {% for item in bag_items %}
                                         <tr>
-                                            <td>
+                                            <td class="checkout-table-data">
                                                 <a href="{% url 'print_info' item.prints.id %}">
                                                     <!-- If no image, display alternative -->
                                                     {% if item.prints.image %}
-                                                        <img class="w-25" src="{{ item.prints.image.url }}" alt="{{ prints.friendly_name }}">
+                                                        <img class="w-100" src="{{ item.prints.image.url }}" alt="{{ prints.friendly_name }}">
                                                     {% else %}
-                                                        <img class="w-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ prints.friendly_name }}">
+                                                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ prints.friendly_name }}">
                                                     {% endif %}
                                                 </a>
                                             </td>
-                                            <td>
-                                                <p>{{ item.prints.friendly_name }}</p><br>
-                                                <p>Size: {{ item.size|upper }}</p><br>
-                                                <p>Qty: {{ item.quantity }}</p>
+                                            <td class="checkout-table-data">
+                                                <p>
+                                                    {{ item.prints.friendly_name }}<br>
+                                                    {% if item.prints.has_sizes %}Size: {{ item.size|upper }}{% else %}N/A{% endif %}<br>
+                                                    Qty: {{ item.quantity }}
+                                                </p>
                                                 </td>
-                                            <td>
-                                                <p>subtotoal</p>
+                                            <td class="checkout-table-data">
+                                                <p>
+                                                    <!-- Only display subtotal for selected size -->
+                                                    {% if item.size == 'a4' %}
+                                                        £{{ item.prints.a4_price | calc_subtotal:item.quantity }}
+                                                    {% else %}
+                                                        £{{ item.prints.a5_price | calc_subtotal:item.quantity }}
+                                                    {% endif %}
+                                                </p>
                                             </td>
                                         </tr>
                                     {% endfor %}
