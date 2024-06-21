@@ -60,7 +60,7 @@
               <h1><span>Gwilym Llywelyn</span></h1>
             </a>
           </div>
-          <div class="col-8 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
+          <div class="col-12 col-lg-3 order-lg-last my-0 py-1 py-lg-0 no-gutters nav-icons">
             <!-- Search dropdown -->
             <ul class="list-inline list-unstyled heading-font icon-container">
               <li class="list-inline-item">
@@ -113,14 +113,15 @@
                   {% endif %}
                 </div>
               </li>
-
+              <li class="list-inline-item d-lg-none d-block">
+                <button class="navbar-toggler icon-link" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                  <span><i class="fa-solid fa-bars"></i></span>
+                </button>
+              </li>
             </ul>
           </div>
           <div class="col-4 col-lg-5 my-0 py-1 py-lg-0">
             <nav class="navbar navbar-expand-lg w-100 no-gutters">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
-                <span><i class="fa-solid fa-bars"></i></span>
-              </button>
               <!-- load the navbar -->
               {% include 'includes/main-nav.html' %}
             </nav>
