@@ -34,17 +34,13 @@ tbody tr {
 }
 
 .page-heading h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
 
 .page-heading h3 {
     font-size: 1rem;
     text-transform: uppercase;
-}
-
-p {
-    font-size: 1rem;
 }
 
 .main-container {
@@ -76,13 +72,16 @@ header {
     color: #000;
 }
 
+.link-text a,
 .project-link,
 .project-link a {
-    color: #264d00;
+    color: #264d00 !important;
 }
 
+.link-text a,
 .nav-link:hover,
 .icon-container li a:hover,
+.project-link:hover,
 .project-link a:hover,
 .nav-item a:hover,
 .btt-button:hover {
@@ -113,7 +112,6 @@ h1 {
     font-family: "Karla", sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 1rem;
     color: #000;
 }
 
@@ -122,15 +120,8 @@ h1 {
     font-weight: 300;
     font-style: normal;
     color: #000;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
-
-
-
-.link-text a {
-    color: #000 !important;
-}
-
 
 /* Nav */
 
@@ -191,7 +182,7 @@ h1 {
 .logo {
     text-decoration: none;
     color: #660000 !important;
-    font-size: 1.5rem;
+    font-size: 2rem;
     letter-spacing: 0.2rem;
     font-family: "Crimson Pro", serif;
     font-weight: 700 !important;
@@ -245,8 +236,8 @@ z-index: 400;
     height: 42px;
     width: 42px;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 2rem;
+    right: 2rem;
     border-radius: 1rem;
 }
 

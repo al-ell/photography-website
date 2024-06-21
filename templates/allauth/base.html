@@ -21,13 +21,13 @@
 
     <div>
       <strong>Menu:</strong>
-      <ul>
+      <ul class="link-text">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <li class="link-text"><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li class="link-text"><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        <li class="link-text"><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li class="link-text"><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
       </ul>
     </div>

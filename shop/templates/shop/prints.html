@@ -18,8 +18,14 @@
 {% block content %}
     <div class="flex-row justify-content-center print-container">
         <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
-            <div class="flex-row d-flex justify-content-start">
-                <div class="col-12 col-md-10 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1 ">
+                    <h4 class="heading-font mb-2">Prints by Project</h4>
+                    <p>Click the links below to choose a project to view.</p>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12 col-md-6 col-lg-6 float-center m-1">
                     <!-- Sort prints by name or category -->
                     <div class="sort-select-wrapper paragraph-font w-50">
                         <select id="sort-selector" class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
@@ -31,23 +37,15 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="flex-row">
-                <div class="col-12 col-lg-10 mb-3 offset-lg-1">
-                    <h4 class="heading-font mb-2">Prints by Project</h4>
-                    <p>Click the links below to choose a project to view.</p>
-                    <ul class="list-unstyled list-inline d-flex justify-content-end">
-                        <li class="list-inline-item">
-                            <!-- Reset filtering and sorting -->
-                            <a href="{% url 'all_prints' %}" class="project-link small-heading heading-font mb-2"><h5>Reset Filters</h5></a>
-                        </li>
-                    </ul>
+                <div class="col-12 col-md-6 col-lg-6 float-center m-1">
+                    <!-- Reset filtering and sorting -->
+                    <a href="{% url 'all_prints' %}" class="project-link small-heading heading-font mb-2"><h5>Reset Filters</h5></a>
                 </div>
             </div>
-            <div class="flex-row">
-                <div class="col-12 col-lg-10 mb-3 offset-lg-1">
+            <div class="flex-row mb-2">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1 m-1 justify-content-between">
                     <!-- Filter by category -->
-                    <ul class="list-unstyled list-inline d-flex justify-content-around">
+                    <ul class="list-unstyled list-inline d-flex">
                         <li class="list-inline-item">
                             <a href="{% url 'all_prints' %}?category=The Celtic Archipelago" class="project-link heading-font mb-2"><h5>The Celtic Archipelago</h5></a>
                         </li>

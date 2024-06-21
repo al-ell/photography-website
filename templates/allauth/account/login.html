@@ -12,7 +12,7 @@
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p class="paragraph-font link-text mb-2">{% blocktrans with site.name as site_name %}Please sign in with one
+<p class="paragraph-font link-text mb-2 link-text">{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
 for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
@@ -39,7 +39,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" class="mb-2" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <div class="text-center">
+  <div class="text-center link-text">
     <a class="button btn secondaryAction m-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a><br>
     <a class="btn btn-outline-dark m-2" href="{% url 'home' %}">Home</a>
     <button class="primaryAction btn btn-success m-2" type="submit">{% trans "Sign In" %}</button>
