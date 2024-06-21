@@ -1,6 +1,10 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import (render,
+                              redirect,
+                              reverse,
+                              HttpResponse,
+                              get_object_or_404)
 from django.contrib import messages
-from shop.models import Prints
+from shop.models import Prints, Category
 
 
 def bag(request):
@@ -27,38 +31,38 @@ def add_to_bag(request, prints_id):
             if size in bag[prints_id]['prints_by_size'].keys():
                 bag[prints_id]['prints_by_size'][size] += quantity
                 messages.success(
-                                    request,
-                                    f'Updated size {size.upper()} \
-                                    {prints.friendly_name} quantity to \
-                                    {bag[prints_id]["prints_by_size"][size]}.'
-                                    )
+                                 request,
+                                 f'Updated size {size.upper()} \
+                                 {prints.friendly_name} quantity to \
+                                 {bag[prints_id]["prints_by_size"][size]}.'
+                                )
             else:
                 bag[prints_id]['prints_by_size'][size] = quantity
                 messages.success(
-                                    request,
-                                    f'Added size {size.upper()} \
-                                    {prints.friendly_name} to your bag.'
+                                 request,
+                                 f'Added size {size.upper()} \
+                                 {prints.friendly_name} to your bag.'
                                 )
         else:
             bag[prints_id] = {'prints_by_size': {size: quantity}}
             messages.success(
-                                request,
-                                f'Added size {size.upper()} \
-                                {prints.friendly_name} to your bag'
+                             request,
+                             f'Added size {size.upper()} \
+                             {prints.friendly_name} to your bag'
                             )
     else:
         if prints_id in list(bag.keys()):
             bag[prints_id] += quantity
             messages.success(
-                                request,
-                                f'Updated {prints.friendly_name} \
-                                quantity to {bag[prints_id]}'
+                             request,
+                             f'Updated {prints.friendly_name} \
+                             quantity to {bag[prints_id]}'
                             )
         else:
             bag[prints_id] = quantity
             messages.success(
-                                request,
-                                f'Added {prints.friendly_name} to your bag'
+                             request,
+                             f'Added {prints.friendly_name} to your bag'
                             )
     # update session variable
     request.session['bag'] = bag
@@ -78,34 +82,34 @@ def adjust_bag(request, prints_id):
         if quantity > 0:
             bag[prints_id]['prints_by_size'][size] = quantity
             messages.success(
-                                request,
-                                f'Updated size {size.upper()} \
-                                {prints.friendly_name} quantity to \
-                                {bag[prints_id]["prints_by_size"][size]}'
+                             request,
+                             f'Updated size {size.upper()} \
+                             {prints.friendly_name} quantity to \
+                             {bag[prints_id]["prints_by_size"][size]}'
                             )
         else:
             del bag[prints_id]['prints_by_size'][size]
             if not bag[prints_id]['prints_by_size']:
                 bag.pop(prints_id)
             messages.success(
-                                request,
-                                f'Removed size {size.upper()} \
-                                {prints.friendly_name} from your bag'
-                                )
+                             request,
+                             f'Removed size {size.upper()} \
+                             {prints.friendly_name} from your bag'
+                            )
     else:
         if quantity > 0:
             bag[prints_id] = quantity
             messages.success(
-                                request,
-                                f'Updated {prints.friendly_name}\
-                                 quantity to {bag[quantity]}'
+                             request,
+                             f'Updated {prints.friendly_name}\
+                              quantity to {bag[quantity]}'
                             )
         else:
             bag.pop(prints_id)
             messages.success(
-                                request,
-                                f'Removed {prints.friendly_name}\
-                                 from your bag'
+                             request,
+                             f'Removed {prints.friendly_name}\
+                              from your bag'
                             )
 
     request.session['bag'] = bag
@@ -127,16 +131,16 @@ def remove_from_bag(request, prints_id):
             if not bag[prints_id]['prints_by_size']:
                 bag.pop(prints_id)
             messages.success(
-                                request,
-                                f'Removed size {size.upper()}\
-                                    {prints.friendly_name} from your bag'
+                             request,
+                             f'Removed size {size.upper()}\
+                              {prints.friendly_name} from your bag'
                             )
         else:
             bag.pop(prints_id)
             messages.success(
-                                request,
-                                f'Removed {prints.friendly_name} from your bag'
-                                )
+                             request,
+                             f'Removed {prints.friendly_name} from your bag'
+                            )
 
         request.session['bag'] = bag
         # handle response

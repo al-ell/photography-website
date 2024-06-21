@@ -1,12 +1,6 @@
 /* Margins and Paddings */
-.print-container,
-.project-container,
-.profile-container,
-.contact-container,
-.checkout-container,
-.admin-container,
-.about-container {
-    margin-bottom: 15vh;
+.main-container {
+    margin-bottom: 15rem;
 }
 
 .no-gutters {
@@ -377,7 +371,7 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 500;
-    position: fixed;
+    position: relative;
 }
 
 .copyright,
@@ -442,6 +436,10 @@ i {
         height: 12vh;
     }
 
+    .main-container {
+        margin-bottom: 14vh;
+    }
+
     .social-links {
         margin: 0;
     }
@@ -496,6 +494,10 @@ i {
     footer {
         height: 9vh;
     }
+
+    .main-container {
+        margin-bottom: 12vh;
+    }
 }
 
 
@@ -506,13 +508,7 @@ i {
         -ms-flex: 50%;
         flex: 50%;
         max-width: 50%;
-    }
-
-    .page-header-container {
-        margin-top: 3rem;
-    }
-
-    
+    }    
 }
 
 @media screen and (min-width: 1200px) {
