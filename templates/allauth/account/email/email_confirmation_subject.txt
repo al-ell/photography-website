@@ -1,4 +1,4 @@
-{% load i18n %}
+Gwilym Llywelyn:
 {% autoescape off %}
 {% blocktrans %}Please Confirm Your E-mail Address{% endblocktrans %}
 {% endautoescape %}
