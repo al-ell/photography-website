@@ -421,13 +421,13 @@ i {
     .btn {
         transform: scale(0.7);
     }
+
+    header {
+        height: 24vh;
+    }
 }
 
 @media screen and (max-width: 768px) {
-
-    header {
-        height: 16vh;
-    }
 
     footer {
         height: 12vh;
@@ -465,7 +465,7 @@ i {
     }
 
     header {
-        height: 17vh;
+        height: 18vh;
     }
 
     .page-header-container {
