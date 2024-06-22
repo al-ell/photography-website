@@ -1,7 +1,5 @@
 /* Margins and Paddings */
-.main-container {
-    margin-bottom: 15rem;
-}
+
 
 .no-gutters {
     margin-right: 0;
@@ -14,7 +12,7 @@ html {
 }
 
 body {
-    height: calc(100vh - 6rem);
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -29,7 +27,7 @@ tbody tr {
 }
 
 .page-heading {
-    margin-top: 6rem
+    margin-top: 3rem;
 
 }
 
@@ -45,6 +43,7 @@ tbody tr {
 
 .main-container {
     padding: 2rem 0;
+    min-height: calc(100vh - 17rem);
 }
 
 .page-header-container {
@@ -245,8 +244,8 @@ z-index: 400;
     height: 42px;
     width: 42px;
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 12vh;
+    right: 4rem;
     border-radius: 1rem;
 }
 
@@ -372,7 +371,7 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 500;
-    position: relative;
+    position: static;
 }
 
 .copyright,
