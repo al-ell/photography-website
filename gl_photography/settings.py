@@ -122,7 +122,7 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-    DEFAULT_TO_EMAIL = os.environ.get('DEFAULT_TO_EMAIL')
+    DEFAULT_TO_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 
 # Allauth
@@ -225,5 +225,3 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
