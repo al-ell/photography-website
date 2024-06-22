@@ -424,6 +424,11 @@ i {
 }
 
 @media screen and (max-width: 768px) {
+
+    header {
+        height: 16vh;
+    }
+
     footer {
         height: 12vh;
     }
@@ -458,13 +463,17 @@ i {
     footer {
         height: 9vh;
     }
+
+    header {
+        height: 17vh;
+    }
+
+    .page-header-container {
+        margin-top: 4rem;
+    }
 }
 
 @media screen and (max-width: 992px) {
-
-    header {
-        height: 20vh;
-    }
 
     .page-header-container {
         padding-top: 8rem;
@@ -488,6 +497,10 @@ i {
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (min-width: 992px) {
+
+    .page-header-container {
+        margin-top: 0;
+    }
 
     header {
         height: 12vh;
