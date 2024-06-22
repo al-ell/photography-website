@@ -3,6 +3,11 @@
     padding-bottom: 2vh;
 }
 
+.list-group-item {
+    background-color: transparent;
+    border: none;
+}
+
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
