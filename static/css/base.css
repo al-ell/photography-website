@@ -1,5 +1,7 @@
 /* Margins and Paddings */
-
+.main-container {
+    padding-bottom: 8vh;
+}
 
 .no-gutters {
     margin-right: 0;
@@ -41,11 +43,6 @@ tbody tr {
     text-transform: uppercase;
 }
 
-.main-container {
-    padding: 2rem 0;
-    min-height: calc(100vh - 9rem -12rem);
-}
-
 .print-info-container,
 .project-table-container,
 .btn-container,
@@ -61,7 +58,6 @@ body {
 
 header {
     background-color: #f8f9fa;
-    height: 12vh;
 }
 
 .logo:hover {
@@ -427,7 +423,6 @@ i {
     }
 }
 
-
 @media screen and (max-width: 768px) {
     footer {
         height: 12vh;
@@ -442,20 +437,6 @@ i {
         padding-bottom: 0 !important;
     }
 
-    /* Nav */
-    .nav-item {
-        text-align: center;
-    }
-    .navbar {
-        height: 0;
-    }
-
-    .navbar-collapse {
-        position: fixed;
-        left: 0%;
-        width: 100vw;
-    }
-
     /* Project gallery - single column per row on smaller screens */
     .project-column {
         -ms-flex: 100%;
@@ -466,10 +447,6 @@ i {
     .print-detail-image {
         display: flex;
         justify-content: center;
-    }
-
-    .page-header-container {
-        margin-top: 3rem;
     }
 
     .btn {
@@ -485,14 +462,37 @@ i {
 
 @media screen and (max-width: 992px) {
 
+    header {
+        height: 20vh;
+    }
+
     .page-header-container {
         padding-top: 8rem;
+    }
+
+    /* Nav */
+    .nav-item {
+        text-align: center;
+    }
+    .navbar {
+        height: 0;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        left: 0%;
+        width: 100vw;
     }
 }
 
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (min-width: 992px) {
+
+    header {
+        height: 12vh;
+    }
+
     /* Project gallery - two columns per row on medium screens */
     .project-column {
         -ms-flex: 50%;
