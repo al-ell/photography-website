@@ -65,6 +65,7 @@ body {
 
 header {
     background-color: #f8f9fa;
+    height: 12vh;
 }
 
 .logo:hover {
@@ -437,7 +438,7 @@ i {
     }
 
     .main-container {
-        margin-bottom: 14vh;
+        margin-bottom: 12vh;
     }
 
     .social-links {
@@ -496,7 +497,7 @@ i {
     }
 
     .main-container {
-        margin-bottom: 12vh;
+        margin-bottom: 10vh;
     }
 }
 
