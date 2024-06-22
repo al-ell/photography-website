@@ -485,15 +485,13 @@ i {
 @media screen and (max-width: 992px) {
 
     .nav-div {
-        height: 0;
+        height: 0rem !important;
+        width: 0rem !important;
     }
 
     /* Nav */
     .nav-item {
         text-align: center;
-    }
-    .navbar {
-        height: 0;
     }
 
     .navbar-collapse {
