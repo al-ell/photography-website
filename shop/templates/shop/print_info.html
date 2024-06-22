@@ -9,7 +9,6 @@
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-center text-uppercase p-2">
                 <h2 class="heading-font mb-2">Shop</h2>
-                <h3 class="heading-font">{{ prints.friendly_name }}</h3>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -48,7 +47,7 @@
                                 <h4 class="heading-font">{{ print.category.name }}</h4>
                             </a>
                         {% endif %}
-                        <p class="paragraph-font">{{ prints.description }}</p>
+                        <p class="paragraph-font">{{ prints.friendly_name }}</p>
                     </div>
                     <div class="col-10 offset-1 mb-3">
                         <p>Archival giclee signed print</p>
@@ -60,7 +59,7 @@
                             <div class="form-row">
                                 <div class="col-12 mb-3">
                                     <div class="form-group mb-3">
-                                        <h4 class="heading-font mb-2">Choose a Size to see the price:</h4>
+                                        <h4 class="heading-font small-heading mb-2">Choose a Size to see the price:</h4>
                                         <select class="form-control rounded-0 w-50" name="selected_size" id='id_selected_size'>
                                             <option disabled selected value="..."></option>
                                             <option value="a5">A5</option>
