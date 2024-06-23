@@ -5,7 +5,7 @@
 
 .list-group-item {
     background-color: transparent;
-    border: none;
+    border: none !important;
 }
 
 .no-gutters {
