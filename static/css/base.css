@@ -427,25 +427,20 @@ i {
     .btn {
         transform: scale(0.7);
     }
-
-    header {
-        height: 24vh;
-    }
-
-    .page-header-container {
-        padding-top: 10rem;
-    }
-
-    .page-heading {
-        margin-top: 6rem;
-    
-    }
 }
 
 @media screen and (max-width: 768px) {
 
     footer {
         height: 12vh;
+    }
+
+    .page-heading {
+        margin-top: 6rem;
+    }
+
+    header {
+        height: 24vh;
     }
 
     .social-links {
@@ -483,13 +478,8 @@ i {
         height: 16vh;
     }
 
-    .page-heading {
-        margin-top: 8rem;
-    
-    }
-
     .page-header-container {
-        padding-top: 8rem;
+        margin-top: 12rem;
     }
 }
 
@@ -517,7 +507,7 @@ i {
 @media screen and (min-width: 992px) {
 
     .page-header-container {
-        margin-top: 6rem;
+        margin-top: 8rem;
     }
 
     header {
@@ -532,7 +522,7 @@ i {
     }
 
     .page-heading {
-        margin-top: 2rem;
+        margin-top: 4rem;
     
     }
 }
