@@ -13,7 +13,6 @@ body {
 
 .main-container {
     margin-top: 2rem;
-    height: calc(100vh - 6rem);
     overflow: hidden;
     padding: 0 !important;
 }
