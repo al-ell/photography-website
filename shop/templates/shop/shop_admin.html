@@ -21,9 +21,9 @@
             <div class="row mb-3">
                 <!-- Add prints, categories and sizes -->
                 <div class="col-12 mb-5 justify-content-center btn-container">
-                    <a href="{% url 'add_category' %}" class="btn btn-warning m-2">Add Category</a>
-                    <a href="{% url 'add_print' %}" class="btn btn-warning m-2">Add Print</a>
-                    <a href="{% url 'add_size' %}" class="btn btn-warning m-2">Add Print Size</a>
+                    <a href="{% url 'add_category' %}" class="btn btn-warning m-2" aria-label="add category">Add Category</a>
+                    <a href="{% url 'add_print' %}" class="btn btn-warning m-2" aria-label="add print">Add Print</a>
+                    <a href="{% url 'add_size' %}" class="btn btn-warning m-2" aria-label="add print size">Add Print Size</a>
                 </div>
             </div>
             <div class="row mb-3 align-items-center">
@@ -42,8 +42,8 @@
                                     <td>                               
                                         {{ category.name }}
                                     <td>
-                                        <a href="{% url 'edit_category' category.id %}" class="btn btn-success m-2">Edit</a>
-                                        <a href="{% url 'delete_category' category.id %}" class="btn btn-danger m-2">Delete</a>
+                                        <a href="{% url 'edit_category' category.id %}" class="btn btn-success m-2" aria-label="edit category">Edit</a>
+                                        <a href="{% url 'delete_category' category.id %}" class="btn btn-danger m-2" aria-label="delete category">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -87,8 +87,8 @@
                                 <div class="card-body mb-2">
                                     <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.name }}: {{ print.friendly_name }}</small></p>
                                     <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.category.name }}</small></p>
-                                    <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-1">Edit</a>
-                                    <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-1">Delete</a>
+                                    <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-1" aria-label="edit print">Edit</a>
+                                    <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-1" aria-label="delete print">Delete</a>
                                 </div>
                             </div>
                         </div>

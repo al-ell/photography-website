@@ -24,7 +24,7 @@
                 {% csrf_token %}                
                     <h4 class="heading-font">Are you sure you want to delete {{ photo.name }}:{{ photo.friendly_name }}?</h4>
                     <p class="mb-5">This action is permanent and may delete associated shop items and projects.</p>
-                    <a class="btn btn-secondary m-2" href="{% url 'portfolio_admin' %}">Cancel</a>
+                    <a class="btn btn-secondary m-2" href="{% url 'portfolio_admin' %}" aria-label="cancel - portfolio admin">Cancel</a>
                     <input class="btn btn-danger m-2" type="submit" value="Yes">
             </form>
         </div>

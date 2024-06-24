@@ -14,9 +14,9 @@
         <div class="row justify-content-center">
             <!-- Only allow a superuser to edit the prints -->
             {% if request.user.is_superuser %}
-            <div class="col-12 text-center link-text">
-                <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2">Edit</a>
-                <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2">Delete</a>
+            <div class="col-12 text-center text-white">
+                <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2" aria-label="edit">Edit</a>
+                <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2" aria-label="delete">Delete</a>
             </div>
         {% endif %}
         </div>
@@ -42,7 +42,7 @@
             <div class="col-12 col-md-7 pl-4">
                 <div class="row mt-3">
                     <div class="col-10 offset-1 mb-3">
-                        <h4 class="heading-font">{{ prints.friendly_name }}</h4>
+                        <h3 class="heading-font">{{ prints.friendly_name }}</h3>
                         <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.id }}">
                             <h4 class="heading-font small-heading">{{ prints.category.name }}</h4>
                         </a>
@@ -73,7 +73,7 @@
                                         <div class="input-group w-50">
                                             <div class="input-group-prepend">
                                                 <button class="decrement-qty btn btn-dark rounded-0" 
-                                                    data-item_id="{{ prints.id }}" id="decrement-qty_{{ prints.id }}">
+                                                    data-item_id="{{ prints.id }}" id="decrement-qty_{{ prints.id }}" aria-label="increase quantity">
                                                     <span class="icon"><i class="fas fa-minus"></i></span>
                                                 </button>
                                             </div>
@@ -82,7 +82,7 @@
                                                 data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
                                             <div class="input-group-append">
                                                 <button class="increment-qty btn btn-dark rounded-0" 
-                                                    data-item_id="{{ prints.id }}" id="increment-qty_{{ prints.id }}">
+                                                    data-item_id="{{ prints.id }}" id="increment-qty_{{ prints.id }}" aria-label="decrease quantity">
                                                     <span class="icon"><i class="fas fa-plus"></i></span>
                                                 </button>
                                             </div>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <a href="{% url 'all_prints' %}" class="btn btn-secondary m-2">Back to Prints</a>
+                                <a href="{% url 'all_prints' %}" class="btn btn-secondary m-2" aria-label="back to prints">Back to Prints</a>
                                 <input type="submit" class="btn btn-success m-2" value="Add to Bag">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">

@@ -23,8 +23,8 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="justify-content-center form-buttons">
-                    <a class="btn btn-danger mt-2 mr-2" href="{% url 'home' %}">Cancel</a>
-                    <button class="btn btn-success mt-2 ml-2" type="submit">Send</button>
+                    <a class="btn btn-danger mt-2 mr-2" href="{% url 'home' %}" aria-label="cancel - return home">Cancel</a>
+                    <button class="btn btn-success mt-2 ml-2" type="submit" aria-label="send">Send</button>
                 </div>
             </form>
         </div>

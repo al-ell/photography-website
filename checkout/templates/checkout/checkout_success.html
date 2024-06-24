@@ -114,14 +114,14 @@
                 <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3 mt-1">
                     <!-- return to shop or profile -->
                     {% if from_profile %}
-                        <a href="{% url 'profile' %}" class="btn btn-dark m-2 float-right">
+                        <a href="{% url 'profile' %}" class="btn btn-dark m-2 float-right" aria-label="back to profile">
                             <span>
                                 <i class="fa-solid fa-user"></i>
                                 Back to profile
                             </span>
                         </a>
                     {% else %}
-                        <a href="{% url 'all_prints' %}" class="btn btn-dark m-2 float-right">
+                        <a href="{% url 'all_prints' %}" class="btn btn-dark m-2 float-right" aria-label="back to all prints">
                             <span>
                                 <i class="fa-solid fa-left-long"></i>
                                 Back to all prints

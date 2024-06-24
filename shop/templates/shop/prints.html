@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container-fluid page-header-container mb-1 text-center>
+    <div class="container-fluid page-header-container mb-1 text-center">
         <div class="flex-row">
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
                 <h2 class="heading-font mb-2">Shop</h2>
@@ -28,7 +28,7 @@
                 <div class="col-12 col-md-6 m-1 d-flex justify-content-start">
                     <!-- Sort prints by name or category -->
                     <div class="sort-select-wrapper paragraph-font w-50">
-                        <select id="sort-selector" class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                        <select aria-label="sort prints alphabetically" id="sort-selector" class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                             <option class="m-2" value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option class="m-2" value="friendly_name_asc" {% if current_sorting == 'friendly_name_asc' %}selected{% endif %}>Name (A-Z)</option>
                             <option class="m-2" value="friendly_name_desc" {% if current_sorting == 'friendly_name_desc' %}selected{% endif %}>Name (Z-A)</option>
