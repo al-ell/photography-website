@@ -10,7 +10,8 @@ class Category(models.Model):
     # Import model from the projects app
     name = models.ForeignKey(Project, blank=True,
                              null=True, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.name.name
 
 class Prints(models.Model):
     """ Prints model """
