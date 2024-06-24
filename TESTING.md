@@ -90,6 +90,9 @@ No errors.
 ### Contact Page
 ![contact](media/docs/lighthouse/contact.png)
 
+### Delete Confirmation Page
+![delete confirmation](media/docs/lighthouse/delete-confirmation.png)
+
 - - -
 
 ### WAVE Testing

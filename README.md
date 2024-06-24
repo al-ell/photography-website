@@ -227,7 +227,7 @@ The checkout success page has information about the order. An order confirmation
 
 # Delete confirmation - all items
 
-![delete]()
+![delete](media/docs/features/delete-confirmation.png)
 
 # My Profile
 
