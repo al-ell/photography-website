@@ -29,6 +29,7 @@ Visit the deployed site: [Gwilym Llywelyn]()
 
 [W3C](https://validator.w3.org/) was used to validate the HTML on all pages of the website.
 
+No errors.
 
 - - -
 
@@ -36,14 +37,15 @@ Visit the deployed site: [Gwilym Llywelyn]()
 
 [Jigsaw W3C](https://jigsaw.w3.org/css-validator/) was used to validate the CSS stylesheet.
 
+No errors.
 
 - - -
 
 ### JS Hint Linter
 
-[JSHint](https://jshint.com//) usded to validate Javascript.
+[JSHint](https://jshint.com//) used to validate Javascript.
 
-
+No errors.
 
 - - -
 
@@ -51,63 +53,42 @@ Visit the deployed site: [Gwilym Llywelyn]()
 
 [PEP8](http://pep8online.com/) Inbuilt PEP8 checker used on Python files.
 
-
-
 - - -
 
 ### Lighthouse
 
 ### Home Page
-![homepage](/)
-
-### Login Page
-![login](/)
+![homepage](media/docs/lighthouse/home.png)
 
 ### Portfoilio/Wales Page
-![portfolio - Wales]()
+![portfolio - Wales](media/docs/lighthouse/project1.png)
 
 ### Portfoilio/Discovery Page
-![portfolio - Discovery]()
-
+![portfolio - Discovery](media/docs/lighthouse/project2.png)
 
 ### Portfoilio Admin Page
-![portfolio admin]()
-
-### Add Project Page
-![add project]()
-
-### Edit Project Page
-![edit project]()
-
-### Add Photo Page
-![add photo]()
-
-### Edit Photo Page
-![edit photo]()
+![portfolio admin](media/docs/lighthouse/project_admin.png)
 
 ### All Prints Page
-![all prints]()
+![all prints](media/docs/lighthouse/prints.png)
 
-### Edit Photo Page
-![edit photo]()
+### Print Info Page
+![print info](media/docs/lighthouse/print_info.png)
 
-### Shop Admin Page
-![shop admin]()
-
-### Add Category Page
-![add category]()
-
-### Edit Category Page
-![edit category]()
-
-### Add Size Page
-![add size]()
-
-### Add Print Page
-![add print]()
+### Bag Page
+![bag](media/docs/lighthouse/bag.png)
 
 ### Edit Print Page
-![edit print]()
+![edit photo](media/docs/lighthouse/edit_print.png)
+
+### Shop Admin Page
+![shop admin](media/docs/lighthouse/shop.png)
+
+### Profile Page
+![profile](media/docs/lighthouse/profile.png)
+
+### Contact Page
+![contact](media/docs/lighthouse/contact.png)
 
 - - -
 
@@ -263,7 +244,7 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | Click back to prints button | taken back to all prints | clicking button | taken back to all prints | pass |
 | Click add to bag button | added to bag, success message, bag total updates in nav | clicking button | added to bag, success message, bag total updates in nav | pass |
 | `Contact Page` |
-
+| send an email to the site owner | an email is sent using the contact form | using contact form to send a message | an email is sent using the contact form | pass |
 | `Accessability`  |
 | title, alt text or aria features for all non-text media | text appears/screenreader will read out                                            | hovering over media     | text appears/screenreader will read out | pass      |
 

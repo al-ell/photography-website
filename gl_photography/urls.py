@@ -18,6 +18,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-# # error handlers
-# handler404 = 'gl_photograpy.views.handler404'
-# handler500 = 'gl_photograpy.views.handler500'
+# error handlers
+handler404 = 'gl_photography.views.handler404'
+handler500 = 'gl_photography.views.handler500'

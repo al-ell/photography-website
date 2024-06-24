@@ -130,23 +130,25 @@ I have chosen to keep the webpage mostly white like gallery walls. This is to dr
 
 I wanted to contrast a modern font, which I've used for the headings with traditional fonts for the logo and the paragraphs. 
 
-!(logo)[media/docs/logo-font.png]
-!(heading)[media/docs/heading-font.png]
-!(paragraph)[media/docs/paragraph-font.png]
+![logo](media/docs/logo-font.png)
+![heading](media/docs/heading-font.png)
+![paragraph](media/docs/paragraph-font.png)
 
 
 ### Wireframes
+![home](media/docs/wireframes/home.png)
 
-<details>
-  <summary>Click here to view Wireframes:</summary>
-	![home](media/docs/wireframes/home.png)
-	![register](media/docs/wireframes/register.png)
-	![login](media/docs/wireframes/login.png)
-	![profile](media/docs/wireframes/profile.png)
-	![about](media/docs/wireframes/about.png)
-	![projects](media/docs/wireframes/projects.png)
-	![contact](media/docs/wireframes/contact.png)
-</details>
+![register](media/docs/wireframes/register.png)
+
+![login](media/docs/wireframes/login.png)
+
+![profile](media/docs/wireframes/profile.png)
+
+![about](media/docs/wireframes/about.png)
+
+![projects](media/docs/wireframes/projects.png)
+
+![contact](media/docs/wireframes/contact.png)
 
 ## Features
 
