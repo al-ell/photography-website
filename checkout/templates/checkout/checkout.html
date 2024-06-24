@@ -41,14 +41,12 @@
                                     {% for item in bag_items %}
                                         <tr class="m-2">
                                             <td class="checkout-table-data p-2 paragraph-font">
-                                                <a href="{% url 'print_info' item.prints.id %}">
-                                                    <!-- If no image, display alternative -->
-                                                    {% if item.prints.image %}
-                                                        <img class="w-100" src="{{ item.prints.image.url }}" alt="{{ prints.friendly_name }}">
-                                                    {% else %}
-                                                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ prints.friendly_name }}">
-                                                    {% endif %}
-                                                </a>
+                                                <!-- If no image, display alternative -->
+                                                {% if item.prints.image %}
+                                                    <img class="w-100" src="{{ item.prints.image.url }}" alt="{{ prints.friendly_name }}">
+                                                {% else %}
+                                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ prints.friendly_name }}">
+                                                {% endif %}
                                             </td>
                                             <td class="checkout-table-data p-2 paragraph-font">
                                                 <p>
