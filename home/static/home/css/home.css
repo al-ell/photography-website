@@ -33,10 +33,6 @@ body {
     height: 100vh;
 }
 
-/* Media queries */
-@media screen and (max-width: 992px) {
-
-    .carousel-indicators {
-        bottom: 10rem !important;
-    }
+.carousel-indicators {
+    bottom: 10rem !important;
 }
