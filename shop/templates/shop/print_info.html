@@ -47,9 +47,14 @@
                             <h4 class="heading-font small-heading">{{ prints.category.name }}</h4>
                         </a>
                     </div>
-                    <div class="col-10 offset-1 mb-3">
+                    <div class="col-10 offset-1 mb-3 paragraph-font">
                         <p>Archival giclee signed print</p>
-                        <p></p>
+                        {% if prints.limited_edition == True %}
+                            <p>Limited edition: Yes</p>
+                        {% else %}
+                            <p>Limited edition: No</p>
+                        {% endif %}
+                            
                     </div>
                     <div class="col-10 offset-1 mb-3">
                         <form class="form" action="{% url 'add_to_bag' prints.id %}" method="POST">

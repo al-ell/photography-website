@@ -389,6 +389,8 @@ Create a database to store the website data:
 
 * All images belong to Gwilym Llywelyn.
 
+* Delete confirmation page adapted from [youtube tutorial](https://www.youtube.com/watch?v=3RPGYPKeXFo)
+
 ### Acknowledgement and support
 
 Thank you to Gwilym for allowing me to use his photos to create an attractive website.
