@@ -42,17 +42,12 @@ To create a functional website for the documentary photographer Gwilym Llywelyn 
 
 ## Architecture
 
-
-
 ## Database
 
 #### __Database Plan__
 
 | Key | Name | Type |
 | --- | --- | --- |
-
-|  | `Bag` |
-
 | | `Checkout` |
 |  | `Order` |  |
 | ForeignKey | user_profile | UserProfile |
@@ -125,13 +120,11 @@ To create a functional website for the documentary photographer Gwilym Llywelyn 
 |  | `PriceSelectionForm`|
 |  | selected_price | ChoiceField |
 
-
 ## Design
 
 ### Color Scheme
 
 I have chosen to keep the webpage mostly white like gallery walls. This is to draw attention to the work and not to distract the user. This was a joint decision with the artist. I chose the dark earthy green for the logo as I felt this would compliment the earthy tones in his landscape pictures.
-
 
 ### Font Choices 
 
@@ -155,115 +148,90 @@ I wanted to contrast a modern font, which I've used for the headings with tradit
 	![contact](media/docs/wireframes/contact.png)
 </details>
 
+## Features
 
-## Navigation
+### Navigation and Footer
 
-
-  ![]()
-
-
-
-# Features
-## Homepage
-
-### Header
-
-![header]()
+The navigation features a collapsible main nav, and a logo and user icons that wrap on smaller screens. The footer contains image copyright and social media icons.
 
 ### The home page
 
-![home]()
+A bootstrap carousel rotates between different images. A portrait or landscape iamge will show depending on screen size.
+
+![home](media/docs/features/home.png)
 
 ### Register/Sign up
 
-![register]()
+Allauth was used to create the login and signup processes. If on the signup page there is a login page link and vice versa.
 
-### Sign in
+![login](media/docs/features/login.png)
 
+## Portfolio
 
-![login]()
-
-### Logout
-
-
-![logout]()
-
-## Gallery
-
-### Gallery Menu
 
 ### View Project
 
-###
+Each project has a homepage of different images on cards in a responsive grid. If an image is clicked on a fancybox responsive gallery with zoom and navigation to other images.
 
-## All products
+![portfolio](media/docs/features/portfolio.png)
 
+![project gallery](media/docs/features/project-gallery.png)
 
-![products]()
+### Project Admin
 
- ### Sort by price
+The project admin pages have links to edit and delete all the photos and projects in the database. There are also buttons that link to the forms to add projects and photos.  The admin user can click on edit and delete on the cards to edit the photo information from the admin page. The admin user can also use the project table to be taken to the project edit forms.
 
- ![logout]()
+![project admin](media/docs/features/project-admin.png)
 
- ### Sort by project category
- 
- ![category]()
+## All Prints
 
- ### Product detail/ add to bag
+All the prints are displayed in a responsive grid on cards with information about the prints. If the image is clicked on it links to the print info page. On the prints page there are category filters and a reset button as well as filters to sort the prints aphabetically by name or category.
 
+![prints](media/docs/features/all-prints.png)
 
- ![detail]()
+### Print Info
 
- ![add to bag]()
+![info](media/docs/features/print-info.png)
 
- ### The shopping bag
+![info mobile](media/docs/features/print-info-mobile.png)
 
-![bag]()
+### Shop Admin
+
+The Shop admin pages have links to edit and delete all the prints and cateogires in the database. There are also buttons that link to the forms to add cateogires and prints. The admin user can click on edit and delete on the cards to edit the prints from the admin page. The admin user can also use buttons on the print info page to update these. There is a category table that can be used to update cateogry information.
+
+![project admin](media/docs/features/project-admin.png)
+
+### The shopping bag
+
+The shopping bag is responsive and has tools to update the quantity of an item or remove it. There are buttons linking to the checkout page.
+
+![bag](media/docs/features/bag.png)
+
+![bag](media/docs/features/bag-tablet.png)
+
+![bag](media/docs/features/bag-mobile.png)
 
 ### Checkout
 
-![checkout](static/images/checkout.jpg)
+![checkout](media/docs/features/checkout.png)
 
-![checkout bottom](static/images/checkout2.jpg)
+![checkout](media/docs/features/checkout-mobile.png)
 
 ### Checkout success
 
-![order confirm]()
+![order cofirmation](media/docs/features/order-confirmation.png)
 
-### Order confirmation email
+The checkout success page has information about the order. An order confirmation email is sent to the email provided when the Stripe payment has processed.
 
-![confirmation email]()
-
-### Product detail- super user
-
-
-![detail]()
-
-### Product management- add product
-
-![add product]()
-
-### Product management- edit product
-
-![edit]()
-
-### Product management- delete product
+# Delete confirmation - all items
 
 ![delete]()
 
-
-
-# Footer
-
-![footer]()
-
-## About
-
-![about]()
-
 # My Profile
 
-![profile]()
+The profile page has order history information and a form to update personal details. These will autofill at checkout.
+
+![profile](media/docs/features/profile.png)
 
 # 404 page
 
@@ -369,10 +337,60 @@ I have set up AWS to prevent others from accessing keys and being able to write 
 
 # Deployment
 
+The site has been developed using Gitpod workspaces and Github for version control. It was deployed to Heroku using the following steps:
+
+* Log in to [Heroku](https://id.heroku.com/login), using two factor authentication
+* Click New and Create New App
+* Choose a name and select the closest reigon
+* Click Create App
+
+Create a database to store the website data:
+
+* Login to [ElephantSQL](https://www.elephantsql.com/)
+* Create new instance
+* Set up your plan - Give the plan a name and select Tiny Turtle free plan
+* Choose the closest reigon (EU-West-1(Ireland))
+* Click Review
+* Click Create instance
+* Return to elephantsql dashboard, click on database instance name
+* In the url section, clicking the copy icon will copy the database url to the clipboard
+* Go back to Heroku to your created app, go to Settings
+* Add config var DATABASE-URL, and for the value, copy in your databse url from ElephantSQL
+* In Gitpod install dj-database_url and psycopg2 to connect to your external database
+* Update requirements.txt: pip freeze > requirements
+* import dj_database_url in settings and update your database
+* migrate your database
+* create a new superuser for your database (do not push to github until complete)
+* Install gunicorn and freeze into the requirements file
+* Then create Procfile and add config var DISABLE_COLLECTSTATIC=1
+* Commit and push to github
+* Use the CLI to connect the repo to heroku and deploy, set automatic deployment
+* When complete click View to open the deployed app
+
+## From Github docs
+
 ### Forking 
+
+* Open GitHub page that hosts the repository you wish to fork.
+* Find the 'Fork' button at the top right of the page
+* Once you click the button the fork will be in your repository
 
 ### Cloning
 
+* Open Go to the repository page on Github
+* click on the green button that says "Code".
+* You can choose to download a zip file of the repository, unpack it on your local machine, and open it in your IDE.
+* Copy the URL under the HTTPS tab to clone using https.
+* In a new window, and set the current directory to the one you want to contain the clone from.
+* Type git clone and paste the URL copied from the GitHub page.
+* The repository clone will now be created on your machine. 
+
 ## Credits
 
+* All images belong to Gwilym Llywelyn.
+
 ### Acknowledgement and support
+
+Thank you to Gwilym for allowing me to use his photos to create an attractive website.
+
+Thank you to the Code Institute tutors, mentors and cohort managers for the support to build a full stack project.

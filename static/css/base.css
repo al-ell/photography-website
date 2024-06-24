@@ -1,6 +1,6 @@
 /* Margins and Paddings */
 .main-container {
-    padding-bottom: 2vh;
+    padding-bottom: 14vh;
 }
 
 .list-group-item {
@@ -369,7 +369,7 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 500;
-    position: unset;
+    position: fixed;
 }
 
 .copyright,

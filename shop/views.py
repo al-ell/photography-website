@@ -65,6 +65,7 @@ def all_prints(request):
 def print_info(request, prints_id):
     """ Print information view """
     prints = get_object_or_404(Prints, pk=prints_id)
+    categories = Category.objects.all()
     template = 'shop/print_info.html'
     context = {
         'prints': prints,
@@ -136,7 +137,7 @@ def add_print(request):
         messages.error(request, 'Sorry, only admin has access to this page.')
         return redirect(reverse('home'))
 
-    category = get_object_or_404(Category)
+    category = get_object_or_404(Prints, pk=category_id)
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -168,6 +169,7 @@ def edit_print(request, prints_id):
         return redirect(reverse('home'))
     # identify which category to edit to preload into form
     prints = get_object_or_404(Prints, pk=prints_id)
+    category = prints.category.name
     if request.method == 'POST':
         form = PrintsForm(request.POST, request.FILES, instance=prints)
         if form.is_valid():
