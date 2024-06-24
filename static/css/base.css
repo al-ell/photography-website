@@ -33,10 +33,6 @@ tbody tr {
     text-align: center;
 }
 
-.page-heading {
-    margin-top: 3rem;
-
-}
 
 .page-heading h2 {
     font-size: 1.2rem;
@@ -439,6 +435,11 @@ i {
     .page-header-container {
         padding-top: 10rem;
     }
+
+    .page-heading {
+        margin-top: 6rem;
+    
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -480,6 +481,11 @@ i {
 
     header {
         height: 16vh;
+    }
+
+    .page-heading {
+        margin-top: 8rem;
+    
     }
 
     .page-header-container {
@@ -524,6 +530,11 @@ i {
         flex: 50%;
         max-width: 50%;
     }
+
+    .page-heading {
+        margin-top: 2rem;
+    
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -532,5 +543,6 @@ i {
         -ms-flex: 33%; /* IE10 */
         flex: 33%;
         max-width: 33%;
+        align-content: center;
     }
 }
