@@ -1,6 +1,6 @@
 # GL Photography -  Testing
 
-[Am I Responsive?]()
+[Am I Responsive?](media/docs/features/responsive1.png)
 
 Visit the deployed site: [Gwilym Llywelyn](https://gwilym-llywelyn-e33a9d837eab.herokuapp.com/shop/)
 
@@ -99,7 +99,8 @@ No errors.
 
 Wave testing completed on all pages. No contrast errors, aria labels present on all features.
 
-![Wave font to background result]()
+Colour contrast checker results:
+![Wave font to background result](media/docs/webaim.png)
 
 - - -
 
@@ -130,12 +131,6 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | Save my personal details after making a purchase | Option to save if checking out when signed in |
 | Create or edit my account to update my details | Registration, login and profile pages |
 | Login in my account so that I can view my order history | Links on profile page to order history summary |
-
-#### Future Implementation
-
-* Manage users' accounts so that I can make any required changes to them if needed
-* Make new galleries and upload new images to the galleries 
-* Users can add gallery images to favouries
 
 - - -
 
@@ -276,5 +271,4 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 
 ### Known Bugs
 
-| Bug | |
-| :--- | :--- | |
+No known bugs.

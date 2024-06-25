@@ -1,5 +1,7 @@
 # Gwilym Llywelyn
 
+![responsive images](media/docs/features/responsive1.png)
+
 ## Introduction
 
 Link to deployed site can be found [Here](https://gwilym-llywelyn-e33a9d837eab.herokuapp.com/shop/)
@@ -57,13 +59,13 @@ To create a functional website for the documentary photographer Gwilym Llywelyn 
 |  | order_total | DecimalField |
 |  | grand_total | DecimalField |
 |  | full_name | CharField |
-|  | email = | EmailField |
+|  | email | EmailField |
 |  | phone_number | CharField |
 |  | street_address1 | CharField |
 |  | street_address2 | CharField |
 |  | city_or_town | CharField |    
-|  | postcode = | CharField |
-|  | county = | CharField |
+|  | postcode | CharField |
+|  | county | CharField |
 |  | country | CountryField |
 |  | original_bag | TextField |
 |  | stripe_pid | CharField |
@@ -168,9 +170,6 @@ Allauth was used to create the login and signup processes. If on the signup page
 
 ![login](media/docs/features/login.png)
 
-## Portfolio
-
-
 ### View Project
 
 Each project has a homepage of different images on cards in a responsive grid. If an image is clicked on a fancybox responsive gallery with zoom and navigation to other images.
@@ -192,6 +191,8 @@ All the prints are displayed in a responsive grid on cards with information abou
 ![prints](media/docs/features/all-prints.png)
 
 ### Print Info
+
+The print info page is responsive. There is information about the specific print such as the name and whether or not it is a signed edition. There is a select element which shows different prices depending on the option chosen, alonside a quantity adjustment input. There are buttons to go back to all prints or to the bag. An admin user will also see edit and delete buttons at the top of the page.
 
 ![info](media/docs/features/print-info.png)
 
@@ -221,11 +222,13 @@ The shopping bag is responsive and has tools to update the quantity of an item o
 
 ### Checkout success
 
-![order cofirmation](media/docs/features/order-confirmation.png)
-
 The checkout success page has information about the order. An order confirmation email is sent to the email provided when the Stripe payment has processed.
 
+![order cofirmation](media/docs/features/order-confirmation.png)
+
 # Delete confirmation - all items
+
+There is a delete confirmation page for each item that can be deleted, there are options to cancel or confirm.
 
 ![delete](media/docs/features/delete-confirmation.png)
 
@@ -237,16 +240,20 @@ The profile page has order history information and a form to update personal det
 
 # 404 page
 
-![error handling]()
+There are custom 404 and 500 error pages with links back to the main navigation.
+
+![error handling](media/docs/features/404.png)
 
 ### Future features
 
 
 ### Future Implementations
 
-- 
-- 
-- 
+* Manage users' accounts so that I can make any required changes to them if needed
+* Make new galleries and upload new images to the galleries 
+* Users can add gallery images to favouries or prints to a wishlist
+* Remove the need for seperate project and shop models and amalgamate the two
+* Reduce image file size to improve performance
 
 ### Accessibility
 
@@ -392,6 +399,8 @@ Create a database to store the website data:
 * All images belong to Gwilym Llywelyn.
 
 * Delete confirmation page adapted from [youtube tutorial](https://www.youtube.com/watch?v=3RPGYPKeXFo)
+
+* Print info select showing the price adapted from [youtube tutorial](https://www.youtube.com/watch?v=0x0pWrm2nKI)
 
 ### Acknowledgement and support
 
