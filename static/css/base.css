@@ -53,6 +53,10 @@ tbody tr {
 
 /* Colors */
 
+header ul li {
+    color: rgba(0, 0, 0, .7)!important;
+}
+
 body {
     background-color: #fff;
 }
