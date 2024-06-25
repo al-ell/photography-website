@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Link to deployed site can be found [Here]()
+Link to deployed site can be found [Here](https://gwilym-llywelyn-e33a9d837eab.herokuapp.com/shop/)
 
 Github last commit [here]()
 

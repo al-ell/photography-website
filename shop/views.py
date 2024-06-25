@@ -204,19 +204,12 @@ def delete_print(request, prints_id):
     # to confirmation page to confirm action
     prints = get_object_or_404(Prints, pk=prints_id)
     if request.method == 'POST':
-        try:
-            prints.delete()
-            return redirect('shop_admin')
-            messages.success(
-                            request,
-                            f'Deleted {prints.name} from {prints.category}.')
-        # error handling from 
-        # https://stackoverflow.com/questions/19775483/handle-protect-error-in-django-deleteview
-        except ProtectedError:
-            messages.error(request, "You cannot delete this print, \
-                            please delete the photo in the project.")
-            return redirect('shop_admin')
-    return render(request, 'projects/delete_print.html')
+        prints.delete()
+        return redirect('shop_admin')
+        messages.success(
+                        request,
+                        f'Deleted {prints.name} from {prints.category}.')
+    return render(request, 'shop/delete_print.html')
 
 
 @login_required
@@ -285,15 +278,8 @@ def delete_category(request, category_id):
     # identify which category to delete, send user
     # to confirmation page to confirm action
     category = get_object_or_404(Category, pk=category_id)
-    if request.method == 'POST':
-        try:        
-            category.delete()
-            return redirect('shop_admin')
-            messages.success(request, f'Deleted {category.name}.')
-        # error handling from 
-        # https://stackoverflow.com/questions/19775483/handle-protect-error-in-django-deleteview
-        except ProtectedError:
-            messages.error(request, "You cannot delete this category, \
-                            please delete the project.")
-            return redirect('shop_admin')
-    return render(request, 'projects/delete_category.html')
+    if request.method == 'POST':       
+        category.delete()
+        return redirect('shop_admin')
+        messages.success(request, f'Deleted {category.name}.')
+    return render(request, 'shop/delete_category.html')

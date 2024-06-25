@@ -23,7 +23,7 @@ class Prints(models.Model):
     # Import model from the projects app
     name = models.ForeignKey(Photo, null=False, blank=False,
                              default="", on_delete=models.PROTECT)
-    sku = models.CharField(max_length=150, null=False,
+    sku = models.IntegerField(null=False,
                            unique=True, default="00", blank=False)
     friendly_name = models.CharField(max_length=200, default="", unique=True, blank=False)
     image_url = models.URLField(max_length=1024, default="", unique=True)

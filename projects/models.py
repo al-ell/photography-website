@@ -18,7 +18,7 @@ class Photo(models.Model):
     """ photo model """
     project = models.ForeignKey(Project, null=True, blank=True,
                                 on_delete=models.SET_NULL)
-    name = models.IntegerField(unique=True, default="00", blank=False)
+    name = models.CharField(max_length=100, unique=True, default="00", blank=False)
     friendly_name = models.CharField(max_length=200, null=False,
                                      unique=True, default="", blank=False)
     image_url = models.URLField(max_length=1024, null=False, default="")

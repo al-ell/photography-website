@@ -2,7 +2,7 @@
 
 [Am I Responsive?]()
 
-Visit the deployed site: [Gwilym Llywelyn]()
+Visit the deployed site: [Gwilym Llywelyn](https://gwilym-llywelyn-e33a9d837eab.herokuapp.com/shop/)
 
 - - -
 
@@ -265,7 +265,12 @@ Wave testing completed on all pages. No contrast errors, aria labels present on 
 | The remove from bag link wasn't working | I was targeting the wrong value in my HTML, missing the "_" from remove. Once added it worked immediately | ![bag bug](media/docs/bug-remove-typo.png) |
 | The update bag link wasn't updating the bag quantity of an item | The JQuery was targeting the previous element, but the previous element was the remove button. Once I swapped them it worked immediately | ![bag bug](media/docs/bug-js-prev.png) |
 | The webhook was failing | I forgot to update the webhook endpoint when switching to the new student account |  |
-
+| The burger menu wasn't showing in the nav on a smaller screen | I moved it to be in the list with the other icons, and to hide on larger screens |  |
+| The print price and line subtotal wasn't updating in the bag depending on the size chosen | I added if/else statements to show the correct prices on the template |  |
+| The delivery fee was still showing if the basket was empty | I updated the if/else statement to include a condition to set the delivery fee to 0 if the basket was empty |  |
+| Stripe not working | I forgot to update the stripe endpoint when I ported my workspace |  |
+| Category name isn't showing on print edit page | I forgot to add a string method to the model when I recreated it. |  |
+| 500 server error on deployed site when trying to delete anyting in the shop | I was targeting the wrong template in the views, updating it made it work |  |
 
 - - -
 
