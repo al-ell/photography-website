@@ -506,10 +506,6 @@ i {
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (min-width: 992px) {
 
-    .page-header-container {
-        margin-top: 8rem;
-    }
-
     header {
         height: 12vh;
     }
