@@ -23,13 +23,13 @@ class Order(models.Model):
                                       null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2,
                                       null=False, default=0)
-    full_name = models.CharField(max_length=80, null=False)
-    email = models.EmailField(max_length=254, null=False)
-    phone_number = models.CharField(max_length=20, null=False)
-    street_address1 = models.CharField(max_length=100, null=False)
+    full_name = models.CharField(max_length=80, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.IntegerField(null=False, blank=False)
+    street_address1 = models.CharField(max_length=100, null=False, blank=False)
     street_address2 = models.CharField(max_length=100, null=True, blank=True)
-    city_or_town = models.CharField(max_length=40, null=False)
-    postcode = models.CharField(max_length=20, null=False, default="")
+    city_or_town = models.CharField(max_length=40, null=False, blank=False)
+    postcode = models.CharField(max_length=20, null=False, default="", blank=False)
     county = models.CharField(max_length=40, null=False, blank=False)
     country = CountryField(blank_label="Country *", null=False, blank=False)
     original_bag = models.TextField(null=False, default='')
@@ -61,13 +61,13 @@ class Order(models.Model):
 class OrderLineItem(models.Model):
     """ Order Items Model """
     order = models.ForeignKey(Order, null=True, blank=True,
-                              on_delete=models.CASCADE,
+                              on_delete=models.SET_NULL,
                               related_name='lineitems')
     prints = models.ForeignKey(Prints, null=True, blank=True,
-                               on_delete=models.CASCADE)
+                               on_delete=models.SET_NULL)
     selected_size = models.CharField(max_length=2, null=False,
-                                     default="a4")  # A5, A4
-    quantity = models.IntegerField(null=False, default=0)
+                                     default="a4", blank=False)  # A5, A4
+    quantity = models.IntegerField(null=False, default=0, blank=False)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          null=False, editable=False)
 
