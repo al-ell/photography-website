@@ -266,6 +266,7 @@ Colour contrast checker results:
 | Stripe not working | I forgot to update the stripe endpoint when I ported my workspace |  |
 | Category name isn't showing on print edit page | I forgot to add a string method to the model when I recreated it. |  |
 | 500 server error on deployed site when trying to delete anyting in the shop | I was targeting the wrong template in the views, updating it made it work |  |
+| Unable to create account | Missing "{% load i18n %}" from email subject txt file | |
 
 - - -
 
