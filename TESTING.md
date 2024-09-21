@@ -267,6 +267,8 @@ Colour contrast checker results:
 | Category name isn't showing on print edit page | I forgot to add a string method to the model when I recreated it. |  |
 | 500 server error on deployed site when trying to delete anyting in the shop | I was targeting the wrong template in the views, updating it made it work |  |
 | Unable to create account | Missing "{% load i18n %}" from email subject txt file | |
+| Webhook and payment failure | The webhook had become disabled on Stripe interface, I enabled it and updated the WH secret in Heroko confg vars. |  |
+
 
 - - -
 
