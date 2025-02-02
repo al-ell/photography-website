@@ -15,8 +15,8 @@
             <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
                 <!-- Loop through and display project names and descriptions -->
                 {% for project in projects %}
-                    {% if project.name == 'The Celtic Archipelago' %}
-                    <h2 class="heading-font mb-3">{{ project.name }}</h2>
+                    {% if project.name == 'Wales' %}
+                    <h2 class="heading-font mb-3">The Celtic Archipelago</h2>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -57,7 +57,7 @@
         <div class="row project-row card-group" id="app">
             <!-- Load all photos with the below project name -->
             {% for photo in photos %}
-                {% if photo.project.name == 'The Celtic Archipelago' %}
+                {% if photo.project.name == 'Wales' %}
                 <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 card-group">
                     <div class="card">
                         <a data-fancybox="gallery"
