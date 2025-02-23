@@ -1,1 +1,0 @@
-web: gunicorn gl_photography.wsgi:application
