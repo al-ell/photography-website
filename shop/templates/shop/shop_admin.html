@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_title %}
+    Shop Admin
+{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid page-header-container mb-1 text-center">
+        <div class="row">
+            <div class="col-10 offset-1 page-heading text-center text-uppercase p-2">
+                <h2 class="heading-font mb-2">Shop Admin</h2>
+                <h3 class="heading-font">Edit Prints and Categories</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center align-items-center admin-container">
+        <div class="col-10 offset-1 heading-font text-center text-uppercase mb-3">
+            <div class="row mb-3">
+                <!-- Add prints, categories and sizes -->
+                <div class="col-12 mb-5 justify-content-center btn-container">
+                    <a href="{% url 'add_category' %}" class="btn btn-warning m-2" aria-label="add category">Add Category</a>
+                    <a href="{% url 'add_print' %}" class="btn btn-warning m-2" aria-label="add print">Add Print</a>
+                    <a href="{% url 'add_size' %}" class="btn btn-warning m-2" aria-label="add print size">Add Print Size</a>
+                </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+                <div class="col-12 category-table-container table-responsive table-container align-items-center justify-content-center text-center">
+                    <table class="category-table">
+                        <thead class="category-thead heading-font">
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Edit or Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="category-tbody paragraph-font">
+                            <!-- Loop through categories -->
+                            {% for category in categories %}
+                                <tr>
+                                    <td>                               
+                                        {{ category.name }}
+                                    <td>
+                                        <a href="{% url 'edit_category' category.id %}" class="btn btn-success m-2" aria-label="edit category">Edit</a>
+                                        <a href="{% url 'delete_category' category.id %}" class="btn btn-danger m-2" aria-label="delete category">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row d-flex justify-content-around mb-3 text-center">
+            <div class="col-12">
+                <!-- Filter by category -->
+                <ul class="list-unstyled list-group text-uppercase d-flex justify-content-around">
+                    <li class="list-inline-item">
+                        <a href="{% url 'shop_admin' %}?category=The Celtic Archipelago" class="project-link heading-font mb-2"><h5>The Celtic Archipelago</h5></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{% url 'shop_admin' %}?category=Discovery" class="heading-font mb-2 project-link"><h5>Discovery</h5></a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'shop_admin' %}" class="project-link small-heading heading-font mb-2"><h5>Reset Filters</h5></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex-row d-flex justify-content-center">
+            <div class="col-12 col-lg-10 offset-lg-1">
+                <div class="flex-row card-group">
+                    <!-- Loop through the prints -->
+                    {% for print in prints %}
+                        <div class="col-12 col-md-4 col-lg-3 justify-content-center card-group">
+                            <div class="card m-2 p-1 shop-thumbnail">
+                                {% if print.image %}
+                                    <a href="{% url 'print_info' print.id %}">
+                                        <img src="{{ print.image.url }}" class="card-img" alt="{{ print.description }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'print_info' print.id %}">
+                                        <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body mb-2">
+                                    <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.name }}: {{ print.friendly_name }}</small></p>
+                                    <p class="card-text paragraph-font mb-1 text-left"><small>{{ print.category.name }}</small></p>
+                                    <a href="{% url 'edit_print' print.id %}" class="btn btn-small btn-success m-1" aria-label="edit print">Edit</a>
+                                    <a href="{% url 'delete_print' print.id %}" class="btn btn-small btn-danger m-1" aria-label="delete print">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- back to top button -->
+    <div class="btt-button bg-light rounded border border-black">
+        <a class="btt-link d-flex h-100 project-link">
+            <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- Load local JS -->
+    <script type="text/javascript" src="{% static 'shop/js/shop.js' %}"></script>
+{% endblock %}

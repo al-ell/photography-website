@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_title %}
+    Prints
+{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid page-header-container mb-1 text-center">
+        <div class="flex-row">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
+                <h2 class="heading-font mb-2">Shop</h2>
+                <h3 class="heading-font">Prints</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-row justify-content-center print-container">
+        <div class="col-12 col-lg-10 offset-lg-1 heading-font text-center text-uppercase mb-3">
+            <div class="row">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1 ">
+                    <h4 class="heading-font mb-2">Prints by Project</h4>
+                    <p>Click the links below to choose a project to view.</p>
+                </div>
+            </div>
+            <div class="flex-row mb-2 d-flex justify-content-between">
+                <div class="col-12 col-md-6 m-1 d-flex justify-content-start">
+                    <!-- Sort prints by name or category -->
+                    <div class="sort-select-wrapper paragraph-font w-50">
+                        <select aria-label="sort prints alphabetically" id="sort-selector" class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <option class="m-2" value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                            <option class="m-2" value="friendly_name_asc" {% if current_sorting == 'friendly_name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                            <option class="m-2" value="friendly_name_desc" {% if current_sorting == 'friendly_name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                            <option class="m-2" value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                            <option class="m-2" value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 m-1 d-flex justify-content-center">
+                    <!-- Reset filtering and sorting -->
+                    <a href="{% url 'all_prints' %}" class="project-link small-heading heading-font mb-2"><h5>Reset Filters</h5></a>
+                </div>
+            </div>
+            <div class="flex-row mb-2">
+                <div class="col-12 col-lg-10 mb-3 offset-lg-1 m-1">
+                    <!-- Filter by category -->
+                    <ul class="list-unstyled list-inline d-flex justify-content-between">
+                        <li class="list-inline-item">
+                            <a href="{% url 'all_prints' %}?category=The Celtic Archipelago" class="project-link heading-font mb-2"><h5>The Celtic Archipelago</h5></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url 'all_prints' %}?category=Discovery" class="heading-font mb-2 project-link"><h5>Discovery</h5></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row card-group">
+                <!-- Loop through the prints -->
+                {% for print in prints %}
+                    <div class="col-12 col-md-4 col-lg-3 justify-content-center card-group">
+                        <div class="card m-2 p-1 shop-thumbnail">
+                            <!-- If no image, display alternative -->
+                            {% if print.image %}
+                                <a href="{% url 'print_info' print.id %}">
+                                    <img src="{{ print.image.url }}" class="card-img" alt="{{ print.description }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'print_info' print.id %}">
+                                    <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ print.description }}">
+                                </a>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title heading-font">{{ print.friendly_name }}</h5>
+                                {% if print.category %}
+                                    <p class="small paragraph-font">
+                                        <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.name }}">
+                                            {{ print.category.name.name }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                                <p class="card-text paragraph-font">From £{{ print.a5_price }} to £{{ print.a4_price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="btt-button bg-light rounded border border-black">
+        <a class="btt-link d-flex h-100 project-link">
+            <i class="fa-solid fa-chevron-up mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- Load local JS -->
+    <script type="text/javascript" src="{% static 'shop/js/shop.js' %}"></script>
+{% endblock %}

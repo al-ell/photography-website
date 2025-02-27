@@ -1,0 +1,538 @@
+/* Margins and Paddings */
+.main-container {
+    padding-bottom: 14vh;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none !important;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+tbody tr {
+    vertical-align: sub;
+}
+
+.header-container {
+    padding: 0 !important;
+    text-align: center;
+}
+
+
+.page-heading h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.page-heading h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.print-info-container,
+.project-table-container,
+.btn-container,
+.form-buttons {
+    display: flex;
+}
+
+/* Colors */
+
+header ul li {
+    color: rgba(0, 0, 0, .7)!important;
+}
+
+body {
+    background-color: #fff;
+}
+
+header {
+    background-color: #f8f9fa;
+}
+
+.logo:hover {
+    color: #000;
+}
+
+.link-text a,
+.project-link,
+.project-link a {
+    color: #264d00 !important;
+}
+
+.link-text a,
+.nav-link:hover,
+.icon-container li a:hover,
+.project-link:hover,
+.project-link a:hover,
+.nav-item a:hover,
+.btt-button:hover {
+    color: #660000 !important;
+}
+
+.social-links li a i:hover {
+    color: #fff;
+    background-color: #264d00;
+}
+
+.social-links li a i {
+    background-color: #660000;
+    color: #fff;
+}
+
+/* Fonts - from Google Fonts */
+h1 {
+    font-weight: 900 !important;
+}
+
+.small-heading,
+.card h5 {
+    font-size: 0.8rem !important;
+}
+
+.heading-font {
+    font-family: "Karla", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #000;
+}
+
+.paragraph-font {
+    font-family: "Crimson Pro", serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+/* Nav */
+
+
+.nav-icons ul {
+    margin: 0;
+ }
+
+.nav-icons {
+    margin: 0;
+    padding: 0;
+
+}
+
+.icon-container {
+    padding: 0;
+
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+}
+
+.icon-container {
+    display: inline-flex;
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+.icon-link-bag {
+    color: rgba(0, 0, 0, .5);
+    display: inline-flex;
+    padding: .5rem 1rem;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.icon-link {
+    color: rgba(0, 0, 0, .5);
+    display: inline-flex;
+    padding: .5rem 1rem;
+}
+
+.navbar {
+    text-transform: uppercase;
+    width: 100%;
+    height: 6rem;
+}
+
+.nav-link {
+    color: rgba(0, 0, 0, .5);
+}
+
+.navbar-nav li {
+    letter-spacing: 0.1rem;
+}
+
+.logo h1,
+.logo {
+    text-decoration: none;
+    color: #660000 !important;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    font-family: "Crimson Pro", serif;
+    font-weight: 700 !important;
+    font-style: normal;
+}
+
+
+.logo-container {
+    width: fit-content;
+}
+
+
+.bag-total {
+    font-size: 0.7rem !important;
+}
+
+.checkout-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.checkout-table-data {
+    width: 33%;
+}
+
+/* Index */
+
+
+/* About */
+
+.about-heading {
+    color: black;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+}
+
+
+
+/* From W3 Schools */
+/* https://www.w3schools.com/howto/howto_css_dropdown.asp */
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f8f9fa;
+min-width: 15rem;
+z-index: 400;
+}
+
+
+/* scroll button */
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 12vh;
+    right: 4rem;
+    border-radius: 1rem;
+}
+
+.btt-link {
+    cursor: pointer;
+}
+
+/* Project Galleries */
+
+/* Create responsive image gallery */
+/* https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp */
+.project-row {
+display: -ms-flexbox; /* IE10 */
+display: flex;
+-ms-flex-wrap: wrap; /* IE10 */
+flex-wrap: wrap;
+padding: 0 0.5rem;
+}
+  
+.project-column img {
+margin-top: 8px;
+vertical-align: middle;
+width: 100%;
+}
+
+.project-column {
+    padding: 0 0.5rem;
+}
+  
+/* Project Admin */
+
+.table-container {
+    overflow: auto;
+    width: 100%;
+}
+
+.category-table,
+.project-table {
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+}
+
+.table-container td,
+.table-container th {
+    padding: 5px;
+}
+
+/* Custome image file upload */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Toasts */
+
+.message-container {
+    position: fixed;
+    top: 6.5rem;
+    right: 3rem;
+    z-index: 9999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 1rem;
+}
+
+.radio-selects {
+    list-style-type: none !important;
+}
+
+.update-link,
+.remove-link {
+    cursor: pointer;
+}
+
+/* allauth */
+
+.auth-container {
+    margin-top: 10rem;
+}
+
+.auth-box {
+    border: #264d00 2px solid;
+    border-radius: 4px;
+}
+
+.auth-box,
+.auth-row {
+    display: flex;
+    text-align: center;
+}
+
+
+.allauth-form-inner-content input {
+    border-color: #264d00;
+    border-radius: 4px;
+    border-width: 2px;
+}
+
+/* Footer */
+
+footer {
+    margin: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 500;
+    position: fixed;
+}
+
+.copyright,
+.social-container {
+    width: 100%;
+    justify-content: center;
+    align-items: baseline !important;
+}
+
+.social-icon {
+    display: flex;
+}
+
+.social-links {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links li {
+    text-align: center;
+    display: flex;
+}
+
+.social-links li a {
+    text-decoration: none;
+}
+
+.social-links li a i {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    line-height: 6px;
+    margin-bottom: 1rem;
+    /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+i {
+    margin: 0 !important;
+}
+
+
+/* Media Queries */
+@media screen and (min-width: 576px) {
+    header {
+        height: 18vh;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .btn {
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    footer {
+        height: 12vh;
+    }
+
+    .page-heading {
+        margin-top: 6rem;
+    }
+
+    header {
+        height: 24vh;
+    }
+
+    .social-links {
+        margin: 0;
+    }
+
+    .socail-links,
+    .social-links li {
+        padding-bottom: 0 !important;
+    }
+
+    /* Project gallery - single column per row on smaller screens */
+    .project-column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .print-detail-image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        transform: scale(0.8);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    footer {
+        height: 9vh;
+    }
+
+    header {
+        height: 16vh;
+    }
+
+    .page-header-container {
+        margin-top: 12rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .nav-div {
+        height: 0rem !important;
+        width: 0rem !important;
+    }
+
+    /* Nav */
+    .nav-item {
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        left: 0%;
+        width: 100vw;
+    }
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (min-width: 992px) {
+
+    header {
+        height: 12vh;
+    }
+
+    /* Project gallery - two columns per row on medium screens */
+    .project-column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+
+    .page-heading {
+        margin-top: 4rem;
+    
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    /* Project gallery - three columns per row on xl screens */
+    .project-column {
+        -ms-flex: 33%; /* IE10 */
+        flex: 33%;
+        max-width: 33%;
+        align-content: center;
+    }
+}

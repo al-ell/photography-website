@@ -1,0 +1,6 @@
+<h4 class="heading-font">Sub Total: £{{ total|floatformat:2 }}</h4>
+<h5 class="heading-font">Delivery: {{ delivery|floatformat:2 }}</h5>
+<h4 class="heading-font">Total: £{{ grand_total|floatformat:2 }}</h4>
+{% if free_delivery_delta > 0 %}
+    <p>Spend £{{ free_delivery_delta }} more for free delivery.</p>
+{% endif %}

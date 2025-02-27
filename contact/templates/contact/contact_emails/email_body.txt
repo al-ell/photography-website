@@ -1,0 +1,16 @@
+Hello,
+
+You have a new message from: {{ form.your_name }}
+
+Your message is below:
+
+Subject: {{ form.subject }}
+
+Message: 
+
+{{ form.message }}
+
+
+Contact them at:
+
+{{ form.email }}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_title %}
+    {{ prints.friendly_name }}
+{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid page-header-container mb-2 text-center">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 page-heading text-uppercase p-2">
+                <h2 class="heading-font mb-2">Shop</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Only allow a superuser to edit the prints -->
+            {% if request.user.is_superuser %}
+            <div class="col-12 text-center text-white">
+                <a href="{% url 'edit_print' prints.id %}" class="btn btn-success m-2" aria-label="edit">Edit</a>
+                <a href="{% url 'delete_print' prints.id %}" class="btn btn-danger m-2" aria-label="delete">Delete</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="row print-info-container print-container">
+    <div class="col-12 col-md-10 offset-md-1">
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-5 offset-1 offset-sm-1 offset-md-0 print-detail-image">
+                <!-- If no image, display alternate -->
+                {% if prints.image %}
+                    <a href="{{ prints.image.url }}" target="_blank">
+                        <img src="{{ prints.image.url }}" class="card-img" alt="{{ prints.description }}">
+                    </a>
+                {% else %}
+                    <a href="">
+                        <img src="{{ MEDIA_URL }}noimage.webp" class="card-img" alt="{{ prints.description }}">
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-7 pl-4">
+                <div class="row mt-3">
+                    <div class="col-10 offset-1 mb-3">
+                        <h3 class="heading-font">{{ prints.friendly_name }}</h3>
+                        <a class="project-link" href="{% url 'all_prints' %}?category={{ print.category.id }}">
+                            <h4 class="heading-font small-heading">{{ prints.category.name }}</h4>
+                        </a>
+                    </div>
+                    <div class="col-10 offset-1 mb-3 paragraph-font">
+                        <p>Archival giclee signed print</p>
+                        {% if prints.limited_edition == True %}
+                            <p>Limited edition: Yes</p>
+                        {% else %}
+                            <p>Limited edition: No</p>
+                        {% endif %}
+                            
+                    </div>
+                    <div class="col-10 offset-1 mb-3">
+                        <form class="form" action="{% url 'add_to_bag' prints.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-12 mb-2">
+                                    <div class="form-group mb-2">
+                                        <h4 class="heading-font small-heading mb-1">Choose a Size to see the price:</h4>
+                                        <select class="form-control rounded-0 w-50" name="selected_size" id='id_selected_size'>
+                                            <option disabled selected value="..."></option>
+                                            <option value="a5">A5</option>
+                                            <option value="a4">A4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2 text-center">    
+                                        <!-- Use JQuery to display different price depending on selected size -->
+                                        <h5 class="heading-font mr-5" id="price"></h5>                                 
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <h5 class="heading-font small-heading mb-1">Quantity:</h5>
+                                        <div class="input-group w-50">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-dark rounded-0" 
+                                                    data-item_id="{{ prints.id }}" id="decrement-qty_{{ prints.id }}" aria-label="increase quantity">
+                                                    <span class="icon"><i class="fas fa-minus"></i></span>
+                                                </button>
+                                            </div>
+                                            <input type="number" class="form-control qty_input"
+                                                name="quantity" value="1" min="1" max="20"
+                                                data-item_id="{{ prints.id }}" id="id_qty_{{ prints.id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-dark rounded-0" 
+                                                    data-item_id="{{ prints.id }}" id="increment-qty_{{ prints.id }}" aria-label="decrease quantity">
+                                                    <span class="icon"><i class="fas fa-plus"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <a href="{% url 'all_prints' %}" class="btn btn-secondary m-2" aria-label="back to prints">Back to Prints</a>
+                                <input type="submit" class="btn btn-success m-2" value="Add to Bag">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </form>
+                    </div>
+                    <div class="col-10 offset-1">
+                        <h5 class="heading-font small-heading text-uppercase">Delivery</h5>
+                        <p class="paragraph-font">
+                            Delivery is free for all orders over £100. <br>
+                            Orders under £100 will have a £4 delivery fee.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'shop/includes/quantity_input_script.html' %}
+    <!-- Load local JS -->
+    <script type="text/javascript" src="{% static 'shop/js/shop.js' %}"></script>
+{% endblock %}

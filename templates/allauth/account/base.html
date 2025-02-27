@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_title %}
+    Your Account
+{% endblock %}
+
+{% block content %}
+    <div class="auth-container flex-container pt-5">
+        <div class="row auth-row justify-content-center align-items-center">
+            <div class="auth-box flex col-10 col-md-8 col-lg-6 align-items-center justify-content-center">
+                <div class="allauth-form-inner-content">
+                    {% block inner_content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
