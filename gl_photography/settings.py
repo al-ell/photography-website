@@ -17,13 +17,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 
 ALLOWED_HOSTS = [
-    '8000-alell-photographywebsi-a9asyzj7t8k.ws-eu111.gitpod.io',
-    '8000-alell-photographywebsi-a9asyzj7t8k.ws-eu114.gitpod.io',
     '8000-alell-photographywebsi-65nm838k217.ws.codeinstitute-ide.net',
     'gwilym-llywelyn-e33a9d837eab.herokuapp.com',
 ]
